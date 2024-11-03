@@ -25,6 +25,10 @@ await PIXI.Assets.load('./img/blood_effect.png');
 let sprite_blood_effect = PIXI.Sprite.from('./img/blood_effect.png');
 Sprite_Auto(sprite_blood_effect)
 
+//snow_effect
+await PIXI.Assets.load('./img/snow_effect.png');
+let sprite_snow_effect = PIXI.Sprite.from('./img/snow_effect.png');
+Sprite_Auto(sprite_blood_effect)
 
 //shiny_aroung_keys
 await PIXI.Assets.load('./img/shiny_key.png');
@@ -167,6 +171,8 @@ function check_red(){
                         speed_snow/=2
                         tap_snow=1
                         snow_timer=0
+                         
+                    
                     }               
                     else {
                         snow_timer=0
@@ -498,18 +504,7 @@ let key_blood=0
 let my_hp=10
 let key_game_over=false
 function moving(){
-    if (tap_snow==1) {
-        if (snow_timer>=200) {
-            tap_snow=0
-            speed_bomb*=2
-            speed_notes*=2
-            speed_star*=2
-            speed_snow*=2
-        }
-        else {
-            snow_timer+=1
-        }
-    }
+    
     if (my_hp==3) {
         app.stage.removeChild(sprite_hp0)
         app.stage.removeChild(sprite_hp1)
@@ -742,6 +737,22 @@ function moving(){
         app.stage.removeChild(sprite_blood_effect)
     }
 
+    if (tap_snow==1) {
+        if (snow_timer>=200) {
+            tap_snow=0
+            speed_bomb*=2
+            speed_notes*=2
+            speed_star*=2
+            speed_snow*=2
+            app.stage.removeChild(sprite_snow_effect)
+            
+        }
+        else {
+            app.stage.removeChild(sprite_snow_effect)
+            app.stage.addChild(sprite_snow_effect)
+            snow_timer+=1
+        }
+    }
     //app.stage.addChild(sprite_multi);
 }
 function falling(){
