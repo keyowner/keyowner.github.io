@@ -28,7 +28,7 @@ Sprite_Auto(sprite_blood_effect)
 //snow_effect
 await PIXI.Assets.load('./img/snow_effect.png');
 let sprite_snow_effect = PIXI.Sprite.from('./img/snow_effect.png');
-Sprite_Auto(sprite_blood_effect)
+Sprite_Auto(sprite_snow_effect)
 
 //shiny_aroung_keys
 await PIXI.Assets.load('./img/shiny_key.png');
