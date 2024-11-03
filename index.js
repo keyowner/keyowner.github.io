@@ -722,21 +722,6 @@ function moving(){
         }
         
     }
-
-    if (key_blood==0){
-        blood_timer=0
-    }
-    else {
-        blood_timer+=1
-        app.stage.removeChild(sprite_blood_effect)
-        app.stage.addChild(sprite_blood_effect)
-    }
-    if (blood_timer>=100){
-        key_blood=0
-        blood_timer=0
-        app.stage.removeChild(sprite_blood_effect)
-    }
-
     if (tap_snow==1) {
         if (snow_timer>=200) {
             tap_snow=0
@@ -753,6 +738,21 @@ function moving(){
             snow_timer+=1
         }
     }
+    if (key_blood==0){
+        blood_timer=0
+    }
+    else {
+        blood_timer+=1
+        app.stage.removeChild(sprite_blood_effect)
+        app.stage.addChild(sprite_blood_effect)
+    }
+    if (blood_timer>=100){
+        key_blood=0
+        blood_timer=0
+        app.stage.removeChild(sprite_blood_effect)
+    }
+
+    
     //app.stage.addChild(sprite_multi);
 }
 function falling(){
