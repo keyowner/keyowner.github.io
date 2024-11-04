@@ -1,7 +1,7 @@
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, antialias: false, useContextAlpha: false });
     
-PIXI.sound.add('my-sound', './geo_8.mp3');
+PIXI.sound.add('geo8', './geo_8.mp3');
 
 
 
@@ -37,6 +37,7 @@ await PIXI.Assets.load('./img/main_menu.png');
 await PIXI.Assets.load('./img/play_button.png');
 await PIXI.Assets.load('./img/side_tiles.png');
 await PIXI.Assets.load('./yoster.ttf');
+await PIXI.Assets.load('./geo_8.mp3')
 function Sprite_Auto(sprite1) {
     sprite1.width = sprite1.width * (app.screen.width / 720)
     sprite1.height = sprite1.height * (app.screen.height / 1280)
@@ -1525,7 +1526,7 @@ app.ticker.add(() => {
                 falling()
                 if ((key_music_one_start==true) & (key_music_one_1==false)){
                     key_music_one_1=true
-                    PIXI.sound.play('my-sound');
+                    PIXI.sound.play('geo8')
                     
                 }
 
