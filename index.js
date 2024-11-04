@@ -1509,8 +1509,10 @@ function clear_screen(){
     }
 }
 let key_music_one_1=false
-
+PIXI.sound.play('geo8')
+PIXI.sound.stop('geo8')
 app.ticker.add(() => {
+
         if (key_main_menu == true) {
             
             app.stage.addChild(sprite_main_menu)
