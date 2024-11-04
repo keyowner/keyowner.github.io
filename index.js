@@ -581,10 +581,10 @@ app.stage.addChild(basicText);
 app.stage.addChild(basicText2);
 
 //app.stage.addChild(myScoreText);
-const def_speed_bomb=10*devicePixelRatio
-const def_speed_notes=10*devicePixelRatio
-const def_speed_snow=10*devicePixelRatio
-const def_speed_star=10*devicePixelRatio
+const def_speed_bomb=10//*devicePixelRatio
+const def_speed_notes=10//*devicePixelRatio
+const def_speed_snow=10//*devicePixelRatio
+const def_speed_star=10//*devicePixelRatio
 
 let current_survive_multi=1
 let current_survive_taps_need=10
