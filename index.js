@@ -37,7 +37,8 @@ await PIXI.Assets.load('./img/main_menu.png');
 await PIXI.Assets.load('./img/play_button.png');
 await PIXI.Assets.load('./img/side_tiles.png');
 await PIXI.Assets.load('./yoster.ttf');
-await PIXI.Assets.load('./geo_8.mp3')
+
+
 function Sprite_Auto(sprite1) {
     sprite1.width = sprite1.width * (app.screen.width / 720)
     sprite1.height = sprite1.height * (app.screen.height / 1280)
@@ -1518,7 +1519,7 @@ app.ticker.add(() => {
             app.stage.addChild(sprite_play_button)
             
             sprite_play_button.eventMode = 'static';
-            sprite_play_button.on('pointerdown', new_game);
+            PIXI.Assets.load('./geo_8.mp3').then(() =>{sprite_play_button.on('pointerdown', new_game)})
         }
         else if (key_main_menu == false) {
             if ((key_game_over == false) & (key_win==false)){
