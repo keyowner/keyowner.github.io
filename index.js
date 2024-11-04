@@ -1,6 +1,7 @@
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, antialias: false, useContextAlpha: false });
     
+PIXI.sound.add('my-sound', './geo_8.mp3');
 
 
 
@@ -38,9 +39,10 @@ await PIXI.Assets.load('./img/side_tiles.png');
 await PIXI.Assets.load('./yoster.ttf');
 function Sprite_Auto(sprite1) {
     sprite1.width = sprite1.width * (app.screen.width / 720)
-    sprite1.height = sprite1.height * (app.screen.height / 1280) 
+    sprite1.height = sprite1.height * (app.screen.height / 1280)
 }
 
+let key_music_one_start=false
 //back
 let sprite_back = PIXI.Sprite.from('./img/background.png');
 Sprite_Auto(sprite_back)
@@ -150,6 +152,7 @@ function check_red() {
                 if (queue_red[i]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
 
@@ -165,6 +168,7 @@ function check_red() {
                 my_score += 100
                 if (queue_stars[i][0]==max_queue_timer){
                     key_win=true
+                key_music_one_start=true
                 }
             }
         }
@@ -182,7 +186,7 @@ function check_red() {
                 if (queue_bombs[i][0]==max_queue_timer){
                     key_win=true
                 }
-
+                key_music_one_start=true
             }
         }
 
@@ -208,6 +212,7 @@ function check_red() {
                 if (queue_snow[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -229,6 +234,7 @@ function check_green() {
                 if (queue_green[i]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
 
@@ -245,6 +251,7 @@ function check_green() {
                 if (queue_stars[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -261,6 +268,7 @@ function check_green() {
                 if (queue_bombs[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
 
@@ -286,6 +294,7 @@ function check_green() {
                 if (queue_snow[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -305,7 +314,9 @@ function check_blue() {
                 if (queue_blue[i]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
+            
         }
     }
 
@@ -321,6 +332,7 @@ function check_blue() {
                 if (queue_stars[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -338,6 +350,7 @@ function check_blue() {
                 if (queue_bombs[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -362,6 +375,7 @@ function check_blue() {
                 if (queue_snow[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -380,6 +394,7 @@ function check_yellow() {
                 if (queue_yellow[i]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
 
@@ -396,6 +411,7 @@ function check_yellow() {
                 if (queue_stars[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -412,6 +428,7 @@ function check_yellow() {
                     if (queue_bombs[i][0]==max_queue_timer){
                         key_win=true
                     }
+                    key_music_one_start=true
                 }
             }
         }
@@ -437,6 +454,7 @@ function check_yellow() {
                 if (queue_snow[i][0]==max_queue_timer){
                     key_win=true
                 }
+                key_music_one_start=true
             }
         }
     }
@@ -563,11 +581,15 @@ app.stage.addChild(basicText);
 app.stage.addChild(basicText2);
 
 //app.stage.addChild(myScoreText);
-const def_speed_bomb=5
-const def_speed_notes=5
-const def_speed_snow=5
-const def_speed_star=5
+const def_speed_bomb=10*devicePixelRatio
+const def_speed_notes=10*devicePixelRatio
+const def_speed_snow=10*devicePixelRatio
+const def_speed_star=10*devicePixelRatio
 
+let current_survive_multi=1
+let current_survive_taps_need=10
+let current_survive_taps=10
+let current_survive_qu=1
 let speed_star = def_speed_star
 let speed_notes = def_speed_notes
 let speed_bomb = def_speed_bomb
@@ -730,6 +752,7 @@ function moving() {
         }
 /* */
         if (tap_red == 0) {
+            
             app.stage.removeChild(sprite_key_red0)
             app.stage.addChild(sprite_key_red0);
         }
@@ -801,6 +824,7 @@ function moving() {
 
         }
         if (tap_snow == 1) {
+        
             if (snow_timer >= 200) {
                 tap_snow = 0
                 speed_bomb *=2
@@ -1058,7 +1082,17 @@ function falling() {
                 app.stage.addChild(snow_keys[snow_keys_id]);
                 snow_keys_id += 1
             }
-            current_queue_timer+=100
+            current_queue_timer+=(100*current_survive_qu)
+            if (current_queue_timer>=current_survive_taps_need){
+                current_survive_multi+=0.1
+                current_survive_qu*=0.9
+                speed_bomb*=current_survive_multi
+                speed_star*=current_survive_multi
+                speed_snow*=current_survive_multi
+                speed_notes*=current_survive_multi
+                current_survive_taps_need+=30
+            }
+
         }
     }
     moving()
@@ -1078,7 +1112,7 @@ let sprite_play_button = PIXI.Sprite.from('./img/play_button.png');
 Sprite_Auto(sprite_play_button)
 let queue_timer_m=2
 function new_game(){
-    key_main_menu=false
+    
     key_game_over=false
     key_win=false
     key_tap_continue=false
@@ -1101,7 +1135,9 @@ function new_game(){
     stars_keys_id=0
     stars_shine_keys_id=0
     snow_keys_id=0
-
+    current_survive_multi=1
+    current_survive_taps_need=25*100
+    current_survive_qu=1
     red_keys=[]
     green_keys=[]
     blue_keys=[]
@@ -1116,9 +1152,10 @@ function new_game(){
     speed_notes=def_speed_notes
     speed_snow=def_speed_snow
 
-    random_queue()
-    clear_screen()
+    //random_queue()
 
+    clear_screen()
+    music_one()
     app.stage.removeChild(sprite_back)
     app.stage.addChild(sprite_back)
     app.stage.removeChild(sprite_black_top)
@@ -1215,6 +1252,180 @@ function random_queue(){
     max_queue_timer=999999999999999999999
 }
 
+function convert_tap_to_queue(taps,st){
+    let qu_red=[]
+    let qu_red1=st
+    for (var i = 0; i<taps.length;i++){
+        qu_red1+=taps[i]
+        qu_red.push(qu_red1)
+    }
+    console.log(qu_red)
+    return qu_red
+}
+
+
+function music_one(){
+    let bpm=120
+    if (key_main_menu == true){
+        let bar1=240
+        let bar1_2=bar1/2
+        let bar1_4=bar1/4
+        let bar1_8=bar1/8
+        let bar1_16=bar1/16
+        let taps=[100,bar1,bar1,bar1_4*3,bar1_4,bar1_2]
+        let qq=convert_tap_to_queue(taps,0)
+        let red_ids=[0,]
+        let blue_ids=[2,4,]
+        let green_ids=[1,5,]
+        let yellow_ids=[3,]
+
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+        let st=qq[qq.length-1]
+        console.log(st)
+        taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        
+        qq=convert_tap_to_queue(taps,st)
+        red_ids=[0,10]
+        blue_ids=[2,5,8]
+        green_ids=[1,3,6,7,9]
+        yellow_ids=[4,11]
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+
+        st=qq[qq.length-1]
+        console.log(st)
+        taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        
+        qq=convert_tap_to_queue(taps,st)
+        red_ids=[0,10]
+        blue_ids=[2,5,8]
+        green_ids=[1,3,6,7,9]
+        yellow_ids=[4,11]
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+
+        st=qq[qq.length-1]
+        console.log(st)
+        taps=[bar1_2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
+        
+        qq=convert_tap_to_queue(taps,st)
+        red_ids=[0,9,11,15,19]
+        blue_ids=[2,4,6,8,13,17]
+        green_ids=[1,5,10,14,18]
+        yellow_ids=[3,7,12,16]
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+
+        st=qq[qq.length-1]
+        console.log(st)
+        taps=[bar1_8,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
+        
+        qq=convert_tap_to_queue(taps,st)
+        red_ids=[0,9,11,15,19]
+        blue_ids=[2,4,6,8,13,17]
+        green_ids=[1,5,10,14,18]
+        yellow_ids=[3,7,12,16]
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+        key_main_menu=false
+
+        st=qq[qq.length-1]
+        console.log(st)
+        taps=[bar1_2+bar1_4,bar1_8,bar1_8,bar1_8*2,bar1_8,
+            bar1_8*2,bar1_8,bar1_8,bar1_8*2,bar1_8*2,
+            bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,
+            bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,
+            bar1_8*2,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8,
+            bar1_8*2,bar1_8,bar1_8,bar1_8*2,bar1_8*2,
+            bar1_8,bar1_8,bar1_8,bar1_8,bar1_8,bar1_8,bar1_8,bar1_8,
+            bar1_8,bar1_8,bar1_8,bar1_8,bar1_8,bar1_8*2]
+        //32 - до цифры 7, потом чередованием
+        qq=convert_tap_to_queue(taps,st)
+        red_ids=[2,5,8,14,16,20,26,31,33,35,40,45]
+        blue_ids=[3,7,6,10,11,15,21,24,28,32,34,41,43]
+        green_ids=[0,4,9,12,17,22,25,27,30,36,38,42]
+        yellow_ids=[1,5,13,18,19,23,29,37,39,44]
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+        key_main_menu=false
+    }
+    
+    //queue_blue=[850,1255,1503,1751]
+    //queue_green=[350,975,1193,1348,1596,1844]
+    //queue_yellow=[600,787,1441,2000]
+
+    
+    queue_stars=[]
+    queue_bombs=[]
+    queue_snow=[[],[],[],[],[],[],[],[],[],[]]
+    queue_stars=[[],[],[],[],[],[],[],[],[],[]]
+    queue_bombs=[[],[],[],[],[],[],[],[],[],[]]
+    queue_snow=[[],[],[],[],[],[],[],[],[],[]]
+    key_random=false
+    max_queue_timer=0
+}
+
 let max_queue_timer=0
 function clear_screen(){
     app.stage.removeChild(sprite_back)
@@ -1295,6 +1506,7 @@ function clear_screen(){
         max_queue_timer=Math.max(max_queue_timer,queue_snow[i][0])
     }
 }
+let key_music_one_1=false
 
 app.ticker.add(() => {
         if (key_main_menu == true) {
@@ -1311,6 +1523,11 @@ app.ticker.add(() => {
             if ((key_game_over == false) & (key_win==false)){
                 queue_timer+=queue_timer_m
                 falling()
+                if ((key_music_one_start==true) & (key_music_one_1==false)){
+                    key_music_one_1=true
+                    PIXI.sound.play('my-sound');
+                    
+                }
 
             }
             else if ((key_game_over == false) & (key_win==true)){
