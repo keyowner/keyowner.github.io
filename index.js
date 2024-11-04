@@ -36,11 +36,9 @@ await PIXI.Assets.load('./img/main_menu.png');
 await PIXI.Assets.load('./img/play_button.png');
 await PIXI.Assets.load('./img/side_tiles.png');
 await PIXI.Assets.load('./yoster.ttf');
-let dx=(720/app.screen.width)
-let dy=(1280/app.screen.height)
 function Sprite_Auto(sprite1) {
-    sprite1.width = sprite1.width * dx *devicePixelRatio
-    sprite1.height = sprite1.height * dy*devicePixelRatio
+    sprite1.width = sprite1.width * (app.screen.width / 720)
+    sprite1.height = sprite1.height * (app.screen.height / 1280) 
 }
 
 //back
