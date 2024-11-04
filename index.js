@@ -478,6 +478,7 @@ let sprite_hp = []
 for (let i = 0; i < 6; i++) {
     await PIXI.Assets.load('./img/hp' + String(i) + '.png');
     sprite_hp.push(PIXI.Sprite.from('./img/hp' + String(i) + '.png'))
+    Sprite_Auto(sprite_hp[i])
 }
 app.stage.addChild(sprite_hp[5]);
 //star_score_icon
