@@ -1014,7 +1014,7 @@ function falling() {
     }
     else {
         if ((queue_timer>=current_queue_timer-1) & (queue_timer<=current_queue_timer+1)){
-            let aa=get_random_a()
+            let aa=get_random_a(false)
             if (aa=='red'){
                 red_keys.push(PIXI.Sprite.from('./img/red_note.png'))     
                 Sprite_Auto(red_keys[red_keys_id])
@@ -1360,56 +1360,85 @@ let rate_stars=0
 let rate_bombs=0
 let rate_snow=0
 
-function get_random_a(){
+function get_random_a(key){
     let a=getRandom(100)
-    if ((a>=0) & (a<20)){
-        return 'blue'
+    if (key==false){
+        if ((a>=0) & (a<20)){
+            return 'blue'
+        }
+        else if ((a>=20) & (a<40)){
+            return 'red'
+        }
+        else if ((a>=40) & (a<60)){
+            return 'green'
+        }
+        else if ((a>=60) & (a<80)){
+            return 'yellow'
+        }
+        else if ((a>=80) & (a<83)){
+            return 'stars0'
+        }
+        else if ((a>=83) & (a<86)){
+            return 'stars1'
+        }
+        else if ((a>=86) & (a<89)){
+            return 'stars2'
+        }
+        else if ((a>=89) & (a<92)){
+            return 'stars3'
+        }
+        else if ((a>=92) & (a<93)){
+            return 'bombs0'
+        }
+        else if ((a>=93) & (a<94)){
+            return 'bombs1'
+        }
+        else if ((a>=94) & (a<95)){
+            return 'bombs2'
+        }
+        else if ((a>=95) & (a<96)){
+            return 'bombs3'
+        }
+        else if ((a>=96) & (a<97)){
+            return 'snow0'
+        }
+        else if ((a>=97) & (a<98)){
+            return 'snow1'
+        }
+        else if ((a>=98) & (a<99)){
+            return 'snow2'
+        }
+        else if ((a>=99) & (a<100)){
+            return 'snow3'
+        }
     }
-    else if ((a>=20) & (a<40)){
-        return 'red'
+    else {
+        a=getRandom(7)
+        if ((a==0)){
+            return 'blue'
+        }
+        else if ((a==1)){
+            return 'red'
+        }
+        else if ((a==2)){
+            return 'green'
+        }
+        else if ((a==3)){
+            return 'yellow'
+        }
+        else if ((a==4)){
+            return 'stars'
+        }
+        else if (a==5){
+            return 'snow'
+        
+        }
+        else if ((a==6)){
+            return 'bombs'
+        
+        }
     }
-    else if ((a>=40) & (a<60)){
-        return 'green'
-    }
-    else if ((a>=60) & (a<80)){
-        return 'yellow'
-    }
-    else if ((a>=80) & (a<83)){
-        return 'stars0'
-    }
-    else if ((a>=83) & (a<86)){
-        return 'stars1'
-    }
-    else if ((a>=86) & (a<89)){
-        return 'stars2'
-    }
-    else if ((a>=89) & (a<92)){
-        return 'stars3'
-    }
-    else if ((a>=92) & (a<93)){
-        return 'bombs0'
-    }
-    else if ((a>=93) & (a<94)){
-        return 'bombs1'
-    }
-    else if ((a>=94) & (a<95)){
-        return 'bombs2'
-    }
-    else if ((a>=95) & (a<96)){
-        return 'bombs3'
-    }
-    else if ((a>=96) & (a<97)){
-        return 'snow0'
-    }
-    else if ((a>=97) & (a<98)){
-        return 'snow1'
-    }
-    else if ((a>=98) & (a<99)){
-        return 'snow2'
-    }
-    else if ((a>=99) & (a<100)){
-        return 'snow3'
-    }
+    
     } 
 
 let key_random=true
@@ -1668,47 +1697,54 @@ let menu_sprite=[]
 let menu_sprite_id=0
 
 function menu_falling(){
-    let aa=get_random_a()
+    let aa=get_random_a(true)
     if (aa=='red'){
         menu_sprite.push(PIXI.Sprite.from('./img/red_note.png'))     
         Sprite_Auto(menu_sprite[menu_sprite_id])
         menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2* getRandom(4))
+        menu_sprite[menu_sprite_id].y=-100
         app.stage.addChild(menu_sprite[menu_sprite_id]);
     }
     else  if (aa=='green'){
         menu_sprite.push(PIXI.Sprite.from('./img/green_note.png'))     
         Sprite_Auto(menu_sprite[menu_sprite_id])
         menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+        menu_sprite[menu_sprite_id].y=-100
         app.stage.addChild(menu_sprite[menu_sprite_id]);
     }
     else  if (aa=='blue'){
         menu_sprite.push(PIXI.Sprite.from('./img/blue_note.png'))     
         Sprite_Auto(menu_sprite[menu_sprite_id])
         menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+        menu_sprite[menu_sprite_id].y=-100
         app.stage.addChild(menu_sprite[menu_sprite_id]);
     }
     else  if (aa=='yellow'){
         menu_sprite.push(PIXI.Sprite.from('./img/yellow_note.png'))     
         Sprite_Auto(menu_sprite[menu_sprite_id])
         menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+        menu_sprite[menu_sprite_id].y=-100
         app.stage.addChild(menu_sprite[menu_sprite_id]);
     }
     else if (aa.includes('stars')) {
         menu_sprite.push(PIXI.Sprite.from('./img/star.png'))
         Sprite_Auto(menu_sprite[menu_sprite_id])
         menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+        menu_sprite[menu_sprite_id].y=-100
         app.stage.addChild(menu_sprite[menu_sprite_id]);
     }
     else if (aa.includes('bombs')) {
         menu_sprite.push(PIXI.Sprite.from('./img/bomb.png'))
         Sprite_Auto(menu_sprite[menu_sprite_id])
         menu_sprite[menu_sprite_id].x = Math.round(17 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+        menu_sprite[menu_sprite_id].y=-100
         app.stage.addChild(menu_sprite[menu_sprite_id]);
     }
     else if (aa.includes('snow')) {
         menu_sprite.push(PIXI.Sprite.from('./img/snow.png'))
         Sprite_Auto(menu_sprite[menu_sprite_id])
         menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+        menu_sprite[menu_sprite_id].y=-100
         app.stage.addChild(menu_sprite[menu_sprite_id]);
         
     }
