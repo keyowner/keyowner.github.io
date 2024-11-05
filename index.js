@@ -46,6 +46,7 @@ await PIXI.Assets.load('./img/game_win.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_melodies.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_endless.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_duels.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/button_duels1.png').then(()=>{next_l+=1})
 
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
@@ -57,7 +58,10 @@ let sprite_button_endless=PIXI.Sprite.from('./img/button_endless.png')
 Sprite_Auto(sprite_button_endless)
 let sprite_button_duels=PIXI.Sprite.from('./img/button_duels.png')
 Sprite_Auto(sprite_button_duels)
-
+let sprite_button_duels1=PIXI.Sprite.from('./img/button_duels1.png')
+Sprite_Auto(sprite_button_duels1)
+let key_duels=false
+let duels_ti=0
 function Sprite_Auto(sprite1) {
     sprite1.width = sprite1.width * (app.screen.width / 720)
     sprite1.height = sprite1.height * (app.screen.height / 1280)
@@ -1181,7 +1185,7 @@ Sprite_Auto(sprite_main_menu)
 let queue_timer_m=2
 function new_game_endless(){
     if (key_load_music==true){
-        console.log('new')
+
         menu_sprite=[]
         menu_sprite_id=0
         key_music_one_start==false
@@ -1251,9 +1255,10 @@ function new_game_endless(){
     }
     
     }
-    function new_game_melodies(){
+function new_game_melodies(){
+        
         if (key_load_music==true){
-            console.log('new')
+  
             menu_sprite=[]
             menu_sprite_id=0
             key_music_one_start==false
@@ -1324,6 +1329,20 @@ function new_game_endless(){
         
         }
 
+function duels(){
+    app.stage.removeChild(sprite_button_duels)
+    app.stage.addChild(sprite_button_duels1)
+    key_duels=true
+    if (key_duels==true){
+        app.stage.removeChild(sprite_button_duels1)
+        sprite_button_duels1.x=app.screen.width/2-sprite_button_duels1.width/2
+        sprite_button_duels1.y=app.screen.height/2+sprite_button_duels1.height*2.2
+        app.stage.addChild(sprite_button_duels1)
+    }
+            
+
+
+}
 let queue_red=[]
 let queue_blue=[]
 let queue_green=[]
@@ -1630,13 +1649,13 @@ function music_one(){
         stars_keys_id=0
         stars_shine_keys_id=0
         snow_keys_id=0
-        console.log(queue_stars)
+
         key_random=false
         max_queue_timer=0
         for (let i=0;i<queue_stars.length;i++){
             max_queue_timer=Math.max(max_queue_timer,queue_stars[i][0])
         }
-        console.log(max_queue_timer)
+
         key_main_menu=false
     }
     
@@ -1731,18 +1750,29 @@ sprite_button_melodies.eventMode = 'static';
 sprite_button_melodies.on('pointerdown', new_game_melodies)
 sprite_button_endless.eventMode = 'static';
 sprite_button_endless.on('pointerdown', new_game_endless)
-
+sprite_button_duels.eventMode = 'static';
+sprite_button_duels.on('pointerdown', duels)
 
 let menu_added=false
 app.ticker.add(() => {
 
         if (key_main_menu == true) {
             if (menu_added==false){app.stage.removeChild(sprite_main_menu); app.stage.addChild(sprite_main_menu); menu_added=true}
+            if (key_duels==true){
+                duels_ti+=1
+                if (duels_ti>=100){
+                    key_duels=false
+                    duels_ti=0
+                    app.stage.removeChild(sprite_button_duels1)
+
+                }
+            }
+
             if (queue_menu_timer==100){
                 menu_falling()
                 
                 queue_menu_timer=0
-                console.log(100)
+
             }
             else{
                 queue_menu_timer+=1
@@ -1753,7 +1783,6 @@ app.ticker.add(() => {
                             delete menu_sprite[i]
                             app.stage.removeChild(menu_sprite[i])
                             
-                            console.log('delete'+i)
                         }
                         
                     }
@@ -1770,11 +1799,13 @@ app.ticker.add(() => {
             sprite_button_endless.x=app.screen.width/2-sprite_button_endless.width/2
             sprite_button_endless.y=app.screen.height/2+sprite_button_endless.height*1/5
             app.stage.addChild(sprite_button_endless)
-
-            app.stage.removeChild(sprite_button_duels)
-            sprite_button_duels.x=app.screen.width/2-sprite_button_duels.width/2
-            sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
-            app.stage.addChild(sprite_button_duels)
+            if (key_duels==false){
+                app.stage.removeChild(sprite_button_duels)
+                sprite_button_duels.x=app.screen.width/2-sprite_button_duels.width/2
+                sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
+                app.stage.addChild(sprite_button_duels)
+            }
+            
 
             
         }
