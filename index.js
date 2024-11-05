@@ -1260,7 +1260,7 @@ function convert_tap_to_queue(taps,st){
     let qu_red1=st
     for (var i = 0; i<taps.length;i++){
         qu_red1+=taps[i]
-        qu_red.push(qu_red1)
+        qu_red.push(Math.round(qu_red1))
     }
 
     return qu_red
@@ -1274,7 +1274,6 @@ function music_one(){
         let bar1_2=bar1/2
         let bar1_4=bar1/4
         let bar1_8=bar1/8
-        let bar1_16=bar1/16
         let taps=[100,bar1,bar1,bar1_4*3,bar1_4,bar1_2]
         let qq=convert_tap_to_queue(taps,0)
         let red_ids=[0,]
@@ -1358,7 +1357,7 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        taps=[bar1_2,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
+        taps=[bar1_4+bar1_8,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,9,11,15,19]
@@ -1380,7 +1379,7 @@ function music_one(){
         key_main_menu=false
 
         st=qq[qq.length-1]
-        taps=[bar1_2+bar1_4,bar1_8,bar1_8,bar1_8*2,bar1_8,
+        taps=[bar1_2+bar1_4,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8,
             bar1_8*2,bar1_8,bar1_8,bar1_8*2,bar1_8*2,
             bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,
             bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,
@@ -1390,10 +1389,11 @@ function music_one(){
             bar1_8,bar1_8,bar1_8,bar1_8,bar1_8,bar1_8*2]
         //32 - до цифры 7, потом чередованием
         qq=convert_tap_to_queue(taps,st)
-        red_ids=[2,5,8,14,16,20,26,31,33,35,40,45]
+        red_ids=[2,5,8,14,16,20,26,31,33,35,40]
         blue_ids=[3,7,6,10,11,15,21,24,28,32,34,41,43]
-        green_ids=[0,4,9,12,17,22,25,27,30,36,38,42]
-        yellow_ids=[1,5,13,18,19,23,29,37,39,44]
+        green_ids=[0,4,9,12,17,22,25,27,30,36,38,42,45]
+        yellow_ids=[1,13,18,19,23,29,37,39,44]
+
         for (var i=0;i<red_ids.length;i++){
             queue_red.push(qq[red_ids[i]])
         }   
@@ -1406,17 +1406,86 @@ function music_one(){
         for (var i=0;i<yellow_ids.length;i++){
             queue_yellow.push(qq[yellow_ids[i]])
         } 
+
+        st=qq[qq.length-1]
+        taps=[bar1_8,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        
+        qq=convert_tap_to_queue(taps,st)
+        red_ids=[0,10]
+        blue_ids=[2,5,8]
+        green_ids=[1,3,6,7,9]
+        yellow_ids=[4,11]
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+
+        st=qq[qq.length-1]
+        taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        
+        qq=convert_tap_to_queue(taps,st)
+        red_ids=[0,10]
+        blue_ids=[2,5,8]
+        green_ids=[1,3,6,7,9]
+        yellow_ids=[4,11]
+        for (var i=0;i<red_ids.length;i++){
+            queue_red.push(qq[red_ids[i]])
+        }   
+        for (var i=0;i<blue_ids.length;i++){
+            queue_blue.push(qq[blue_ids[i]])
+        } 
+        for (var i=0;i<green_ids.length;i++){
+            queue_green.push(qq[green_ids[i]])
+        } 
+        for (var i=0;i<yellow_ids.length;i++){
+            queue_yellow.push(qq[yellow_ids[i]])
+        } 
+        queue_snow=[]
+        queue_stars=[]
+        queue_bombs=[]
+        queue_snow=[]
+
+        queue_stars.push([9000,0])
+        queue_stars.push([9000,3])
+        queue_stars.push([9050,0])
+        queue_stars.push([9050,3])
+        queue_stars.push([9100,1])
+        queue_stars.push([9100,2])
+        queue_stars.push([9150,0])
+        queue_stars.push([9150,3])
+
+        queue_stars.push([9200,1])
+        queue_stars.push([9200,2])
+        queue_stars.push([9250,3])
+        queue_stars.push([9250,2])
+        queue_stars.push([9300,1])
+        queue_stars.push([9300,0])
+        queue_stars.push([9350,1])
+        queue_stars.push([9350,2])
+
+        bombs_keys_id=0
+        stars_keys_id=0
+        stars_shine_keys_id=0
+        snow_keys_id=0
+        console.log(queue_stars)
+        key_random=false
+        max_queue_timer=0
+        for (let i=0;i<queue_stars.length;i++){
+            max_queue_timer=Math.max(max_queue_timer,queue_stars[i][0])
+        }
+        console.log(max_queue_timer)
         key_main_menu=false
     }
     
-    queue_stars=[]
-    queue_bombs=[]
-    queue_snow=[[],[],[],[],[],[],[],[],[],[]]
-    queue_stars=[[],[],[],[],[],[],[],[],[],[]]
-    queue_bombs=[[],[],[],[],[],[],[],[],[],[]]
-    queue_snow=[[],[],[],[],[],[],[],[],[],[]]
-    key_random=false
-    max_queue_timer=0
+    
 }
 
 let max_queue_timer=0
