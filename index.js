@@ -1760,7 +1760,7 @@ app.ticker.add(() => {
             if (menu_added==false){app.stage.removeChild(sprite_main_menu); app.stage.addChild(sprite_main_menu); menu_added=true}
             if (key_duels==true){
                 duels_ti+=1
-                if (duels_ti>=100){
+                if (duels_ti>=20){
                     key_duels=false
                     duels_ti=0
                     app.stage.removeChild(sprite_button_duels1)
