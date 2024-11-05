@@ -4,45 +4,49 @@ const app = new PIXI.Application();
 await app.init({ resizeTo: window, antialias: false, useContextAlpha: false });
     
 PIXI.sound.add('geo8', './geo_8.mp3');
+await PIXI.Assets.load('./img/loading.png')
 
+let sprite_loading=PIXI.Sprite.from('./img/loading.png')
+Sprite_Auto(sprite_loading)
 
 
 document.body.appendChild(app.canvas);
+let next_l=0
+await PIXI.Assets.load('./img/star_shine.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/star.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/background.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/blood_effect.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/snow_effect.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/shiny_key.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/borders.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_red0.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_green0.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_blue0.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_yellow0.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_red1.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_green1.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_blue1.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/key_yellow1.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/tap_to_continue.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/game_over.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/black_top.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/star_score.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/blue_note.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/red_note.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/green_note.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/yellow_note.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/bomb.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/snow.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/main_menu.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/play_button.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/side_tiles.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./yoster.ttf').then(()=>{next_l+=1})
+await PIXI.Assets.load('./PIXY.ttf').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/game_win.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/button_melodies.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/button_endless.png').then(()=>{next_l+=1})
+await PIXI.Assets.load('./img/button_duels.png').then(()=>{next_l+=1})
 
-await PIXI.Assets.load('./img/star_shine.png');
-await PIXI.Assets.load('./img/star.png');
-await PIXI.Assets.load('./img/background.png');
-await PIXI.Assets.load('./img/blood_effect.png');
-await PIXI.Assets.load('./img/snow_effect.png');
-await PIXI.Assets.load('./img/shiny_key.png');
-await PIXI.Assets.load('./img/borders.png');
-await PIXI.Assets.load('./img/key_red0.png');
-await PIXI.Assets.load('./img/key_green0.png');
-await PIXI.Assets.load('./img/key_blue0.png');
-await PIXI.Assets.load('./img/key_yellow0.png');
-await PIXI.Assets.load('./img/key_red1.png');
-await PIXI.Assets.load('./img/key_green1.png');
-await PIXI.Assets.load('./img/key_blue1.png');
-await PIXI.Assets.load('./img/key_yellow1.png');
-await PIXI.Assets.load('./img/tap_to_continue.png');
-await PIXI.Assets.load('./img/game_over.png');
-await PIXI.Assets.load('./img/black_top.png');
-await PIXI.Assets.load('./img/star_score.png');
-await PIXI.Assets.load('./img/blue_note.png');
-await PIXI.Assets.load('./img/red_note.png');
-await PIXI.Assets.load('./img/green_note.png');
-await PIXI.Assets.load('./img/yellow_note.png');
-await PIXI.Assets.load('./img/bomb.png');
-await PIXI.Assets.load('./img/snow.png');
-await PIXI.Assets.load('./img/main_menu.png');
-await PIXI.Assets.load('./img/play_button.png');
-await PIXI.Assets.load('./img/side_tiles.png');
-await PIXI.Assets.load('./yoster.ttf');
-await PIXI.Assets.load('./PIXY.ttf');
-await PIXI.Assets.load('./img/game_win.png')
-await PIXI.Assets.load('./img/button_melodies.png')
-await PIXI.Assets.load('./img/button_endless.png')
-await PIXI.Assets.load('./img/button_duels.png')
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
@@ -611,7 +615,7 @@ sprite_back.on('pointerdown', check_tap_to_continue);
 
 let font_s = Math.round(10 * window.devicePixelRatio)
 let font_w = Math.round(15 * window.devicePixelRatio)
-let font_m = Math.round(35 * window.devicePixelRatio)
+let font_m = Math.round(20 * window.devicePixelRatio)
 const style = new PIXI.TextStyle({
     fontFamily: 'PIXY',
     fontSize: font_s,
@@ -625,10 +629,6 @@ const basicText = new PIXI.Text({ text: 'Score: ' + String(my_score), style });
 const basicText2 = new PIXI.Text({ text: String(my_stars), style });
 const basicText3 = new PIXI.Text({ text: 'Score: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
 const basicText4 = new PIXI.Text({ text: 'Stars: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
-
-const basicText5 = new PIXI.Text({ text: 'MELODIES', style: { fontFamily: 'PIXY', fontSize: font_m , fill: '#000000'} });
-const basicText6 = new PIXI.Text({ text: 'ENDLESS ', style: { fontFamily: 'PIXY', fontSize: font_m, fill: '#000000'} });
-const basicText7 = new PIXI.Text({ text: 'DUELS ', style: { fontFamily: 'PIXY', fontSize: font_m , fill: '#000000'} });
 
 basicText.x = 15 * window.devicePixelRatio / 2
 basicText.y = sprite_black_top.height / 2 - font_s / 2;
@@ -1776,18 +1776,6 @@ app.ticker.add(() => {
             sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
             app.stage.addChild(sprite_button_duels)
 
-            app.stage.removeChild(basicText5)
-            app.stage.removeChild(basicText6)
-            app.stage.removeChild(basicText7)
-            app.stage.addChild(basicText5)
-            app.stage.addChild(basicText6)
-            app.stage.addChild(basicText7)
-            basicText5.x=sprite_button_melodies.x+sprite_button_melodies.width/2-basicText5.width/2
-            basicText5.y=sprite_button_melodies.y+sprite_button_melodies.height/2-basicText5.height/4
-            basicText6.x=sprite_button_endless.x+sprite_button_endless.width/2-basicText6.width/2
-            basicText6.y=sprite_button_endless.y+sprite_button_endless.height/2-basicText6.height/4
-            basicText7.x=sprite_button_duels.x+sprite_button_duels.width/2-basicText7.width/2
-            basicText7.y=sprite_button_duels.y+sprite_button_duels.height/2-basicText7.height/2
             
         }
         else if (key_main_menu == false) {
