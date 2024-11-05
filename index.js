@@ -1441,15 +1441,15 @@ function convert_tap_to_queue(taps,st){
     return qu_red
 }
 
-
 function music_one(){
-    let bpm=120
+    let bpm=100
+    let modi=1
     if (key_main_menu == true){
-        let bar1=235
+        let bar1=235*120/bpm
         let bar1_2=bar1/2
         let bar1_4=bar1/4
         let bar1_8=bar1/8
-        let taps=[100,bar1,bar1,bar1_4*3,bar1_4,bar1_2]
+        let taps=[100*modi,bar1*modi,bar1*modi,bar1_4*3*modi,bar1_4*modi,bar1_2*modi]
         let qq=convert_tap_to_queue(taps,0)
         let red_ids=[0,]
         let blue_ids=[2,4,]
@@ -1469,7 +1469,7 @@ function music_one(){
             queue_yellow.push(qq[yellow_ids[i]])
         } 
         let st=qq[qq.length-1]
-        taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        taps=[bar1_2*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,10]
@@ -1490,7 +1490,7 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        taps=[bar1_2*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,10]
@@ -1511,7 +1511,7 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        taps=[bar1_2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
+        taps=[bar1_2*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,9,11,15,19]
@@ -1532,7 +1532,7 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        taps=[bar1_4+bar1_8,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
+        taps=[(bar1_4+bar1_8)*modi,bar1_8*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*2*modi,bar1_8*modi,bar1_8*2*modi,bar1_8*modi]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,9,11,15,19]
@@ -1582,7 +1582,7 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        taps=[bar1_8,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        taps=[bar1_8*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,10]
@@ -1603,7 +1603,7 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
+        taps=[bar1_2*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi,bar1_8*3*modi,bar1_8*3*modi,bar1_8*2*modi]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,10]
@@ -1627,23 +1627,23 @@ function music_one(){
         queue_bombs=[]
         queue_snow=[]
 
-        queue_stars.push([9000,0])
-        queue_stars.push([9000,3])
-        queue_stars.push([9050,0])
-        queue_stars.push([9050,3])
-        queue_stars.push([9100,1])
-        queue_stars.push([9100,2])
-        queue_stars.push([9150,0])
-        queue_stars.push([9150,3])
+        queue_stars.push([9000*modi,0])
+        queue_stars.push([9000*modi,3])
+        queue_stars.push([9050*modi,0])
+        queue_stars.push([9050*modi,3])
+        queue_stars.push([9100*modi,1])
+        queue_stars.push([9100*modi,2])
+        queue_stars.push([9150*modi,0])
+        queue_stars.push([9150*modi,3])
 
-        queue_stars.push([9200,1])
-        queue_stars.push([9200,2])
-        queue_stars.push([9250,3])
-        queue_stars.push([9250,2])
-        queue_stars.push([9300,1])
-        queue_stars.push([9300,0])
-        queue_stars.push([9350,1])
-        queue_stars.push([9350,2])
+        queue_stars.push([9200*modi,1])
+        queue_stars.push([9200*modi,2])
+        queue_stars.push([9250*modi,3])
+        queue_stars.push([9250*modi,2])
+        queue_stars.push([9300*modi,1])
+        queue_stars.push([9300*modi,0])
+        queue_stars.push([9350*modi,1])
+        queue_stars.push([9350*modi,2])
 
         bombs_keys_id=0
         stars_keys_id=0
