@@ -1114,7 +1114,8 @@ let sprite_play_button = PIXI.Sprite.from('./img/play_button.png');
 Sprite_Auto(sprite_play_button)
 let queue_timer_m=2
 function new_game(){
-    
+    key_music_one_start==false
+    key_music_one_1==false
     key_game_over=false
     key_win=false
     key_tap_continue=false
@@ -1509,21 +1510,27 @@ function clear_screen(){
     }
 }
 let key_music_one_1=false
+let key_load_music=false
 PIXI.sound.play('geo8')
 PIXI.sound.stop('geo8')
+PIXI.Assets.load('./geo_8.mp3').then(() =>{key_load_music=true})
 app.ticker.add(() => {
 
         if (key_main_menu == true) {
-            
             app.stage.addChild(sprite_main_menu)
             sprite_play_button.x=app.screen.width/2-sprite_play_button.width/2
             sprite_play_button.y=app.screen.height/2-sprite_play_button.height/2
             app.stage.addChild(sprite_play_button)
+           
+            if (key_load_music==true){
+                PIXI.sound.stop('geo8')
+                sprite_play_button.eventMode = 'static';
+                sprite_play_button.on('pointerdown', new_game)
+            }
             
-            sprite_play_button.eventMode = 'static';
-            PIXI.Assets.load('./geo_8.mp3').then(() =>{sprite_play_button.on('pointerdown', new_game)})
         }
         else if (key_main_menu == false) {
+
             if ((key_game_over == false) & (key_win==false)){
                 queue_timer+=queue_timer_m
                 falling()
@@ -1532,13 +1539,17 @@ app.ticker.add(() => {
                     PIXI.sound.play('geo8')
                     
                 }
+                else{
+                    console.log(key_music_one_start,key_music_one_1)
+                }
 
             }
             else if ((key_game_over == false) & (key_win==true)){
                 if (key_tap_continue == false) {
+                    
                     app.stage.removeChild(sprite_game_over)
                     app.stage.addChild(sprite_game_over)
-
+                    PIXI.sound.stop('geo8')
                     app.stage.removeChild(sprite_tap_to_continue)
                     app.stage.addChild(sprite_tap_to_continue)
 
@@ -1559,11 +1570,13 @@ app.ticker.add(() => {
 
                 }
                 else {
+                    PIXI.sound.stop('geo8')
                     key_main_menu=true
                 }
             }
             else if (key_game_over==true) {
                 if (key_tap_continue == false) {
+                    
                     app.stage.removeChild(sprite_game_over)
                     app.stage.addChild(sprite_game_over)
 
@@ -1587,7 +1600,11 @@ app.ticker.add(() => {
 
                 }
                 else {
+                    PIXI.sound.stop('geo8')
                     key_main_menu=true
+                    key_music_one_1=false
+                    key_music_one_start=false
+                    console.log(key_music_one_1,key_music_one_start)
                 }
             }
         }
