@@ -39,6 +39,7 @@ await PIXI.Assets.load('./img/main_menu.png');
 await PIXI.Assets.load('./img/play_button.png');
 await PIXI.Assets.load('./img/side_tiles.png');
 await PIXI.Assets.load('./yoster.ttf');
+await PIXI.Assets.load('./PIXY.ttf');
 await PIXI.Assets.load('./img/game_win.png')
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
@@ -603,17 +604,21 @@ sprite_game_win.eventMode = 'static';
 sprite_game_win.on('pointerdown', check_tap_to_continue);
 
 
-let font_s = 10 * window.devicePixelRatio
+let font_s = Math.round(10 * window.devicePixelRatio)
+let font_w = Math.round(15 * window.devicePixelRatio)
 const style = new PIXI.TextStyle({
-    fontFamily: 'yoster',
+    fontFamily: 'PIXY',
     fontSize: font_s,
-    fill: '#ffffff', // gradient
+    fill: '#ffffff'
 });
+
 let my_score = 0;
 let my_stars = 0
 
 const basicText = new PIXI.Text({ text: 'Score: ' + String(my_score), style });
 const basicText2 = new PIXI.Text({ text: String(my_stars), style });
+const basicText3 = new PIXI.Text({ text: 'Score: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
+const basicText4 = new PIXI.Text({ text: 'Stars: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
 basicText.x = 15 * window.devicePixelRatio / 2
 basicText.y = sprite_black_top.height / 2 - font_s / 2;
 basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 5;
@@ -621,6 +626,7 @@ basicText2.y = sprite_black_top.height / 2 - font_s / 2;
 
 app.stage.addChild(basicText);
 app.stage.addChild(basicText2);
+
 
 //app.stage.addChild(myScoreText);
 const def_speed_bomb=10//*devicePixelRatio
@@ -654,6 +660,9 @@ function moving() {
     basicText2.text = String(my_stars)
     basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 3;
     app.stage.addChild(basicText2);
+
+
+
 
     app.stage.removeChild(sprite_star_score);
     app.stage.addChild(sprite_star_score);
@@ -1640,6 +1649,7 @@ PIXI.sound.stop('geo8')
 PIXI.Assets.load('./geo_8.mp3').then(() =>{key_load_music=true})
 sprite_play_button.eventMode = 'static';
 sprite_play_button.on('pointerdown', new_game)
+
 let menu_added=false
 app.ticker.add(() => {
 
@@ -1668,7 +1678,7 @@ app.ticker.add(() => {
                     
                 }
             }
-            
+            app.stage.removeChild(sprite_play_button)
             sprite_play_button.x=app.screen.width/2-sprite_play_button.width/2
             sprite_play_button.y=app.screen.height/2-sprite_play_button.height/2
             app.stage.addChild(sprite_play_button)
@@ -1689,19 +1699,19 @@ app.ticker.add(() => {
             }
             else if ((key_game_over == false) & (key_win==true)){
                 if (key_tap_continue == false) {
-                    
                     app.stage.removeChild(sprite_game_win)
                     app.stage.addChild(sprite_game_win)
-                    let winnerText = new PIXI.Text({ text: 'Score: ' + String(my_score), style });
-                    let winnerText2 = new PIXI.Text({ text: 'Stars: '+String(my_stars), style });
-                    winnerText.x=app.screen.width/2-winnerText.width/2
-                    winnerText.y=app.screen.height/2-winnerText.height/2
-                    winnerText2.x=app.screen.width/2-winnerText2.width/2
-                    winnerText2.y=app.screen.height/2+winnerText2.height/2
-                    app.stage.removeChild(winnerText);
-                    app.stage.addChild(winnerText);
-                    app.stage.removeChild(winnerText2);
-                    app.stage.addChild(winnerText2);
+                    app.stage.removeChild(basicText3)
+                    app.stage.removeChild(basicText4)
+                    basicText3.text=('Score: ' + String(my_score));
+                    basicText4.text=('Stars: ' + String(my_stars));
+                    basicText3.x=app.screen.width/2-basicText3.width/2
+                    basicText3.y=app.screen.height/2-basicText3.height/2
+                    basicText4.x=app.screen.width/2-basicText4.width/2
+                    basicText4.y=app.screen.height/2+basicText4.height
+                    
+                    app.stage.addChild(basicText3)
+                    app.stage.addChild(basicText4)
                     app.stage.removeChild(sprite_tap_to_continue)
                     app.stage.addChild(sprite_tap_to_continue)
 
