@@ -644,10 +644,10 @@ app.stage.addChild(basicText2);
 
 
 //app.stage.addChild(myScoreText);
-const def_speed_bomb=10//*devicePixelRatio
-const def_speed_notes=10//*devicePixelRatio
-const def_speed_snow=10//*devicePixelRatio
-const def_speed_star=10//*devicePixelRatio
+const def_speed_bomb=10/devicePixelRatio
+const def_speed_notes=10/devicePixelRatio
+const def_speed_snow=10/devicePixelRatio
+const def_speed_star=10/devicePixelRatio
 
 let current_survive_multi=1
 let current_survive_taps_need=20
@@ -1300,10 +1300,6 @@ function new_game_melodies(){
             
         
             //
-        
-            clear_screen()
-            //random_queue()
-            music_one()
             if (key_random==false){
                 speed_bomb=def_speed_bomb
                 speed_star=def_speed_star
@@ -1316,6 +1312,11 @@ function new_game_melodies(){
                 speed_notes=5
                 speed_snow=5
             }
+        
+            clear_screen()
+            //random_queue()
+            music_one()
+            
             
             app.stage.removeChild(sprite_back)
             app.stage.addChild(sprite_back)
@@ -1441,8 +1442,10 @@ function convert_tap_to_queue(taps,st){
     return qu_red
 }
 
+
+
 function music_one(){
-    let bpm=100
+    let bpm=120
     let modi=1
     if (key_main_menu == true){
         let bar1=235*120/bpm
