@@ -1262,7 +1262,7 @@ function convert_tap_to_queue(taps,st){
         qu_red1+=taps[i]
         qu_red.push(qu_red1)
     }
-    console.log(qu_red)
+
     return qu_red
 }
 
@@ -1270,7 +1270,7 @@ function convert_tap_to_queue(taps,st){
 function music_one(){
     let bpm=120
     if (key_main_menu == true){
-        let bar1=237
+        let bar1=235
         let bar1_2=bar1/2
         let bar1_4=bar1/4
         let bar1_8=bar1/8
@@ -1295,7 +1295,6 @@ function music_one(){
             queue_yellow.push(qq[yellow_ids[i]])
         } 
         let st=qq[qq.length-1]
-        console.log(st)
         taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
         
         qq=convert_tap_to_queue(taps,st)
@@ -1317,7 +1316,6 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        console.log(st)
         taps=[bar1_2,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2,bar1_8*3,bar1_8*3,bar1_8*2]
         
         qq=convert_tap_to_queue(taps,st)
@@ -1339,7 +1337,6 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        console.log(st)
         taps=[bar1_2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
         
         qq=convert_tap_to_queue(taps,st)
@@ -1361,8 +1358,7 @@ function music_one(){
         } 
 
         st=qq[qq.length-1]
-        console.log(st)
-        taps=[bar1_8,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
+        taps=[bar1_2,bar1_8,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,bar1_8*2,bar1_8,bar1_8*2,bar1_8]
         
         qq=convert_tap_to_queue(taps,st)
         red_ids=[0,9,11,15,19]
@@ -1384,7 +1380,6 @@ function music_one(){
         key_main_menu=false
 
         st=qq[qq.length-1]
-        console.log(st)
         taps=[bar1_2+bar1_4,bar1_8,bar1_8,bar1_8*2,bar1_8,
             bar1_8*2,bar1_8,bar1_8,bar1_8*2,bar1_8*2,
             bar1_8*2,bar1_8,bar1_8*2,bar1_8,bar1_8*2,
@@ -1413,11 +1408,6 @@ function music_one(){
         } 
         key_main_menu=false
     }
-    
-    //queue_blue=[850,1255,1503,1751]
-    //queue_green=[350,975,1193,1348,1596,1844]
-    //queue_yellow=[600,787,1441,2000]
-
     
     queue_stars=[]
     queue_bombs=[]
@@ -1539,9 +1529,6 @@ app.ticker.add(() => {
                     PIXI.sound.play('geo8')
                     
                 }
-                else{
-                    console.log(key_music_one_start,key_music_one_1)
-                }
 
             }
             else if ((key_game_over == false) & (key_win==true)){
@@ -1604,7 +1591,6 @@ app.ticker.add(() => {
                     key_main_menu=true
                     key_music_one_1=false
                     key_music_one_start=false
-                    console.log(key_music_one_1,key_music_one_start)
                 }
             }
         }
