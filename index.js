@@ -24,7 +24,6 @@ await PIXI.Assets.load('./img/key_red1.png');
 await PIXI.Assets.load('./img/key_green1.png');
 await PIXI.Assets.load('./img/key_blue1.png');
 await PIXI.Assets.load('./img/key_yellow1.png');
-await PIXI.Assets.load('./img/multi_pink.png');
 await PIXI.Assets.load('./img/tap_to_continue.png');
 await PIXI.Assets.load('./img/game_over.png');
 await PIXI.Assets.load('./img/black_top.png');
@@ -44,6 +43,8 @@ await PIXI.Assets.load('./img/game_win.png')
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
+sprite_game_win.blendMode='negation'
+
 
 function Sprite_Auto(sprite1) {
     sprite1.width = sprite1.width * (app.screen.width / 720)
@@ -80,10 +81,6 @@ app.stage.addChild(sprite_borders);
 
 //keys
 
-//multi
-
-let sprite_multi = PIXI.Sprite.from('./img/multi_pink.png');
-Sprite_Auto(sprite_multi)
 let sprite_key_red0 = PIXI.Sprite.from('./img/key_red0.png');
 let sprite_key_red1 = PIXI.Sprite.from('./img/key_red1.png');
 Sprite_Auto(sprite_key_red0)
@@ -915,7 +912,6 @@ function moving() {
         }
 
 
-        app.stage.addChild(sprite_multi);
     }
 
 }
@@ -1700,6 +1696,8 @@ app.ticker.add(() => {
             else if ((key_game_over == false) & (key_win==true)){
                 if (key_tap_continue == false) {
                     app.stage.removeChild(sprite_game_win)
+                    sprite_game_win.x=app.screen.width/2-sprite_game_win.width/2
+                    sprite_game_win.y=app.screen.height/2-sprite_game_win.height/2
                     app.stage.addChild(sprite_game_win)
                     app.stage.removeChild(basicText3)
                     app.stage.removeChild(basicText4)
