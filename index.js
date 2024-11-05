@@ -1269,7 +1269,7 @@ function convert_tap_to_queue(taps,st){
 function music_one(){
     let bpm=120
     if (key_main_menu == true){
-        let bar1=240
+        let bar1=237
         let bar1_2=bar1/2
         let bar1_4=bar1/4
         let bar1_8=bar1/8
