@@ -516,7 +516,7 @@ function main_menu() {
 }
 function check_tap_to_continue() {
     if ((key_game_over == true) | (key_win==true)) {
-        if (key_game_win_timer>=200){
+        if (key_game_win_timer>=100){
             if (key_tap_continue == false) {
                 key_tap_continue = true
             }
@@ -1901,7 +1901,7 @@ app.ticker.add(() => {
                 }
                 else {
                     key_game_win_timer+=1
-                    if (key_game_win_timer>=200){
+                    if (key_game_win_timer>=100){
                         key_game_win=true
                     }
                 }
