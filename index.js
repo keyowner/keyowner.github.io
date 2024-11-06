@@ -245,9 +245,6 @@ function check_red() {
             }
         }
     }
-
-    app.stage.removeChild(sprite_key_red1);
-    app.stage.addChild(sprite_key_red0);
 }
 function check_green() {
     if (tap_green == 0) {
@@ -676,9 +673,6 @@ function moving() {
     basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 3;
     app.stage.addChild(basicText2);
 
-
-
-
     app.stage.removeChild(sprite_star_score);
     app.stage.addChild(sprite_star_score);
 
@@ -826,7 +820,6 @@ function moving() {
         }
 /* */
         if (tap_red == 0) {
-            
             app.stage.removeChild(sprite_key_red0)
             app.stage.addChild(sprite_key_red0);
         }
@@ -1684,10 +1677,7 @@ let menu_sprite_id=0
 
 function menu_falling(){
     let aa=get_random_a(true)
-    console.log(aa)
-    console.log(aa[1])
     for (var j=0;j<aa[1];j++){
-        console.log(aa[0][j])
         if (aa[0][j]=='red'){
             menu_sprite.push(PIXI.Sprite.from('./img/red_note.png'))     
             Sprite_Auto(menu_sprite[menu_sprite_id])
@@ -1845,7 +1835,7 @@ app.ticker.add(() => {
                 queue_timer+=queue_timer_m
                 falling()
                 if ((key_music_one_start==true) & (key_music_one_1==false)){
-
+                    console.log(1)
                     key_music_one_1=true
                     PIXI.sound.play('geo8')
                     
