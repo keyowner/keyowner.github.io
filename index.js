@@ -49,6 +49,7 @@ await PIXI.Assets.load('./img/button_duels.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_duels1.png').then(()=>{next_l+=1})
 
 
+
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
 
@@ -177,6 +178,9 @@ function check_red() {
                     key_music_one_start=true
                 }
             }
+            if (key_random==false){
+                key_music_one_start=true
+            }
         }
 
     }
@@ -189,12 +193,13 @@ function check_red() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
-                if (queue_stars[i][0]>=max_queue_timer){
-                    key_win=true
-                    if (key_random==false){
-                        key_music_one_start=true
+                if (key_random==false){
+                    if (queue_stars[i][0]>=max_queue_timer){
+                        key_win=true
+                            key_music_one_start=true
                     }
                 }
+                
             }
         }
     }
@@ -208,12 +213,12 @@ function check_red() {
                 }
                 my_hp -= 1
                 key_blood = 1
+                if (key_random==false){
                 if (queue_bombs[i][0]>=max_queue_timer){
                     key_win=true
                 }
-                if (key_random==false){
-                    key_music_one_start=true
-                }
+
+            }
             }
         }
 
@@ -236,12 +241,11 @@ function check_red() {
                 else {
                     snow_timer = 0
                 }
+                if (key_random==false){
                 if (queue_snow[i][0]>=max_queue_timer){
                     key_win=true
                 }
-                if (key_random==false){
-                    key_music_one_start=true
-                }
+            }
             }
         }
     }
@@ -260,12 +264,11 @@ function check_green() {
                 app.stage.removeChild(green_keys[i]);
                 delete green_keys[i]
                 my_score += 10;
+                if (key_random==false){
                 if (queue_green[i]>=max_queue_timer){
                     key_win=true
                 }
-                if (key_random==false){
-                    key_music_one_start=true
-                }
+            }
             }
         }
 
@@ -279,12 +282,11 @@ function check_green() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
+                if (key_random==false){
                 if (queue_stars[i][0]>=max_queue_timer){
                     key_win=true
                 }
-                if (key_random==false){
-                    key_music_one_start=true
-                }
+            }
             }
         }
     }
@@ -298,12 +300,11 @@ function check_green() {
                 }
                 my_hp -= 1
                 key_blood = 1
+                if (key_random==false){
                 if (queue_bombs[i][0]>=max_queue_timer){
                     key_win=true
                 }
-                if (key_random==false){
-                    key_music_one_start=true
-                }
+            }
             }
         }
 
@@ -326,12 +327,11 @@ function check_green() {
                 else {
                     snow_timer = 0
                 }
+                if (key_random==false){
                 if (queue_snow[i][0]>=max_queue_timer){
                     key_win=true
                 }
-                if (key_random==false){
-                    key_music_one_start=true
-                }
+            }
             }
         }
     }
@@ -348,12 +348,11 @@ function check_blue() {
                 app.stage.removeChild(blue_keys[i]);
                 delete blue_keys[i]
                 my_score += 10;
+                if (key_random==false){
                 if (queue_blue[i]>=max_queue_timer){
                     key_win=true
                 }
-                if (key_random==false){
-                    key_music_one_start=true
-                }
+            }
             }
             
         }
@@ -368,11 +367,10 @@ function check_blue() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
-                if (queue_stars[i][0]>=max_queue_timer){
-                    key_win=true
-                }
                 if (key_random==false){
-                    key_music_one_start=true
+                    if (queue_stars[i][0]>=max_queue_timer){
+                        key_win=true
+                    }
                 }
             }
         }
@@ -388,11 +386,10 @@ function check_blue() {
                 }
                 my_hp -= 1
                 key_blood = 1
-                if (queue_bombs[i][0]>=max_queue_timer){
-                    key_win=true
-                }
                 if (key_random==false){
-                    key_music_one_start=true
+                    if (queue_bombs[i][0]>=max_queue_timer){
+                        key_win=true
+                    }
                 }
             }
         }
@@ -415,11 +412,10 @@ function check_blue() {
                 else {
                     snow_timer = 0
                 }
-                if (queue_snow[i][0]>=max_queue_timer){
-                    key_win=true
-                }
                 if (key_random==false){
-                    key_music_one_start=true
+                    if (queue_snow[i][0]>=max_queue_timer){
+                        key_win=true
+                    }
                 }
             }
         }
@@ -436,11 +432,10 @@ function check_yellow() {
                 app.stage.removeChild(yellow_keys[i]);
                 delete yellow_keys[i]
                 my_score += 10;
-                if (queue_yellow[i]>=max_queue_timer){
-                    key_win=true
-                }
                 if (key_random==false){
-                    key_music_one_start=true
+                    if (queue_yellow[i]>=max_queue_timer){
+                        key_win=true
+                    }
                 }
             }
         }
@@ -455,11 +450,10 @@ function check_yellow() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
-                if (queue_stars[i][0]>=max_queue_timer){
-                    key_win=true
-                }
                 if (key_random==false){
-                    key_music_one_start=true
+                    if (queue_stars[i][0]>=max_queue_timer){
+                        key_win=true
+                    }
                 }
             }
         }
@@ -474,11 +468,10 @@ function check_yellow() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_bombs[i][0]>=max_queue_timer){
-                        key_win=true
-                    }
                     if (key_random==false){
-                        key_music_one_start=true
+                        if (queue_bombs[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -502,11 +495,10 @@ function check_yellow() {
                 else {
                     snow_timer = 0
                 }
-                if (queue_snow[i][0]>=max_queue_timer){
-                    key_win=true
-                }
                 if (key_random==false){
-                    key_music_one_start=true
+                    if (queue_snow[i][0]>=max_queue_timer){
+                        key_win=true
+                    }
                 }
                 
             }
@@ -524,8 +516,10 @@ function main_menu() {
 }
 function check_tap_to_continue() {
     if ((key_game_over == true) | (key_win==true)) {
-        if (key_tap_continue == false) {
-            key_tap_continue = true
+        if (key_game_win_timer>=200){
+            if (key_tap_continue == false) {
+                key_tap_continue = true
+            }
         }
     }
 }
@@ -542,7 +536,6 @@ let sprite_black_top = PIXI.Sprite.from('./img/black_top.png');
 Sprite_Auto(sprite_black_top)
 sprite_black_top.x = 0
 sprite_black_top.y = 0
-app.stage.addChild(sprite_black_top);
 //health_bars
 let sprite_hp = []
 for (let i = 0; i < 6; i++) {
@@ -550,14 +543,12 @@ for (let i = 0; i < 6; i++) {
     sprite_hp.push(PIXI.Sprite.from('./img/hp' + String(i) + '.png'))
     Sprite_Auto(sprite_hp[i])
 }
-app.stage.addChild(sprite_hp[5]);
 //star_score_icon
 
 let sprite_star_score = PIXI.Sprite.from('./img/star_score.png');
 Sprite_Auto(sprite_star_score)
 sprite_star_score.x = app.screen.width - 12 * app.screen.width / 720 * 5
 sprite_star_score.y = sprite_black_top.height / 2 - sprite_star_score.height / 2
-app.stage.addChild(sprite_star_score);
 
 //notes
 
@@ -716,10 +707,16 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_red[i]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        key_music_one_start=true
+                        if (queue_red[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
+
+                    
                 }
+                
             }
 
         }
@@ -736,8 +733,11 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_blue[i]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        key_music_one_start=true
+                        if (queue_blue[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -755,8 +755,11 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_green[i]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        key_music_one_start=true
+                        if (queue_green[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -773,9 +776,11 @@ function moving() {
                         app.stage.addChild(sprite_blood_effect)
                     }
                     my_hp -= 1
-                    key_blood = 1
-                    if (queue_yellow[i]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        key_music_one_start=true
+                        if (queue_yellow[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -790,9 +795,12 @@ function moving() {
                     app.stage.removeChild(stars_shine_keys[i])
                     delete stars_keys[i]
                     delete stars_shine_keys[i]
-                    if (queue_stars[i]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_stars[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
+                    
                 }
             }
         }
@@ -803,8 +811,10 @@ function moving() {
                 if ((bombs_keys[i].y >= app.screen.height - sprite_key_yellow0.height)) {
                     app.stage.removeChild(bombs_keys[i]);
                     delete bombs_keys[i]
-                    if (queue_bombs[i]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_bombs[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -818,8 +828,10 @@ function moving() {
                 if ((snow_keys[i].y >= app.screen.height - sprite_key_yellow0.height / 2)) {
                     app.stage.removeChild(snow_keys[i]);
                     delete snow_keys[i]
-                    if (queue_snow[i]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_snow[i][0]>=max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -879,7 +891,6 @@ function moving() {
             }
 
         }
-
         if (tap_yellow == 0) {
             app.stage.removeChild(sprite_key_yellow0)
             app.stage.addChild(sprite_key_yellow0);
@@ -1014,164 +1025,87 @@ function falling() {
     }
     else {
         if ((queue_timer>=current_queue_timer-1) & (queue_timer<=current_queue_timer+1)){
-            let aa=get_random_a(false)
-            if (aa=='red'){
-                red_keys.push(PIXI.Sprite.from('./img/red_note.png'))     
-                Sprite_Auto(red_keys[red_keys_id])
-                red_keys[red_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 3
-                app.stage.addChild(red_keys[red_keys_id]);
-                red_keys_id+=1
-            }
-            else if (aa=='green') {
-                green_keys.push(PIXI.Sprite.from('./img/green_note.png'))
-                Sprite_Auto(green_keys[green_keys_id])
-                green_keys[green_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 2
-                app.stage.addChild(green_keys[green_keys_id]);
-                green_keys_id+=1
-            }
-            else if (aa=='blue') {
-                blue_keys.push(PIXI.Sprite.from('./img/blue_note.png'))
-                Sprite_Auto(blue_keys[blue_keys_id])
-                blue_keys[blue_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 1
-                app.stage.addChild(blue_keys[blue_keys_id]);
-                blue_keys_id+=1
-            }
-            else if (aa=='yellow') {
-                yellow_keys.push(PIXI.Sprite.from('./img/yellow_note.png'))
-                Sprite_Auto(yellow_keys[yellow_keys_id])
-                yellow_keys[yellow_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 0
-                app.stage.addChild(yellow_keys[yellow_keys_id]);
-                yellow_keys_id+=1
-            }
-            else if (aa=='stars0') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 0
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='stars1') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 1
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='stars2') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 2
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='stars3') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 3
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='bombs0') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 0
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='bombs1') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 1
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='bombs2') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 2
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='bombs3') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 3
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='snow0') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 0
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            else if (aa=='snow1') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 1
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            else if (aa=='snow2') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 2
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            else if (aa=='snow3') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 *3
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            current_queue_timer+=(100*1)
-            if (current_queue_timer>=current_survive_taps_need){
-                current_survive_multi=1.1
-                //current_survive_qu*=0.9
-                speed_bomb*=current_survive_multi
-                speed_star*=current_survive_multi
-                speed_snow*=current_survive_multi
-                speed_notes*=current_survive_multi
-                current_survive_taps_need+=30*100
-            }
+            let aa=get_random_a(true)
+            for (var j=0;j<aa[1];j++){
+                if (aa[0][j]=='red'){
+                    red_keys.push(PIXI.Sprite.from('./img/red_note.png'))     
+                    Sprite_Auto(red_keys[red_keys_id])
+                    red_keys[red_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 3
+                    app.stage.addChild(red_keys[red_keys_id]);
+                    red_keys_id+=1
+                }
+                else if (aa[0][j]=='green') {
+                    green_keys.push(PIXI.Sprite.from('./img/green_note.png'))
+                    Sprite_Auto(green_keys[green_keys_id])
+                    green_keys[green_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 2
+                    app.stage.addChild(green_keys[green_keys_id]);
+                    green_keys_id+=1
+                }
+                else if (aa[0][j]=='blue') {
+                    blue_keys.push(PIXI.Sprite.from('./img/blue_note.png'))
+                    Sprite_Auto(blue_keys[blue_keys_id])
+                    blue_keys[blue_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 1
+                    app.stage.addChild(blue_keys[blue_keys_id]);
+                    blue_keys_id+=1
+                }
+                else if (aa[0][j]=='yellow') {
+                    yellow_keys.push(PIXI.Sprite.from('./img/yellow_note.png'))
+                    Sprite_Auto(yellow_keys[yellow_keys_id])
+                    yellow_keys[yellow_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 0
+                    app.stage.addChild(yellow_keys[yellow_keys_id]);
+                    yellow_keys_id+=1
+                }
+                else if (aa[0][j]=='stars') {
+                    stars_keys.push(PIXI.Sprite.from('./img/star.png'))
+                    stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
+                    Sprite_Auto(stars_keys[stars_keys_id])
+                    Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
+                    stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * getRandom(4)
+                    stars_keys[stars_keys_id].y = 0
+                    stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
+                    stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
+                    app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
+                    app.stage.addChild(stars_keys[stars_keys_id]);
+                    stars_keys_id += 1
+                    stars_shine_keys_id += 1
+                }
+                else if (aa[0][j]=='bombs') {
+                    bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
+                    Sprite_Auto(bombs_keys[bombs_keys_id])
+                    bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * getRandom(4)
+                    app.stage.addChild(bombs_keys[bombs_keys_id]);
+                    bombs_keys_id += 1
+                }
+                else if (aa[0][j]=='snow') {
+                    snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
+                    Sprite_Auto(snow_keys[snow_keys_id])
+                    snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * getRandom(4)
+                    app.stage.addChild(snow_keys[snow_keys_id]);
+                    snow_keys_id += 1
+                }
+            
+                
 
+            }
+        current_queue_timer+=(current_queue_qu)
+        if (current_queue_timer>=current_survive_taps_need){
+            current_survive_multi=1.1
+            if (current_queue_timer>50){
+                current_queue_qu*=0.9
+            }
+            speed_bomb*=current_survive_multi
+            speed_star*=current_survive_multi
+            speed_snow*=current_survive_multi
+            speed_notes*=current_survive_multi
+            current_survive_taps_need+=30*100
         }
     }
     moving()
     }
+}
 
 let current_queue_timer=100
+let current_queue_qu=100
 let alp_tap = 20
 let alp_tap_dir = 1
 let key_tap_continue = false
@@ -1185,7 +1119,8 @@ Sprite_Auto(sprite_main_menu)
 let queue_timer_m=2
 function new_game_endless(){
     if (key_load_music==true){
-
+        key_game_win=false
+        key_game_win_timer=0
         menu_sprite=[]
         menu_sprite_id=0
         key_music_one_start==false
@@ -1215,6 +1150,7 @@ function new_game_endless(){
         current_survive_multi=1
         current_survive_taps_need=25*100
         current_survive_qu=1
+        current_queue_qu=100
         red_keys=[]
         green_keys=[]
         blue_keys=[]
@@ -1244,21 +1180,16 @@ function new_game_endless(){
             speed_snow=5
         }
         
-        app.stage.removeChild(sprite_back)
-        app.stage.addChild(sprite_back)
-        app.stage.removeChild(sprite_black_top)
-        app.stage.addChild(sprite_black_top)
-        app.stage.removeChild(sprite_shiny_key)
-        app.stage.addChild(sprite_shiny_key)
-        app.stage.removeChild(sprite_borders)
-        app.stage.addChild(sprite_borders)
+        app.stage.removeChild(container_game)
+        app.stage.addChild(container_game)
     }
     
     }
 function new_game_melodies(){
         
         if (key_load_music==true){
-  
+            key_game_win=false
+            key_game_win_timer=0
             menu_sprite=[]
             menu_sprite_id=0
             key_music_one_start==false
@@ -1317,15 +1248,8 @@ function new_game_melodies(){
             //random_queue()
             music_one()
             
-            
-            app.stage.removeChild(sprite_back)
-            app.stage.addChild(sprite_back)
-            app.stage.removeChild(sprite_black_top)
-            app.stage.addChild(sprite_black_top)
-            app.stage.removeChild(sprite_shiny_key)
-            app.stage.addChild(sprite_shiny_key)
-            app.stage.removeChild(sprite_borders)
-            app.stage.addChild(sprite_borders)
+            app.stage.removeChild(container_game)
+            app.stage.addChild(container_game)
         }
         
         }
@@ -1362,55 +1286,116 @@ let rate_snow=0
 
 function get_random_a(key){
     let a=getRandom(100)
-    if (key==false){
-        if ((a>=0) & (a<20)){
-            return 'blue'
+    let b=getRandom(100)
+
+    if (key==true){
+        if ((b>=0)&(b<=20)){
+            if ((a>=0) & (a<20)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('blue')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                }
+                return [mm,2]
+            }
+            else if ((a>=20) & (a<40)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('red')
+                switch (a){
+                    case 0: mm.push('blue')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                }
+                return [mm,2]
+            }
+            else if ((a>=40) & (a<60)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('green')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('blue')
+                    case 2: mm.push('yellow')
+                }
+                return [mm,2]
+            }
+            else if ((a>=60) & (a<80)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('yellow')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('blue')
+                }
+                return [mm,2]
+            }
+            else if ((a>=80) & (a<92)){
+                a=getRandom(4)
+                let mm=[]
+                mm.push('stars')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                    case 3: mm.push('blue')
+                }
+                return [mm,2]
+            }
+            else if ((a>=92) & (a<96)){
+                a=getRandom(4)
+                let mm=[]
+                mm.push('bombs')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                    case 3: mm.push('blue')
+                }
+                return [mm,2]
+            }
+            else if ((a>=96) & (a<100)){
+                a=getRandom(4)
+                let mm=[]
+                mm.push('snow')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                    case 3: mm.push('blue')
+                }
+                return [mm,2]
+            }
+
         }
-        else if ((a>=20) & (a<40)){
-            return 'red'
+        else{
+            if ((a>=0) & (a<20)){
+                return [['blue'],1]
+            }
+            else if ((a>=20) & (a<40)){
+                return [['red'],1]
+            }
+            else if ((a>=40) & (a<60)){
+                return [['green'],1]
+            }
+            else if ((a>=60) & (a<80)){
+                return [['yellow'],1]
+            }
+            else if ((a>=80) & (a<92)){
+                return [['stars'],1]
+            }
+            else if ((a>=92) & (a<96)){
+                return [['bombs'],1]
+            }
+            else if ((a>=96) & (a<100)){
+                return [['snow'],1]
+            }
         }
-        else if ((a>=40) & (a<60)){
-            return 'green'
-        }
-        else if ((a>=60) & (a<80)){
-            return 'yellow'
-        }
-        else if ((a>=80) & (a<83)){
-            return 'stars0'
-        }
-        else if ((a>=83) & (a<86)){
-            return 'stars1'
-        }
-        else if ((a>=86) & (a<89)){
-            return 'stars2'
-        }
-        else if ((a>=89) & (a<92)){
-            return 'stars3'
-        }
-        else if ((a>=92) & (a<93)){
-            return 'bombs0'
-        }
-        else if ((a>=93) & (a<94)){
-            return 'bombs1'
-        }
-        else if ((a>=94) & (a<95)){
-            return 'bombs2'
-        }
-        else if ((a>=95) & (a<96)){
-            return 'bombs3'
-        }
-        else if ((a>=96) & (a<97)){
-            return 'snow0'
-        }
-        else if ((a>=97) & (a<98)){
-            return 'snow1'
-        }
-        else if ((a>=98) & (a<99)){
-            return 'snow2'
-        }
-        else if ((a>=99) & (a<100)){
-            return 'snow3'
-        }
+        
     }
     else {
         a=getRandom(7)
@@ -1448,12 +1433,10 @@ function random_queue(){
     queue_green=[]
     queue_yellow=[]
     
+
     queue_stars=[]
     queue_bombs=[]
-    queue_snow=[[],[],[],[],[],[],[],[],[],[]]
-    queue_stars=[[],[],[],[],[],[],[],[],[],[]]
-    queue_bombs=[[],[],[],[],[],[],[],[],[],[]]
-    queue_snow=[[],[],[],[],[],[],[],[],[],[]]
+    queue_snow=[]
     key_random=true
     max_queue_timer=999999999999999999999
 
@@ -1698,58 +1681,63 @@ let menu_sprite_id=0
 
 function menu_falling(){
     let aa=get_random_a(true)
-    if (aa=='red'){
-        menu_sprite.push(PIXI.Sprite.from('./img/red_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2* getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else  if (aa=='green'){
-        menu_sprite.push(PIXI.Sprite.from('./img/green_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else  if (aa=='blue'){
-        menu_sprite.push(PIXI.Sprite.from('./img/blue_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else  if (aa=='yellow'){
-        menu_sprite.push(PIXI.Sprite.from('./img/yellow_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else if (aa.includes('stars')) {
-        menu_sprite.push(PIXI.Sprite.from('./img/star.png'))
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else if (aa.includes('bombs')) {
-        menu_sprite.push(PIXI.Sprite.from('./img/bomb.png'))
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(17 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else if (aa.includes('snow')) {
-        menu_sprite.push(PIXI.Sprite.from('./img/snow.png'))
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-        
-    }
-    menu_sprite[menu_sprite_id].alpha=0.33
-    menu_sprite_id += 1
+    console.log(aa)
+    console.log(aa[1])
+    for (var j=0;j<aa[1];j++){
+        console.log(aa[0][j])
+        if (aa[0][j]=='red'){
+            menu_sprite.push(PIXI.Sprite.from('./img/red_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2* getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else  if (aa[0][j]=='green'){
+            menu_sprite.push(PIXI.Sprite.from('./img/green_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else  if (aa[0][j]=='blue'){
+            menu_sprite.push(PIXI.Sprite.from('./img/blue_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else  if (aa[0][j]=='yellow'){
+            menu_sprite.push(PIXI.Sprite.from('./img/yellow_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else if (aa[0][j].includes('stars')) {
+            menu_sprite.push(PIXI.Sprite.from('./img/star.png'))
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else if (aa[0][j].includes('bombs')) {
+            menu_sprite.push(PIXI.Sprite.from('./img/bomb.png'))
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(17 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else if (aa[0][j].includes('snow')) {
+            menu_sprite.push(PIXI.Sprite.from('./img/snow.png'))
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+            
+        }
+        menu_sprite[menu_sprite_id].alpha=0.33
+        menu_sprite_id += 1
+    }  
 }
         
 let max_queue_timer=0
@@ -1792,6 +1780,29 @@ sprite_button_endless.on('pointerdown', new_game_endless)
 sprite_button_duels.eventMode = 'static';
 sprite_button_duels.on('pointerdown', duels)
 
+const container_game = new PIXI.Container();
+container_game.addChild(sprite_back)
+container_game.addChild(sprite_shiny_key)
+container_game.addChild(sprite_borders)
+container_game.addChild(sprite_key_blue0)
+container_game.addChild(sprite_key_red0)
+container_game.addChild(sprite_key_green0)
+container_game.addChild(sprite_key_yellow0)
+container_game.addChild(sprite_black_top)
+container_game.addChild(sprite_star_score)
+
+
+const container_menu = new PIXI.Container();
+container_menu.addChild(sprite_main_menu);
+container_menu.addChild(sprite_button_melodies)
+container_menu.addChild(sprite_button_duels)
+container_menu.addChild(sprite_button_endless)
+sprite_button_melodies.x=app.screen.width/2-sprite_button_melodies.width/2
+sprite_button_melodies.y=app.screen.height/2-sprite_button_melodies.height*1
+sprite_button_endless.x=app.screen.width/2-sprite_button_endless.width/2
+sprite_button_endless.y=app.screen.height/2+sprite_button_endless.height*1/5
+let key_game_win=false
+let key_game_win_timer=0
 let menu_added=false
 app.ticker.add(() => {
 
@@ -1806,12 +1817,10 @@ app.ticker.add(() => {
 
                 }
             }
-
             if (queue_menu_timer==100){
                 menu_falling()
                 
                 queue_menu_timer=0
-
             }
             else{
                 queue_menu_timer+=1
@@ -1825,28 +1834,16 @@ app.ticker.add(() => {
                         }
                         
                     }
-                    
-                    
                 }
             }
-            app.stage.removeChild(sprite_button_melodies)
-            sprite_button_melodies.x=app.screen.width/2-sprite_button_melodies.width/2
-            sprite_button_melodies.y=app.screen.height/2-sprite_button_melodies.height*1
-            app.stage.addChild(sprite_button_melodies)
-
-            app.stage.removeChild(sprite_button_endless)
-            sprite_button_endless.x=app.screen.width/2-sprite_button_endless.width/2
-            sprite_button_endless.y=app.screen.height/2+sprite_button_endless.height*1/5
-            app.stage.addChild(sprite_button_endless)
+            app.stage.removeChild(container_menu)
+            app.stage.addChild(container_menu)
             if (key_duels==false){
                 app.stage.removeChild(sprite_button_duels)
                 sprite_button_duels.x=app.screen.width/2-sprite_button_duels.width/2
                 sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
                 app.stage.addChild(sprite_button_duels)
-            }
-            
-
-            
+            }  
         }
         else if (key_main_menu == false) {
 
@@ -1862,44 +1859,53 @@ app.ticker.add(() => {
 
             }
             else if ((key_game_over == false) & (key_win==true)){
-                if (key_tap_continue == false) {
-                    app.stage.removeChild(sprite_game_win)
-                    app.stage.addChild(sprite_game_win)
-                    app.stage.removeChild(basicText3)
-                    app.stage.removeChild(basicText4)
-                    basicText3.text=('Score: ' + String(my_score));
-                    basicText4.text=('Stars: ' + String(my_stars));
-                    basicText3.x=app.screen.width/2-basicText3.width/2
-                    basicText3.y=app.screen.height/2-basicText3.height/2
-                    basicText4.x=app.screen.width/2-basicText4.width/2
-                    basicText4.y=app.screen.height/2+basicText4.height
-                    
-                    app.stage.addChild(basicText3)
-                    app.stage.addChild(basicText4)
-                    app.stage.removeChild(sprite_tap_to_continue)
-                    app.stage.addChild(sprite_tap_to_continue)
-
-                    if ((alp_tap < 70) & (alp_tap_dir == 1)) {
-                        alp_tap += alp_tap_dir
-                        sprite_tap_to_continue.alpha = alp_tap / 100
-                        if (alp_tap == 70) {
-                            alp_tap_dir *= -1
+                if (key_game_win==true){
+                    if (key_tap_continue == false) {
+                        app.stage.removeChild(sprite_game_win)
+                        app.stage.addChild(sprite_game_win)
+                        app.stage.removeChild(basicText3)
+                        app.stage.removeChild(basicText4)
+                        basicText3.text=('Score: ' + String(my_score));
+                        basicText4.text=('Stars: ' + String(my_stars));
+                        basicText3.x=app.screen.width/2-basicText3.width/2
+                        basicText3.y=app.screen.height/2-basicText3.height/2
+                        basicText4.x=app.screen.width/2-basicText4.width/2
+                        basicText4.y=app.screen.height/2+basicText4.height
+                        
+                        app.stage.addChild(basicText3)
+                        app.stage.addChild(basicText4)
+                        app.stage.removeChild(sprite_tap_to_continue)
+                        app.stage.addChild(sprite_tap_to_continue)
+    
+                        if ((alp_tap < 70) & (alp_tap_dir == 1)) {
+                            alp_tap += alp_tap_dir
+                            sprite_tap_to_continue.alpha = alp_tap / 100
+                            if (alp_tap == 70) {
+                                alp_tap_dir *= -1
+                            }
                         }
-                    }
-                    if ((alp_tap > 20) & (alp_tap_dir == -1)) {
-                        alp_tap += alp_tap_dir
-                        sprite_tap_to_continue.alpha = alp_tap / 100
-                        if (alp_tap == 20) {
-                            alp_tap_dir *= -1
+                        if ((alp_tap > 20) & (alp_tap_dir == -1)) {
+                            alp_tap += alp_tap_dir
+                            sprite_tap_to_continue.alpha = alp_tap / 100
+                            if (alp_tap == 20) {
+                                alp_tap_dir *= -1
+                            }
                         }
+    
                     }
-
+                    else {
+                        PIXI.sound.stop('geo8')
+                        key_main_menu=true
+                        menu_added=false
+                    }
                 }
                 else {
-                    PIXI.sound.stop('geo8')
-                    key_main_menu=true
-                    menu_added=false
+                    key_game_win_timer+=1
+                    if (key_game_win_timer>=200){
+                        key_game_win=true
+                    }
                 }
+                
             }
             else if (key_game_over==true) {
                 if (key_tap_continue == false) {
