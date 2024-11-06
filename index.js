@@ -936,6 +936,7 @@ function moving() {
 let queue_timer=0
 
 function falling() {
+
     if (key_random==false){
         for (var i=red_keys_id;i<queue_red.length;i++){
             if ((queue_timer+1>=queue_red[i]) & (queue_timer-1<=queue_red[i])){
@@ -1014,164 +1015,88 @@ function falling() {
     }
     else {
         if ((queue_timer>=current_queue_timer-1) & (queue_timer<=current_queue_timer+1)){
-            let aa=get_random_a(false)
-            if (aa=='red'){
-                red_keys.push(PIXI.Sprite.from('./img/red_note.png'))     
-                Sprite_Auto(red_keys[red_keys_id])
-                red_keys[red_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 3
-                app.stage.addChild(red_keys[red_keys_id]);
-                red_keys_id+=1
-            }
-            else if (aa=='green') {
-                green_keys.push(PIXI.Sprite.from('./img/green_note.png'))
-                Sprite_Auto(green_keys[green_keys_id])
-                green_keys[green_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 2
-                app.stage.addChild(green_keys[green_keys_id]);
-                green_keys_id+=1
-            }
-            else if (aa=='blue') {
-                blue_keys.push(PIXI.Sprite.from('./img/blue_note.png'))
-                Sprite_Auto(blue_keys[blue_keys_id])
-                blue_keys[blue_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 1
-                app.stage.addChild(blue_keys[blue_keys_id]);
-                blue_keys_id+=1
-            }
-            else if (aa=='yellow') {
-                yellow_keys.push(PIXI.Sprite.from('./img/yellow_note.png'))
-                Sprite_Auto(yellow_keys[yellow_keys_id])
-                yellow_keys[yellow_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 0
-                app.stage.addChild(yellow_keys[yellow_keys_id]);
-                yellow_keys_id+=1
-            }
-            else if (aa=='stars0') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 0
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='stars1') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 1
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='stars2') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 2
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='stars3') {
-                stars_keys.push(PIXI.Sprite.from('./img/star.png'))
-                stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
-                Sprite_Auto(stars_keys[stars_keys_id])
-                Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
-                stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 3
-                stars_keys[stars_keys_id].y = 0
-                stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
-                stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
-                app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
-                app.stage.addChild(stars_keys[stars_keys_id]);
-                stars_keys_id += 1
-                stars_shine_keys_id += 1
-            }
-            else if (aa=='bombs0') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 0
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='bombs1') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 1
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='bombs2') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 2
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='bombs3') {
-                bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
-                Sprite_Auto(bombs_keys[bombs_keys_id])
-                bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 3
-                app.stage.addChild(bombs_keys[bombs_keys_id]);
-                bombs_keys_id += 1
-            }
-            else if (aa=='snow0') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 0
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            else if (aa=='snow1') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 1
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            else if (aa=='snow2') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * 2
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            else if (aa=='snow3') {
-                snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
-                Sprite_Auto(snow_keys[snow_keys_id])
-                snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 *3
-                app.stage.addChild(snow_keys[snow_keys_id]);
-                snow_keys_id += 1
-            }
-            current_queue_timer+=(100*1)
-            if (current_queue_timer>=current_survive_taps_need){
-                current_survive_multi=1.1
-                //current_survive_qu*=0.9
-                speed_bomb*=current_survive_multi
-                speed_star*=current_survive_multi
-                speed_snow*=current_survive_multi
-                speed_notes*=current_survive_multi
-                current_survive_taps_need+=30*100
-            }
+            let aa=get_random_a(true)
+            for (var j=0;j<aa[1];j++){
+                if (aa[0][j]=='red'){
+                    red_keys.push(PIXI.Sprite.from('./img/red_note.png'))     
+                    Sprite_Auto(red_keys[red_keys_id])
+                    red_keys[red_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 3
+                    app.stage.addChild(red_keys[red_keys_id]);
+                    red_keys_id+=1
+                }
+                else if (aa[0][j]=='green') {
+                    green_keys.push(PIXI.Sprite.from('./img/green_note.png'))
+                    Sprite_Auto(green_keys[green_keys_id])
+                    green_keys[green_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 2
+                    app.stage.addChild(green_keys[green_keys_id]);
+                    green_keys_id+=1
+                }
+                else if (aa[0][j]=='blue') {
+                    blue_keys.push(PIXI.Sprite.from('./img/blue_note.png'))
+                    Sprite_Auto(blue_keys[blue_keys_id])
+                    blue_keys[blue_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 1
+                    app.stage.addChild(blue_keys[blue_keys_id]);
+                    blue_keys_id+=1
+                }
+                else if (aa[0][j]=='yellow') {
+                    yellow_keys.push(PIXI.Sprite.from('./img/yellow_note.png'))
+                    Sprite_Auto(yellow_keys[yellow_keys_id])
+                    yellow_keys[yellow_keys_id].x = 16 * app.renderer.width / 144 + 16 * app.renderer.width / 144 * 2 * 0
+                    app.stage.addChild(yellow_keys[yellow_keys_id]);
+                    yellow_keys_id+=1
+                }
+                else if (aa[0][j]=='stars') {
+                    stars_keys.push(PIXI.Sprite.from('./img/star.png'))
+                    stars_shine_keys.push(PIXI.Sprite.from('./img/star_shine.png'))
+                    Sprite_Auto(stars_keys[stars_keys_id])
+                    Sprite_Auto(stars_shine_keys[stars_shine_keys_id])
+                    stars_keys[stars_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * getRandom(4)
+                    stars_keys[stars_keys_id].y = 0
+                    stars_shine_keys[stars_shine_keys_id].x = stars_keys[stars_keys_id].x + stars_keys[stars_keys_id].width / 2 - stars_shine_keys[stars_shine_keys_id].width / 2
+                    stars_shine_keys[stars_shine_keys_id].y = stars_keys[stars_keys_id].y + stars_keys[stars_keys_id].height / 2 - stars_shine_keys[stars_shine_keys_id].height / 2
+                    app.stage.addChild(stars_shine_keys[stars_shine_keys_id]);
+                    app.stage.addChild(stars_keys[stars_keys_id]);
+                    stars_keys_id += 1
+                    stars_shine_keys_id += 1
+                }
+                else if (aa[0][j]=='bombs') {
+                    bombs_keys.push(PIXI.Sprite.from('./img/bomb.png'))
+                    Sprite_Auto(bombs_keys[bombs_keys_id])
+                    bombs_keys[bombs_keys_id].x = 17 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * getRandom(4)
+                    app.stage.addChild(bombs_keys[bombs_keys_id]);
+                    bombs_keys_id += 1
+                }
+                else if (aa[0][j]=='snow') {
+                    snow_keys.push(PIXI.Sprite.from('./img/snow.png'))
+                    Sprite_Auto(snow_keys[snow_keys_id])
+                    snow_keys[snow_keys_id].x = 18 * app.renderer.width / 144 + 32 * app.renderer.width / 144 * getRandom(4)
+                    app.stage.addChild(snow_keys[snow_keys_id]);
+                    snow_keys_id += 1
+                }
+            
+                
 
+            }
+        current_queue_timer+=(current_queue_qu)
+        if (current_queue_timer>=current_survive_taps_need){
+            current_survive_multi=1.1
+            if (current_queue_timer>50){
+                current_queue_qu*=0.9
+            }
+            speed_bomb*=current_survive_multi
+            speed_star*=current_survive_multi
+            speed_snow*=current_survive_multi
+            speed_notes*=current_survive_multi
+            current_survive_taps_need+=30*100
         }
     }
-    moving()
+    
     }
+    moving()
+}
 
 let current_queue_timer=100
+let current_queue_qu=100
 let alp_tap = 20
 let alp_tap_dir = 1
 let key_tap_continue = false
@@ -1362,55 +1287,116 @@ let rate_snow=0
 
 function get_random_a(key){
     let a=getRandom(100)
-    if (key==false){
-        if ((a>=0) & (a<20)){
-            return 'blue'
+    let b=getRandom(100)
+
+    if (key==true){
+        if ((b>=0)&(b<=20)){
+            if ((a>=0) & (a<20)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('blue')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                }
+                return [mm,2]
+            }
+            else if ((a>=20) & (a<40)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('red')
+                switch (a){
+                    case 0: mm.push('blue')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                }
+                return [mm,2]
+            }
+            else if ((a>=40) & (a<60)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('green')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('blue')
+                    case 2: mm.push('yellow')
+                }
+                return [mm,2]
+            }
+            else if ((a>=60) & (a<80)){
+                a=getRandom(3)
+                let mm=[]
+                mm.push('yellow')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('blue')
+                }
+                return [mm,2]
+            }
+            else if ((a>=80) & (a<92)){
+                a=getRandom(4)
+                let mm=[]
+                mm.push('stars')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                    case 3: mm.push('blue')
+                }
+                return [mm,2]
+            }
+            else if ((a>=92) & (a<96)){
+                a=getRandom(4)
+                let mm=[]
+                mm.push('bombs')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                    case 3: mm.push('blue')
+                }
+                return [mm,2]
+            }
+            else if ((a>=96) & (a<100)){
+                a=getRandom(4)
+                let mm=[]
+                mm.push('snow')
+                switch (a){
+                    case 0: mm.push('red')
+                    case 1: mm.push('green')
+                    case 2: mm.push('yellow')
+                    case 3: mm.push('blue')
+                }
+                return [mm,2]
+            }
+
         }
-        else if ((a>=20) & (a<40)){
-            return 'red'
+        else{
+            if ((a>=0) & (a<20)){
+                return [['blue'],1]
+            }
+            else if ((a>=20) & (a<40)){
+                return [['red'],1]
+            }
+            else if ((a>=40) & (a<60)){
+                return [['green'],1]
+            }
+            else if ((a>=60) & (a<80)){
+                return [['yellow'],1]
+            }
+            else if ((a>=80) & (a<92)){
+                return [['stars'],1]
+            }
+            else if ((a>=92) & (a<96)){
+                return [['bombs'],1]
+            }
+            else if ((a>=96) & (a<100)){
+                return [['snow'],1]
+            }
         }
-        else if ((a>=40) & (a<60)){
-            return 'green'
-        }
-        else if ((a>=60) & (a<80)){
-            return 'yellow'
-        }
-        else if ((a>=80) & (a<83)){
-            return 'stars0'
-        }
-        else if ((a>=83) & (a<86)){
-            return 'stars1'
-        }
-        else if ((a>=86) & (a<89)){
-            return 'stars2'
-        }
-        else if ((a>=89) & (a<92)){
-            return 'stars3'
-        }
-        else if ((a>=92) & (a<93)){
-            return 'bombs0'
-        }
-        else if ((a>=93) & (a<94)){
-            return 'bombs1'
-        }
-        else if ((a>=94) & (a<95)){
-            return 'bombs2'
-        }
-        else if ((a>=95) & (a<96)){
-            return 'bombs3'
-        }
-        else if ((a>=96) & (a<97)){
-            return 'snow0'
-        }
-        else if ((a>=97) & (a<98)){
-            return 'snow1'
-        }
-        else if ((a>=98) & (a<99)){
-            return 'snow2'
-        }
-        else if ((a>=99) & (a<100)){
-            return 'snow3'
-        }
+        
     }
     else {
         a=getRandom(7)
@@ -1698,58 +1684,63 @@ let menu_sprite_id=0
 
 function menu_falling(){
     let aa=get_random_a(true)
-    if (aa=='red'){
-        menu_sprite.push(PIXI.Sprite.from('./img/red_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2* getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else  if (aa=='green'){
-        menu_sprite.push(PIXI.Sprite.from('./img/green_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else  if (aa=='blue'){
-        menu_sprite.push(PIXI.Sprite.from('./img/blue_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else  if (aa=='yellow'){
-        menu_sprite.push(PIXI.Sprite.from('./img/yellow_note.png'))     
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else if (aa.includes('stars')) {
-        menu_sprite.push(PIXI.Sprite.from('./img/star.png'))
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else if (aa.includes('bombs')) {
-        menu_sprite.push(PIXI.Sprite.from('./img/bomb.png'))
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(17 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-    }
-    else if (aa.includes('snow')) {
-        menu_sprite.push(PIXI.Sprite.from('./img/snow.png'))
-        Sprite_Auto(menu_sprite[menu_sprite_id])
-        menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
-        menu_sprite[menu_sprite_id].y=-100
-        app.stage.addChild(menu_sprite[menu_sprite_id]);
-        
-    }
-    menu_sprite[menu_sprite_id].alpha=0.33
-    menu_sprite_id += 1
+    console.log(aa)
+    console.log(aa[1])
+    for (var j=0;j<aa[1];j++){
+        console.log(aa[0][j])
+        if (aa[0][j]=='red'){
+            menu_sprite.push(PIXI.Sprite.from('./img/red_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2* getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else  if (aa[0][j]=='green'){
+            menu_sprite.push(PIXI.Sprite.from('./img/green_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else  if (aa[0][j]=='blue'){
+            menu_sprite.push(PIXI.Sprite.from('./img/blue_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else  if (aa[0][j]=='yellow'){
+            menu_sprite.push(PIXI.Sprite.from('./img/yellow_note.png'))     
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(16 * app.screen.width / 144 + 16 * app.renderer.width / 144 * 2 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else if (aa[0][j].includes('stars')) {
+            menu_sprite.push(PIXI.Sprite.from('./img/star.png'))
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else if (aa[0][j].includes('bombs')) {
+            menu_sprite.push(PIXI.Sprite.from('./img/bomb.png'))
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(17 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+        }
+        else if (aa[0][j].includes('snow')) {
+            menu_sprite.push(PIXI.Sprite.from('./img/snow.png'))
+            Sprite_Auto(menu_sprite[menu_sprite_id])
+            menu_sprite[menu_sprite_id].x = Math.round(18 * app.screen.width / 144 + 32 * app.renderer.width / 144 * getRandom(4))
+            menu_sprite[menu_sprite_id].y=-100
+            app.stage.addChild(menu_sprite[menu_sprite_id]);
+            
+        }
+        menu_sprite[menu_sprite_id].alpha=0.33
+        menu_sprite_id += 1
+    }  
 }
         
 let max_queue_timer=0
