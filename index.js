@@ -665,13 +665,13 @@ let my_hp = 5
 let key_game_over = false
 let key_win = false
 function moving() {
-    app.stage.removeChild(sprite_black_top)
+    //app.stage.removeChild(sprite_black_top)
     app.stage.addChild(sprite_black_top);
 
-    app.stage.removeChild(basicText);
+    //app.stage.removeChild(basicText);
     basicText.text = 'Score: ' + String(my_score)
     app.stage.addChild(basicText);
-    app.stage.removeChild(basicText2);
+    //app.stage.removeChild(basicText2);
     basicText2.text = String(my_stars)
     basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 3;
     app.stage.addChild(basicText2);
@@ -679,12 +679,12 @@ function moving() {
 
 
 
-    app.stage.removeChild(sprite_star_score);
+    //app.stage.removeChild(sprite_star_score);
     app.stage.addChild(sprite_star_score);
 
     for (let i = 0; i < 6; i++) {
         if (i == my_hp) {
-            app.stage.removeChild(sprite_hp[i])
+            //app.stage.removeChild(sprite_hp[i])
             app.stage.addChild(sprite_hp[i])
         }
         else {
@@ -827,13 +827,13 @@ function moving() {
 /* */
         if (tap_red == 0) {
             
-            app.stage.removeChild(sprite_key_red0)
+            //app.stage.removeChild(sprite_key_red0)
             app.stage.addChild(sprite_key_red0);
         }
         else {
             app.stage.removeChild(sprite_key_red0)
             if (tap_red_timer <= tap_timer) {
-                app.stage.removeChild(sprite_key_red1);
+                //app.stage.removeChild(sprite_key_red1);
                 app.stage.addChild(sprite_key_red1);
                 tap_red_timer += 1
             }
@@ -845,13 +845,13 @@ function moving() {
         }
 
         if (tap_blue == 0) {
-            app.stage.removeChild(sprite_key_blue0)
+            //app.stage.removeChild(sprite_key_blue0)
             app.stage.addChild(sprite_key_blue0);
         }
         else {
             app.stage.removeChild(sprite_key_blue0)
             if (tap_blue_timer <= tap_timer) {
-                app.stage.removeChild(sprite_key_blue1);
+                //app.stage.removeChild(sprite_key_blue1);
                 app.stage.addChild(sprite_key_blue1);
                 tap_blue_timer += 1
             }
@@ -863,13 +863,13 @@ function moving() {
         }
 
         if (tap_green == 0) {
-            app.stage.removeChild(sprite_key_green0)
+            //app.stage.removeChild(sprite_key_green0)
             app.stage.addChild(sprite_key_green0);
         }
         else {
             app.stage.removeChild(sprite_key_green0)
             if (tap_green_timer <= tap_timer) {
-                app.stage.removeChild(sprite_key_green1);
+                //app.stage.removeChild(sprite_key_green1);
                 app.stage.addChild(sprite_key_green1);
                 tap_green_timer += 1
             }
@@ -881,13 +881,13 @@ function moving() {
         }
 
         if (tap_yellow == 0) {
-            app.stage.removeChild(sprite_key_yellow0)
+            //app.stage.removeChild(sprite_key_yellow0)
             app.stage.addChild(sprite_key_yellow0);
         }
         else {
             app.stage.removeChild(sprite_key_yellow0)
             if (tap_yellow_timer <= tap_timer) {
-                app.stage.removeChild(sprite_key_yellow1);
+                //app.stage.removeChild(sprite_key_yellow1);
                 app.stage.addChild(sprite_key_yellow1);
                 tap_yellow_timer += 1
             }
@@ -910,7 +910,7 @@ function moving() {
 
             }
             else {
-                app.stage.removeChild(sprite_snow_effect)
+                //app.stage.removeChild(sprite_snow_effect)
                 app.stage.addChild(sprite_snow_effect)
                 snow_timer += 1
             }
@@ -920,7 +920,7 @@ function moving() {
         }
         else {
             blood_timer += 1
-            app.stage.removeChild(sprite_blood_effect)
+           //app.stage.removeChild(sprite_blood_effect)
             app.stage.addChild(sprite_blood_effect)
         }
         if (blood_timer >= 100) {
@@ -1169,13 +1169,13 @@ function new_game_endless(){
             speed_snow=5
         }
         
-        app.stage.removeChild(sprite_back)
+        //app.stage.removeChild(sprite_back)
         app.stage.addChild(sprite_back)
-        app.stage.removeChild(sprite_black_top)
+        //app.stage.removeChild(sprite_black_top)
         app.stage.addChild(sprite_black_top)
-        app.stage.removeChild(sprite_shiny_key)
+        //app.stage.removeChild(sprite_shiny_key)
         app.stage.addChild(sprite_shiny_key)
-        app.stage.removeChild(sprite_borders)
+        //app.stage.removeChild(sprite_borders)
         app.stage.addChild(sprite_borders)
     }
     
@@ -1243,13 +1243,13 @@ function new_game_melodies(){
             music_one()
             
             
-            app.stage.removeChild(sprite_back)
+            //app.stage.removeChild(sprite_back)
             app.stage.addChild(sprite_back)
-            app.stage.removeChild(sprite_black_top)
+            //app.stage.removeChild(sprite_black_top)
             app.stage.addChild(sprite_black_top)
-            app.stage.removeChild(sprite_shiny_key)
+            //app.stage.removeChild(sprite_shiny_key)
             app.stage.addChild(sprite_shiny_key)
-            app.stage.removeChild(sprite_borders)
+            //app.stage.removeChild(sprite_borders)
             app.stage.addChild(sprite_borders)
         }
         
@@ -1260,7 +1260,7 @@ function duels(){
     app.stage.addChild(sprite_button_duels1)
     key_duels=true
     if (key_duels==true){
-        app.stage.removeChild(sprite_button_duels1)
+        //app.stage.removeChild(sprite_button_duels1)
         sprite_button_duels1.x=app.screen.width/2-sprite_button_duels1.width/2
         sprite_button_duels1.y=app.screen.height/2+sprite_button_duels1.height*2.2
         app.stage.addChild(sprite_button_duels1)
@@ -1745,7 +1745,7 @@ function menu_falling(){
         
 let max_queue_timer=0
 function clear_screen(){
-    for (var i = app.stage.children.length - 1; i >= 0; i--) {	app.stage.removeChild(app.stage.children[i]);};
+
 
     for (let i=0;i<queue_red.length;i++){
         max_queue_timer=Math.max(max_queue_timer,queue_red[i])
@@ -1787,7 +1787,7 @@ let menu_added=false
 app.ticker.add(() => {
 
         if (key_main_menu == true) {
-            if (menu_added==false){app.stage.removeChild(sprite_main_menu); app.stage.addChild(sprite_main_menu); menu_added=true}
+            if (menu_added==false){/*app.stage.removeChild(sprite_main_menu);*/ app.stage.addChild(sprite_main_menu); menu_added=true}
             if (key_duels==true){
                 duels_ti+=1
                 if (duels_ti>=20){
@@ -1820,17 +1820,17 @@ app.ticker.add(() => {
                     
                 }
             }
-            app.stage.removeChild(sprite_button_melodies)
+            //app.stage.removeChild(sprite_button_melodies)
             sprite_button_melodies.x=app.screen.width/2-sprite_button_melodies.width/2
             sprite_button_melodies.y=app.screen.height/2-sprite_button_melodies.height*1
             app.stage.addChild(sprite_button_melodies)
 
-            app.stage.removeChild(sprite_button_endless)
+            //app.stage.removeChild(sprite_button_endless)
             sprite_button_endless.x=app.screen.width/2-sprite_button_endless.width/2
             sprite_button_endless.y=app.screen.height/2+sprite_button_endless.height*1/5
             app.stage.addChild(sprite_button_endless)
             if (key_duels==false){
-                app.stage.removeChild(sprite_button_duels)
+                //app.stage.removeChild(sprite_button_duels)
                 sprite_button_duels.x=app.screen.width/2-sprite_button_duels.width/2
                 sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
                 app.stage.addChild(sprite_button_duels)
@@ -1854,10 +1854,10 @@ app.ticker.add(() => {
             }
             else if ((key_game_over == false) & (key_win==true)){
                 if (key_tap_continue == false) {
-                    app.stage.removeChild(sprite_game_win)
+                    //app.stage.removeChild(sprite_game_win)
                     app.stage.addChild(sprite_game_win)
-                    app.stage.removeChild(basicText3)
-                    app.stage.removeChild(basicText4)
+                    //app.stage.removeChild(basicText3)
+                    //app.stage.removeChild(basicText4)
                     basicText3.text=('Score: ' + String(my_score));
                     basicText4.text=('Stars: ' + String(my_stars));
                     basicText3.x=app.screen.width/2-basicText3.width/2
@@ -1867,7 +1867,7 @@ app.ticker.add(() => {
                     
                     app.stage.addChild(basicText3)
                     app.stage.addChild(basicText4)
-                    app.stage.removeChild(sprite_tap_to_continue)
+                    //app.stage.removeChild(sprite_tap_to_continue)
                     app.stage.addChild(sprite_tap_to_continue)
 
                     if ((alp_tap < 70) & (alp_tap_dir == 1)) {
@@ -1895,10 +1895,10 @@ app.ticker.add(() => {
             else if (key_game_over==true) {
                 if (key_tap_continue == false) {
                     
-                    app.stage.removeChild(sprite_game_over)
+                    //app.stage.removeChild(sprite_game_over)
                     app.stage.addChild(sprite_game_over)
 
-                    app.stage.removeChild(sprite_tap_to_continue)
+                    //app.stage.removeChild(sprite_tap_to_continue)
                     app.stage.addChild(sprite_tap_to_continue)
 
                     if ((alp_tap < 70) & (alp_tap_dir == 1)) {
