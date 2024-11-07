@@ -65,8 +65,8 @@ Sprite_Auto(sprite_button_duels1)
 let key_duels=false
 let duels_ti=0
 function Sprite_Auto(sprite1) {
-    sprite1.width = sprite1.width * (app.screen.width / 720)
-    sprite1.height = sprite1.height * (app.screen.height / 1280)
+    sprite1.width = sprite1.width //* (app.screen.width / 720)
+    sprite1.height = sprite1.height// * (app.screen.height / 1280)
 }
 
 let key_music_one_start=false
