@@ -1,7 +1,9 @@
 //const { Sprite } = require("pixi.js");
 
+//const { TextureSource } = require("pixi.js");
+
 const app = new PIXI.Application();
-await app.init({ resizeTo: window, antialias: false, useContextAlpha: false });
+await app.init({ resizeTo: window, autoDensity: true , resolution: devicePixelRatio||1});
     
 PIXI.sound.add('geo8', './geo_8.mp3');
 await PIXI.Assets.load('./img/loading.png')
@@ -63,8 +65,8 @@ Sprite_Auto(sprite_button_duels1)
 let key_duels=false
 let duels_ti=0
 function Sprite_Auto(sprite1) {
-    sprite1.width = sprite1.width * (app.screen.width / 720)
-    sprite1.height = sprite1.height * (app.screen.height / 1280)
+    sprite1.width = sprite1.width //* (app.screen.width / 720)
+    sprite1.height = sprite1.height// * (app.screen.height / 1280)
 }
 
 let key_music_one_start=false
@@ -191,9 +193,9 @@ function check_red() {
                 my_score += 100
                 if (queue_stars[i][0]>=max_queue_timer){
                     key_win=true
-                    if (key_random==false){
-                        key_music_one_start=true
-                    }
+                }
+                if (key_random==false){
+                    key_music_one_start=true
                 }
             }
         }
@@ -710,8 +712,11 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_red[i]==max_queue_timer){
+                    if (queue_red[i][0]==max_queue_timer){
                         key_win=true
+                    }
+                    if ((key_random==false) & (key_music_one_1==false)){
+                        key_music_one_start=true
                     }
                 }
             }
@@ -730,7 +735,7 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_blue[i]==max_queue_timer){
+                    if (queue_blue[i][0]==max_queue_timer){
                         key_win=true
                     }
                 }
@@ -749,7 +754,7 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_green[i]==max_queue_timer){
+                    if (queue_green[i][0]==max_queue_timer){
                         key_win=true
                     }
                 }
@@ -768,7 +773,7 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_yellow[i]==max_queue_timer){
+                    if (queue_yellow[i][0]==max_queue_timer){
                         key_win=true
                     }
                 }
@@ -784,7 +789,7 @@ function moving() {
                     app.stage.removeChild(stars_shine_keys[i])
                     delete stars_keys[i]
                     delete stars_shine_keys[i]
-                    if (queue_stars[i]==max_queue_timer){
+                    if (queue_stars[i][0]==max_queue_timer){
                         key_win=true
                     }
                 }
@@ -797,7 +802,7 @@ function moving() {
                 if ((bombs_keys[i].y >= app.screen.height - sprite_key_yellow0.height)) {
                     app.stage.removeChild(bombs_keys[i]);
                     delete bombs_keys[i]
-                    if (queue_bombs[i]==max_queue_timer){
+                    if (queue_bombs[i][0]==max_queue_timer){
                         key_win=true
                     }
                 }
@@ -812,7 +817,7 @@ function moving() {
                 if ((snow_keys[i].y >= app.screen.height - sprite_key_yellow0.height / 2)) {
                     app.stage.removeChild(snow_keys[i]);
                     delete snow_keys[i]
-                    if (queue_snow[i]==max_queue_timer){
+                    if (queue_snow[i][0]==max_queue_timer){
                         key_win=true
                     }
                 }
@@ -1772,6 +1777,7 @@ sprite_button_endless.eventMode = 'static';
 sprite_button_endless.on('pointerdown', new_game_endless)
 sprite_button_duels.eventMode = 'static';
 sprite_button_duels.on('pointerdown', duels)
+app.stage.scale.set(720/app.screen.width)
 
 let menu_added=false
 app.ticker.add(() => {
