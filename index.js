@@ -6,10 +6,11 @@ let tgid=window.Telegram.WebApp.initDataUnsafe.id
 let f_name=window.Telegram.WebApp.initDataUnsafe.first_name
 let l_name=window.Telegram.WebApp.initDataUnsafe.last_name
 let username=window.Telegram.WebApp.initDataUnsafe.user
+let ph_url=window.Telegram.WebApp.initDataUnsafe.photo_url
 
 //wait PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
 //et sprite_avatar=PIXI.Sprite.from(photo_url)
-await PIXI.Assets.load('./img/sprite_avatar_frame.png').then(()=>{next_l+=1});
+await PIXI.Assets.load('./img/frame_avatar.png').then(()=>{next_l+=1});
 //let sprite_avatar_frame=PIXI.Sprite.from(photo_url)
 Sprite_Auto(sprite_avatar_frame)
 
