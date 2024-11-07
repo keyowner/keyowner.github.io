@@ -1777,7 +1777,7 @@ sprite_button_endless.eventMode = 'static';
 sprite_button_endless.on('pointerdown', new_game_endless)
 sprite_button_duels.eventMode = 'static';
 sprite_button_duels.on('pointerdown', duels)
-app.stage.scale.set(720/app.screen.width)
+//app.stage.scale.set(720/app.screen.width)
 
 let menu_added=false
 app.ticker.add(() => {
