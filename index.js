@@ -67,10 +67,10 @@ await PIXI.Assets.load('./img/frame_avatar.png').then(()=>{next_l+=1});
 let sprite_avatar_frame=PIXI.Sprite.from('./img/frame_avatar.png')
 Sprite_Auto(sprite_avatar_frame)
 
-/*
-sprite_avatar_frame.x=20
-sprite_avatar_frame.y=20
 
+sprite_avatar_frame.x=10
+sprite_avatar_frame.y=10
+/*
 sprite_avatar.width=sprite_avatar_frame.width-10*devicePixelRatio*2
 sprite_avatar.height=app.sprite_avatar.width-10*devicePixelRatio*2
 sprite_avatar.x=sprite_avatar_frame.x+10
@@ -1840,7 +1840,14 @@ sprite_button_endless.on('pointerdown', new_game_endless)
 sprite_button_duels.eventMode = 'static';
 sprite_button_duels.on('pointerdown', duels)
 
-
+const basicText5 = new PIXI.Text({ text: f_name+'', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+if (basicText5.width<=sprite_avatar_frame.width){
+    basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
+}
+else{
+    basicText5.x=sprite_avatar_frame.x
+}
+basicText5.y=sprite_avatar_frame.y+sprite_avatar_frame.height+10
 let menu_added=false
 app.ticker.add(() => {
 
@@ -1897,6 +1904,8 @@ app.ticker.add(() => {
             //app.stage.removeChild(sprite_avatar)
             app.stage.addChild(sprite_avatar_frame)
             //app.stage.addChild(sprite_avatar)
+
+            app.stage.addChild(basicText5)
         }
         else if (key_main_menu == false) {
 
