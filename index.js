@@ -1,7 +1,3 @@
-//const { Sprite } = require("pixi.js");
-
-//const { TextureSource } = require("pixi.js");
-
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
     
@@ -79,6 +75,8 @@ app.stage.addChild(sprite_back);
 
 let sprite_blood_effect = PIXI.Sprite.from('./img/blood_effect.png');
 Sprite_Auto(sprite_blood_effect)
+sprite_blood_effect.tint=0x9e270d;
+
 
 //snow_effect
 
