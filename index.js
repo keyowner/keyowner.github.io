@@ -7,10 +7,10 @@ let f_name=window.Telegram.WebApp.initDataUnsafe.first_name
 let l_name=window.Telegram.WebApp.initDataUnsafe.last_name
 let username=window.Telegram.WebApp.initDataUnsafe.user
 
-await PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
-let sprite_avatar=PIXI.Sprite.from(photo_url)
+a//wait PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
+l//et sprite_avatar=PIXI.Sprite.from(photo_url)
 await PIXI.Assets.load('./img/sprite_avatar_frame.png').then(()=>{next_l+=1});
-let sprite_avatar_frame=PIXI.Sprite.from(photo_url)
+//let sprite_avatar_frame=PIXI.Sprite.from(photo_url)
 Sprite_Auto(sprite_avatar_frame)
 
 sprite_avatar_frame.x=20
