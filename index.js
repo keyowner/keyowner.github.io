@@ -2,11 +2,11 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=window.Telegram.WebApp.initDataUnsafe.id
-let f_name=window.Telegram.WebApp.initDataUnsafe.first_name
-let l_name=window.Telegram.WebApp.initDataUnsafe.last_name
-let username=window.Telegram.WebApp.initDataUnsafe.user
-let ph_url=window.Telegram.WebApp.initDataUnsafe.photo_url
+let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
+let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
+let l_name=window.Telegram.WebApp.initDataUnsafe.user.last_name
+let username=window.Telegram.WebApp.initDataUnsafe.user.username
+let ph_url=window.Telegram.WebApp.initDataUnsafe.user.photo_url
 console.log(ph_url)
 
 
