@@ -8,19 +8,7 @@ let l_name=window.Telegram.WebApp.initDataUnsafe.last_name
 let username=window.Telegram.WebApp.initDataUnsafe.user
 let ph_url=window.Telegram.WebApp.initDataUnsafe.photo_url
 
-//wait PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
-//et sprite_avatar=PIXI.Sprite.from(photo_url)
-await PIXI.Assets.load('./img/frame_avatar.png').then(()=>{next_l+=1});
-//let sprite_avatar_frame=PIXI.Sprite.from(photo_url)
-Sprite_Auto(sprite_avatar_frame)
 
-sprite_avatar_frame.x=20
-sprite_avatar_frame.y=20
-
-sprite_avatar.width=sprite_avatar_frame.width-10*devicePixelRatio*2
-sprite_avatar.height=app.sprite_avatar.width-10*devicePixelRatio*2
-sprite_avatar.x=sprite_avatar_frame.x+10
-sprite_avatar.y=sprite_avatar_frame.y+10
 
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
@@ -73,7 +61,20 @@ await PIXI.Assets.load('./img/button_melodies.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_endless.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_duels.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_duels1.png').then(()=>{next_l+=1})
+//wait PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
+//et sprite_avatar=PIXI.Sprite.from(photo_url)
+await PIXI.Assets.load('./img/frame_avatar.png').then(()=>{next_l+=1});
+let sprite_avatar_frame=PIXI.Sprite.from('./img/frame_avatar.png')
+Sprite_Auto(sprite_avatar_frame)
 
+/*
+sprite_avatar_frame.x=20
+sprite_avatar_frame.y=20
+
+sprite_avatar.width=sprite_avatar_frame.width-10*devicePixelRatio*2
+sprite_avatar.height=app.sprite_avatar.width-10*devicePixelRatio*2
+sprite_avatar.x=sprite_avatar_frame.x+10
+sprite_avatar.y=sprite_avatar_frame.y+10*/
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
@@ -1893,9 +1894,9 @@ app.ticker.add(() => {
                 app.stage.addChild(sprite_button_duels)
             }
             app.stage.removeChild(sprite_avatar_frame)
-            app.stage.removeChild(sprite_avatar)
+            //app.stage.removeChild(sprite_avatar)
             app.stage.addChild(sprite_avatar_frame)
-            app.stage.addChild(sprite_avatar)
+            //app.stage.addChild(sprite_avatar)
         }
         else if (key_main_menu == false) {
 
