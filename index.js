@@ -1,12 +1,11 @@
 let tg = window.Telegram.WebApp;
+tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-const user = tg.initDataUnsafe
-tgid=user.user.id
-f_name=user.user.first_name
-l_name=user.user.last_name
-username=user.user.username
-photo_url=user.user.photo_url
+tgid=window.Telegram.WebApp.initDataUnsafe.id
+f_name=window.Telegram.WebApp.initDataUnsafe.first_name
+l_name=window.Telegram.WebApp.initDataUnsafe.last_name
+username=window.Telegram.WebApp.initDataUnsafe.user
 
 await PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
 let sprite_avatar=PIXI.Sprite.from(photo_url)
