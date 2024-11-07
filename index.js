@@ -712,9 +712,12 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_red[i][0]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_red[i][0]==max_queue_timer){
+                            key_win=true
+                        }
                     }
+                    
                     if ((key_random==false) & (key_music_one_1==false)){
                         key_music_one_start=true
                     }
@@ -735,8 +738,10 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_blue[i][0]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_blue[i][0]==max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -754,8 +759,10 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_green[i][0]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_green[i][0]==max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -773,8 +780,10 @@ function moving() {
                     }
                     my_hp -= 1
                     key_blood = 1
-                    if (queue_yellow[i][0]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_yellow[i][0]==max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -789,8 +798,10 @@ function moving() {
                     app.stage.removeChild(stars_shine_keys[i])
                     delete stars_keys[i]
                     delete stars_shine_keys[i]
-                    if (queue_stars[i][0]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_stars[i][0]==max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -802,8 +813,10 @@ function moving() {
                 if ((bombs_keys[i].y >= app.screen.height - sprite_key_yellow0.height)) {
                     app.stage.removeChild(bombs_keys[i]);
                     delete bombs_keys[i]
-                    if (queue_bombs[i][0]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_bombs[i][0]==max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
@@ -817,8 +830,10 @@ function moving() {
                 if ((snow_keys[i].y >= app.screen.height - sprite_key_yellow0.height / 2)) {
                     app.stage.removeChild(snow_keys[i]);
                     delete snow_keys[i]
-                    if (queue_snow[i][0]==max_queue_timer){
-                        key_win=true
+                    if (key_random==false){
+                        if (queue_snow[i][0]==max_queue_timer){
+                            key_win=true
+                        }
                     }
                 }
             }
