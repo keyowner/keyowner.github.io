@@ -2,6 +2,10 @@ const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
     
 PIXI.sound.add('geo8', './geo_8.mp3');
+PIXI.sound.add('1', './1.mp3');
+PIXI.sound.add('2', './2.mp3');
+PIXI.sound.add('3', './3.mp3');
+PIXI.sound.add('4', './4.mp3');
 await PIXI.Assets.load('./img/loading.png')
 
 let sprite_loading=PIXI.Sprite.from('./img/loading.png')
@@ -49,6 +53,7 @@ await PIXI.Assets.load('./img/button_duels1.png').then(()=>{next_l+=1})
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
+sprite_game_win.tint=0xeffac4;
 
 let sprite_button_melodies=PIXI.Sprite.from('./img/button_melodies.png')
 Sprite_Auto(sprite_button_melodies)
@@ -82,6 +87,7 @@ sprite_blood_effect.tint=0x9e270d;
 
 let sprite_snow_effect = PIXI.Sprite.from('./img/snow_effect.png');
 Sprite_Auto(sprite_snow_effect)
+//sprite_snow_effect.tint=0xc4f8fa;
 
 //shiny_aroung_keys
 
@@ -433,6 +439,7 @@ function check_yellow() {
                 app.stage.removeChild(yellow_keys[i]);
                 delete yellow_keys[i]
                 my_score += 10;
+                
                 if (queue_yellow[i]>=max_queue_timer){
                     key_win=true
                 }
@@ -842,6 +849,9 @@ function moving() {
             app.stage.addChild(sprite_key_red0);
         }
         else {
+            if (tap_red_timer==0){
+                PIXI.sound.play('4')
+            }
             app.stage.removeChild(sprite_key_red0)
             if (tap_red_timer <= tap_timer) {
                 app.stage.removeChild(sprite_key_red1);
@@ -849,6 +859,7 @@ function moving() {
                 tap_red_timer += 1
             }
             else {
+
                 tap_red = 0
                 tap_red_timer = 0
             }
@@ -860,6 +871,9 @@ function moving() {
             app.stage.addChild(sprite_key_blue0);
         }
         else {
+            if (tap_blue_timer==0){
+                PIXI.sound.play('2')
+            }
             app.stage.removeChild(sprite_key_blue0)
             if (tap_blue_timer <= tap_timer) {
                 app.stage.removeChild(sprite_key_blue1);
@@ -878,6 +892,9 @@ function moving() {
             app.stage.addChild(sprite_key_green0);
         }
         else {
+            if (tap_green_timer==0){
+                PIXI.sound.play('3')
+            }
             app.stage.removeChild(sprite_key_green0)
             if (tap_green_timer <= tap_timer) {
                 app.stage.removeChild(sprite_key_green1);
@@ -885,6 +902,7 @@ function moving() {
                 tap_green_timer += 1
             }
             else {
+                
                 tap_green = 0
                 tap_green_timer = 0
             }
@@ -892,10 +910,15 @@ function moving() {
         }
 
         if (tap_yellow == 0) {
+
             app.stage.removeChild(sprite_key_yellow0)
             app.stage.addChild(sprite_key_yellow0);
         }
         else {
+            if (tap_yellow_timer==0){
+                PIXI.sound.play('1')
+            }
+
             app.stage.removeChild(sprite_key_yellow0)
             if (tap_yellow_timer <= tap_timer) {
                 app.stage.removeChild(sprite_key_yellow1);
@@ -903,6 +926,7 @@ function moving() {
                 tap_yellow_timer += 1
             }
             else {
+                //PIXI.sound.stop('1')
                 tap_yellow = 0
                 tap_yellow_timer = 0
             }
