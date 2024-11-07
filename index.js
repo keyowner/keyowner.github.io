@@ -7,7 +7,7 @@ let f_name=window.Telegram.WebApp.initDataUnsafe.first_name
 let l_name=window.Telegram.WebApp.initDataUnsafe.last_name
 let username=window.Telegram.WebApp.initDataUnsafe.user
 let ph_url=window.Telegram.WebApp.initDataUnsafe.photo_url
-
+console.log(ph_url)
 
 
 const app = new PIXI.Application();
