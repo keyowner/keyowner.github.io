@@ -1,3 +1,24 @@
+window.Telegram.WebApp.disableVerticalSwipes() 
+tgid=Telegram.WebAppUser.id
+f_name=Telegram.WebAppUser.first_name
+l_name=Telegram.WebAppUser.last_name
+username=Telegram.WebAppUser.username
+photo_url=Telegram.WebAppUser.photo_url
+
+await PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
+let sprite_avatar=PIXI.Sprite.from(photo_url)
+await PIXI.Assets.load('./img/sprite_avatar_frame.png').then(()=>{next_l+=1});
+let sprite_avatar_frame=PIXI.Sprite.from(photo_url)
+Sprite_Auto(sprite_avatar_frame)
+
+sprite_avatar_frame.x=20
+sprite_avatar_frame.y=20
+
+sprite_avatar.width=sprite_avatar_frame.width-10*devicePixelRatio*2
+sprite_avatar.height=app.sprite_avatar.width-10*devicePixelRatio*2
+sprite_avatar.x=sprite_avatar_frame.x+10
+sprite_avatar.y=sprite_avatar_frame.y+10
+
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
     
@@ -1868,9 +1889,10 @@ app.ticker.add(() => {
                 sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
                 app.stage.addChild(sprite_button_duels)
             }
-            
-
-            
+            app.stage.removeChild(sprite_avatar_frame)
+            app.stage.removeChild(sprite_avatar)
+            app.stage.addChild(sprite_avatar_frame)
+            app.stage.addChild(sprite_avatar)
         }
         else if (key_main_menu == false) {
 
