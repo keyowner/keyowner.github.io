@@ -849,7 +849,7 @@ function moving() {
             app.stage.addChild(sprite_key_red0);
         }
         else {
-            if (tap_red_timer==0){
+            if ((tap_red_timer==0) & (key_random==true)){
                 PIXI.sound.play('4')
             }
             app.stage.removeChild(sprite_key_red0)
@@ -871,7 +871,7 @@ function moving() {
             app.stage.addChild(sprite_key_blue0);
         }
         else {
-            if (tap_blue_timer==0){
+            if ((tap_blue_timer==0) & (key_random==true)){
                 PIXI.sound.play('2')
             }
             app.stage.removeChild(sprite_key_blue0)
@@ -892,7 +892,7 @@ function moving() {
             app.stage.addChild(sprite_key_green0);
         }
         else {
-            if (tap_green_timer==0){
+            if  ((tap_green_timer==0) & (key_random==true)){
                 PIXI.sound.play('3')
             }
             app.stage.removeChild(sprite_key_green0)
@@ -915,7 +915,7 @@ function moving() {
             app.stage.addChild(sprite_key_yellow0);
         }
         else {
-            if (tap_yellow_timer==0){
+            if  ((tap_yellow_timer==0) & (key_random==true)){
                 PIXI.sound.play('1')
             }
 
