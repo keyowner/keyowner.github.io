@@ -14,7 +14,7 @@ let ava=''
 
 let domen='https://keyowner-server-ecf0.twc1.net'
 
-let sprite_avatar=PIXI.Sprite.from(domen+'/picture?id='+(tgid))
+let sprite_avatar=PIXI.Sprite.from(domen+'/'+(tgid)+'.png')
 Sprite_Auto(sprite_avatar)
 
 
