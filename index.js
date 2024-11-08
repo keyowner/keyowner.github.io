@@ -12,7 +12,7 @@ await app.init({ resizeTo: window, autoDensity: true});
 let ava=''
 
 
-domen='https://keyowner-server-ecf0.twc1.net/'
+let domen='https://keyowner-server-ecf0.twc1.net/'
 
 let sprite_avatar=PIXI.Sprite.from(domen+'/picture?id='+(tgid))
 Sprite_Auto(sprite_avatar)
