@@ -4,15 +4,25 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
-let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
+let tgid='8150156619'///window.Telegram.WebApp.initDataUnsafe.user.id
+let f_name='name'//window.Telegram.WebApp.initDataUnsafe.user.first_name
 
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
 let ava=''
+if (!localStorage.getItem('stars')){
+    localStorage.setItem('stars',0)
+}
+if (!localStorage.getItem('taps')){
+    localStorage.setItem('taps',0)
+}
+if (!localStorage.getItem('highscore')){
+    localStorage.setItem('highscore',0)
+}
 
 
-await PIXI.Assets.load('http://178.217.98.211:10123/'+(tgid)+'.png')
+
+//await PIXI.Assets.load('http://178.217.98.211:10123/'+(tgid)+'.png')
 let sprite_avatar=PIXI.Sprite.from('http://178.217.98.211:10123/'+(tgid)+'.png')
 Sprite_Auto(sprite_avatar)
 
@@ -1903,6 +1913,7 @@ let my_highscore=0
 let my_date=''
 
 function update_statistics(){
+    /*
     fetch('http://178.217.98.211:10123/stats?id='+tgid).then((res)=>{return res}).then((res)=>{return res.json()}).then((res)=>{
         stats=res;
         my_collect_stars=parseInt(stats['stars'])
@@ -1911,16 +1922,21 @@ function update_statistics(){
         my_date=stats['date']
         console.log(my_date)
     })
-    basicText8.text='Collected stars: '+my_collect_stars
-    basicText9.text='total notes played: '+my_taps
-    basicText10.text='Hightscore in endless mode: '+my_highscore
-    basicText15.text='Registration date: '+my_date
+        */
+
+    basicText8.text='Collected stars: '+localStorage.getItem('stars')
+    basicText9.text='total notes played: '+localStorage.getItem('taps')
+    basicText10.text='Hightscore in endless mode: '+localStorage.getItem('highscore')
+    basicText15.text='Registration date: '+localStorage.getItem('-')
     
 }
 function save_statistics(){
-    let a=('http://178.217.98.211:10123/player?id='+tgid+'&taps='+my_taps+'&stars='+my_collect_stars+'&highscore='+my_highscore+'&date='+my_date)
-    console.log(a)
-    fetch(a)
+   // let a=('http://178.217.98.211:10123/player?id='+tgid+'&taps='+my_taps+'&stars='+my_collect_stars+'&highscore='+my_highscore+'&date='+my_date)
+    //console.log(a)
+    localStorage.setItem('stars',my_collect_stars)
+    localStorage.setItem('taps',my_taps)
+    localStorage.setItem('highscore',my_highscore)
+    //fetch(a)
 }
 //update_statistics()
 
