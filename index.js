@@ -1,18 +1,22 @@
+
+
 let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
 let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
 let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
-let l_name=window.Telegram.WebApp.initDataUnsafe.user.last_name
-let username=window.Telegram.WebApp.initDataUnsafe.user.username
-let ph_url=window.Telegram.WebApp.initDataUnsafe.user.photo_url
-console.log(ph_url)
-
 
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
-    
+let ava=''
+
+
+await PIXI.Assets.load('http://178.217.98.211:10123/'+(tgid)+'.png')
+let sprite_avatar=PIXI.Sprite.from('http://178.217.98.211:10123/'+(tgid)+'.png')
+Sprite_Auto(sprite_avatar)
+
+
 PIXI.sound.add('geo8', './geo_8.mp3');
 PIXI.sound.add('1', './1.mp3');
 PIXI.sound.add('2', './2.mp3');
@@ -61,8 +65,7 @@ await PIXI.Assets.load('./img/button_melodies.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_endless.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_duels.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/button_duels1.png').then(()=>{next_l+=1})
-//wait PIXI.Assets.load(photo_url).then(()=>{next_l+=1});
-//et sprite_avatar=PIXI.Sprite.from(photo_url)
+await PIXI.Assets.load('./img/profile_frame.png').then(()=>{next_l+=1})
 await PIXI.Assets.load('./img/frame_avatar.png').then(()=>{next_l+=1});
 let sprite_avatar_frame=PIXI.Sprite.from('./img/frame_avatar.png')
 Sprite_Auto(sprite_avatar_frame)
@@ -70,11 +73,11 @@ Sprite_Auto(sprite_avatar_frame)
 
 sprite_avatar_frame.x=10
 sprite_avatar_frame.y=10
-/*
-sprite_avatar.width=sprite_avatar_frame.width-10*devicePixelRatio*2
-sprite_avatar.height=app.sprite_avatar.width-10*devicePixelRatio*2
-sprite_avatar.x=sprite_avatar_frame.x+10
-sprite_avatar.y=sprite_avatar_frame.y+10*/
+
+sprite_avatar.width=sprite_avatar_frame.width-6
+sprite_avatar.height=sprite_avatar_frame.height-6
+sprite_avatar.x=sprite_avatar_frame.x+3
+sprite_avatar.y=sprite_avatar_frame.y+3
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
@@ -201,6 +204,7 @@ function check_red() {
                 app.stage.removeChild(red_keys[i]);
                 delete red_keys[i]
                 my_score += 10;
+                my_taps+=1
                 if (queue_red[i]>=max_queue_timer){
                     key_win=true
                 }
@@ -220,6 +224,7 @@ function check_red() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
+                my_collect_stars+=1
                 if (queue_stars[i][0]>=max_queue_timer){
                     key_win=true
                 }
@@ -288,6 +293,7 @@ function check_green() {
                 app.stage.removeChild(green_keys[i]);
                 delete green_keys[i]
                 my_score += 10;
+                my_taps+=1
                 if (queue_green[i]>=max_queue_timer){
                     key_win=true
                 }
@@ -307,6 +313,7 @@ function check_green() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
+                my_collect_stars+=1
                 if (queue_stars[i][0]>=max_queue_timer){
                     key_win=true
                 }
@@ -376,6 +383,7 @@ function check_blue() {
                 app.stage.removeChild(blue_keys[i]);
                 delete blue_keys[i]
                 my_score += 10;
+                my_taps+=1
                 if (queue_blue[i]>=max_queue_timer){
                     key_win=true
                 }
@@ -396,6 +404,7 @@ function check_blue() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
+                my_collect_stars+=1
                 if (queue_stars[i][0]>=max_queue_timer){
                     key_win=true
                 }
@@ -464,7 +473,7 @@ function check_yellow() {
                 app.stage.removeChild(yellow_keys[i]);
                 delete yellow_keys[i]
                 my_score += 10;
-                
+                my_taps+=1
                 if (queue_yellow[i]>=max_queue_timer){
                     key_win=true
                 }
@@ -484,6 +493,7 @@ function check_yellow() {
                 delete stars_shine_keys[i]
                 my_stars += 1
                 my_score += 100
+                my_collect_stars+=1
                 if (queue_stars[i][0]>=max_queue_timer){
                     key_win=true
                 }
@@ -1165,11 +1175,55 @@ sprite_tap_to_continue.alpha = 0
 let key_game_menu=true
 
 let sprite_main_menu = PIXI.Sprite.from('./img/main_menu.png');
+let sprite_profile_frame = PIXI.Sprite.from('./img/profile_frame.png')
 Sprite_Auto(sprite_main_menu)
+Sprite_Auto(sprite_profile_frame)
+sprite_profile_frame.y=app.screen.height/2-sprite_profile_frame.height/4
+let key_profile=false
+function profile(){
+    if (key_profile==false){
+        sprite_avatar_frame.x=app.screen.width/2-sprite_avatar_frame.width/2
+        sprite_avatar_frame.y=sprite_profile_frame.y-sprite_avatar_frame.height/2
+        sprite_avatar.x=sprite_avatar_frame.x+3
+        sprite_avatar.y=sprite_avatar_frame.y+3
+        if (basicText5.width<=sprite_avatar_frame.width){
+            basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
+        }
+        else{
+            basicText5.x=sprite_avatar_frame.x
+        }
+
+        basicText5.y=sprite_avatar_frame.y+sprite_avatar_frame.height+10
+        key_profile=true
+    }
+}
+function profile0(){
+    if (key_profile==true){
+        sprite_avatar_frame.x=10
+        sprite_avatar_frame.y=10
+
+        sprite_avatar.width=sprite_avatar_frame.width-6
+        sprite_avatar.height=sprite_avatar_frame.height-6
+        sprite_avatar.x=sprite_avatar_frame.x+3
+        sprite_avatar.y=sprite_avatar_frame.y+3
+        if (basicText5.width<=sprite_avatar_frame.width){
+            basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
+        }
+        else{
+            basicText5.x=sprite_avatar_frame.x
+        }
+
+        basicText5.y=sprite_avatar_frame.y+sprite_avatar_frame.height+10
+        key_profile=false
+        app.stage.removeChild(statistic_container)
+        app.stage.removeChild(sprite_profile_frame)
+    }
+    
+}
 
 let queue_timer_m=2
 function new_game_endless(){
-    if (key_load_music==true){
+    if ((key_load_music==true) & (key_profile==false)){
 
         menu_sprite=[]
         menu_sprite_id=0
@@ -1242,7 +1296,7 @@ function new_game_endless(){
     }
 function new_game_melodies(){
         
-        if (key_load_music==true){
+        if ((key_load_music==true) & (key_profile==false)){
   
             menu_sprite=[]
             menu_sprite_id=0
@@ -1839,6 +1893,38 @@ sprite_button_endless.eventMode = 'static';
 sprite_button_endless.on('pointerdown', new_game_endless)
 sprite_button_duels.eventMode = 'static';
 sprite_button_duels.on('pointerdown', duels)
+sprite_avatar.eventMode = 'static';
+sprite_avatar.on('pointerdown',profile)
+
+let stats={}
+let my_collect_stars=0
+let my_taps=0
+let my_highscore=0
+let my_date=''
+
+function update_statistics(){
+    fetch('http://178.217.98.211:10123/stats?id='+tgid).then((res)=>{return res}).then((res)=>{return res.json()}).then((res)=>{
+        stats=res;
+        my_collect_stars=parseInt(stats['stars'])
+        my_taps=parseInt(stats['taps'])
+        my_highscore=parseInt(stats['highscore'])
+        my_date=stats['date']
+        console.log(my_date)
+    })
+    basicText8.text='Collected stars: '+my_collect_stars
+    basicText9.text='total notes played: '+my_taps
+    basicText10.text='Hightscore in endless mode: '+my_highscore
+    basicText15.text='Registration date: '+my_date
+    
+}
+function save_statistics(){
+    let a=('http://178.217.98.211:10123/player?id='+tgid+'&taps='+my_taps+'&stars='+my_collect_stars+'&highscore='+my_highscore+'&date='+my_date)
+    console.log(a)
+    fetch(a)
+}
+//update_statistics()
+
+
 
 const basicText5 = new PIXI.Text({ text: f_name+'', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
 if (basicText5.width<=sprite_avatar_frame.width){
@@ -1848,7 +1934,42 @@ else{
     basicText5.x=sprite_avatar_frame.x
 }
 basicText5.y=sprite_avatar_frame.y+sprite_avatar_frame.height+10
+
+
+const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily: 'PIXY', fontSize: 25, fill: '#ffffff'} });
+const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
+const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText12 = new PIXI.Text({ text: 'PVP', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
+const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText15 = new PIXI.Text({ text: 'Registration date: '+my_date, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+
+update_statistics()
 let menu_added=false
+
+let statistic_container=new PIXI.Container()
+statistic_container.addChild(basicText6)
+statistic_container.addChild(basicText7)
+statistic_container.addChild(basicText8)
+statistic_container.addChild(basicText9)
+statistic_container.addChild(basicText10)
+statistic_container.addChild(basicText11)
+statistic_container.addChild(basicText12)
+statistic_container.addChild(basicText13)
+statistic_container.addChild(basicText14)
+statistic_container.addChild(basicText15)
+app.stage.removeChild(statistic_container)
+sprite_profile_frame.eventMode='static'
+sprite_profile_frame.on('pointerdown',profile0)
+sprite_main_menu.eventMode='static'
+sprite_main_menu.on('pointerdown',profile0)
+
+
+
+let key_upd_st=false
 app.ticker.add(() => {
 
         if (key_main_menu == true) {
@@ -1900,10 +2021,45 @@ app.ticker.add(() => {
                 sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
                 app.stage.addChild(sprite_button_duels)
             }
-            app.stage.removeChild(sprite_avatar_frame)
-            //app.stage.removeChild(sprite_avatar)
+            if (key_profile==true){
+
+                if (key_upd_st==false){
+                    update_statistics()
+                    key_upd_st=true
+                }
+                app.stage.removeChild(sprite_profile_frame)
+                app.stage.addChild(sprite_profile_frame)
+                app.stage.removeChild(sprite_avatar_frame)
+                app.stage.removeChild(sprite_avatar)
+                basicText6.y=basicText5.y+basicText5.height*1
+                basicText6.x=app.screen.width/2-basicText6.width/2
+                basicText7.y=basicText5.y+basicText5.height*3
+                basicText7.x=app.screen.width/2-basicText7.width/2
+
+                basicText8.y=basicText5.y+basicText5.height*5
+                basicText8.x=app.screen.width/2-basicText8.width/2
+                basicText9.y=basicText5.y+basicText5.height*6
+                basicText9.x=app.screen.width/2-basicText9.width/2
+                basicText10.y=basicText5.y+basicText5.height*7
+                basicText10.x=app.screen.width/2-basicText10.width/2
+                basicText11.y=basicText5.y+basicText5.height*8
+                basicText11.x=app.screen.width/2-basicText11.width/2
+                basicText12.y=basicText5.y+basicText5.height*10
+                basicText12.x=app.screen.width/2-basicText12.width/2
+                basicText13.y=basicText5.y+basicText5.height*11.5
+                basicText13.x=app.screen.width/2-basicText13.width/2
+                basicText14.y=basicText5.y+basicText5.height*12.5
+                basicText14.x=app.screen.width/2-basicText14.width/2
+                basicText15.y=basicText5.y+basicText5.height*14.5
+                basicText15.x=app.screen.width/2-basicText15.width/2
+                basicText15.text='Registration Date: '+my_date
+                app.stage.addChild(statistic_container)
+            }
+            
             app.stage.addChild(sprite_avatar_frame)
-            //app.stage.addChild(sprite_avatar)
+            app.stage.addChild(sprite_avatar)
+
+            
 
             app.stage.addChild(basicText5)
         }
@@ -1928,11 +2084,14 @@ app.ticker.add(() => {
                     app.stage.removeChild(basicText4)
                     basicText3.text=('Score: ' + String(my_score));
                     basicText4.text=('Stars: ' + String(my_stars));
+                    if (my_score>my_highscore){
+                        my_highscore=my_score
+                    }
+                    
                     basicText3.x=app.screen.width/2-basicText3.width/2
                     basicText3.y=app.screen.height/2-basicText3.height/2
                     basicText4.x=app.screen.width/2-basicText4.width/2
                     basicText4.y=app.screen.height/2+basicText4.height
-                    
                     app.stage.addChild(basicText3)
                     app.stage.addChild(basicText4)
                     app.stage.removeChild(sprite_tap_to_continue)
@@ -1955,6 +2114,8 @@ app.ticker.add(() => {
 
                 }
                 else {
+                    save_statistics()
+                    key_upd_st=false
                     PIXI.sound.stop('geo8')
                     key_main_menu=true
                     menu_added=false
@@ -1986,6 +2147,8 @@ app.ticker.add(() => {
 
                 }
                 else {
+                    save_statistics()
+                    key_upd_st=false
                     PIXI.sound.stop('geo8')
                     key_main_menu=true
                     menu_added=false
@@ -1994,5 +2157,7 @@ app.ticker.add(() => {
                 }
             }
         }
-    }
+}
+    
+        
 );
