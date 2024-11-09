@@ -4,7 +4,7 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=pngwindow.Telegram.WebApp.initDataUnsafe.user.id
+let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
 let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
 
 const app = new PIXI.Application();
