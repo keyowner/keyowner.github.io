@@ -1495,6 +1495,7 @@ function new_game_endless(){
         key_tap_continue=false
         key_blood=false
         tap_snow=0
+        key_hard=false
         snow_timer=1000
         key_blood=0
         blood_timer=1000
@@ -1556,6 +1557,7 @@ function new_game_hardmode(){
     if ((key_load_music==true) & (key_profile==false)){
         menu_sprite=[]
         menu_sprite_id=0
+        key_hard=true
         key_music_one_start==false
         key_music_one_1==false
         key_game_over=false
@@ -2270,6 +2272,7 @@ let my_taps=0
 let my_highscore=0
 let my_hard_highscore=0
 let my_date=''
+let key_hard=false
 
 function update_statistics(){
 
