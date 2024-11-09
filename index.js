@@ -12,10 +12,10 @@ await app.init({ resizeTo: window, autoDensity: true});
 let ava=''
 
 
-let domen='https://keyowner-server-ecf0.twc1.net/'
-await PIXI.Assets.load(domen+'/'+(tgid)+'.png').then(()=>{next_l+=1})
-let sprite_avatar=PIXI.Sprite.from(domen+'/'+(tgid)+'.png')
-Sprite_Auto(sprite_avatar)
+//let domen='https://keyowner-server-ecf0.twc1.net/'
+//await PIXI.Assets.load(domen+'/'+(tgid)+'.png').then(()=>{next_l+=1})
+//let sprite_avatar=PIXI.Sprite.from(domen+'/'+(tgid)+'.png')
+//Sprite_Auto(sprite_avatar)
 
 
 PIXI.sound.add('geo8', './geo_8.mp3');
@@ -1904,7 +1904,7 @@ let my_highscore=0
 let my_date=''
 
 function update_statistics(){
-
+/*
     fetch(domen+'/stats?id='+tgid).then((res)=>{return res}).then((res)=>{return res.json()}).then((res)=>{
         stats=res;
         my_collect_stars=parseInt(stats['stars'])
@@ -1913,7 +1913,7 @@ function update_statistics(){
         my_date=stats['date']
         console.log(my_date)
     })
-
+*/
 
     basicText8.text='Collected stars: '+my_collect_stars
     basicText9.text='total notes played: '+my_taps
@@ -1922,8 +1922,10 @@ function update_statistics(){
     
 }
 function save_statistics(){
+   /*
     let a=(domen+'/player?id='+tgid+'&taps='+my_taps+'&stars='+my_collect_stars+'&highscore='+my_highscore+'&date='+my_date)
     fetch(a)
+    */
 }
 //update_statistics()
 
