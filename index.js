@@ -2352,7 +2352,7 @@ sprite_button_endless.y=app.screen.height/2+sprite_button_endless.height*1/5
 sprite_button_hardmode.x=app.screen.width/2-sprite_button_hardmode.width/2
 sprite_button_hardmode.y=sprite_button_endless.y+sprite_button_endless.height-sprite_button_hardmode.height
 
-sprite_but0.x=sprite_button_endless.x-app.screen.width/10
+sprite_but0.x=sprite_button_endless.x-app.screen.width/9
 sprite_but0.y=sprite_button_endless.y+sprite_button_endless.height*2/3-sprite_but0.height/2
 sprite_but1.x=sprite_button_endless.x+sprite_button_endless.width+app.screen.width/30
 sprite_but1.y=sprite_button_endless.y+sprite_button_endless.height*2/3-sprite_but1.height/2
