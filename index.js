@@ -1262,7 +1262,8 @@ function new_game_endless(){
         current_survive_multi=1
         current_survive_taps_need=25*100
         current_survive_qu=1
-        current_queue_timer=0
+        current_queue_timer=100
+        current_queue_qu=100
         red_keys=[]
         green_keys=[]
         blue_keys=[]
