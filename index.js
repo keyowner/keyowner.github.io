@@ -12,10 +12,17 @@ await app.init({ resizeTo: window, autoDensity: true});
 let ava=''
 
 
-//let domen='https://keyowner-server-ecf0.twc1.net/'
-//await PIXI.Assets.load(domen+'/'+(tgid)+'.png').then(()=>{next_l+=1})
-//let sprite_avatar=PIXI.Sprite.from(domen+'/'+(tgid)+'.png')
-//Sprite_Auto(sprite_avatar)
+
+
+
+let domen='https://server-production-51c2.up.railway.app'
+await PIXI.Assets.load(domen+'/'+(tgid)+'.png')
+let sprite_avatar=PIXI.Sprite.from(domen+'/'+(tgid)+'.png')
+Sprite_Auto(sprite_avatar)
+
+
+//await PIXI.Assets.load(domen+'/'+tgid+'.png').then(()=>{next_l+=1})
+
 
 
 PIXI.sound.add('geo8', './geo_8.mp3');
@@ -75,10 +82,10 @@ Sprite_Auto(sprite_avatar_frame)
 sprite_avatar_frame.x=10
 sprite_avatar_frame.y=10
 
-//sprite_avatar.width=sprite_avatar_frame.width-6
-//sprite_avatar.height=sprite_avatar_frame.height-6
-//sprite_avatar.x=sprite_avatar_frame.x+3
-//sprite_avatar.y=sprite_avatar_frame.y+3
+sprite_avatar.width=sprite_avatar_frame.width-6
+sprite_avatar.height=sprite_avatar_frame.height-6
+sprite_avatar.x=sprite_avatar_frame.x+3
+sprite_avatar.y=sprite_avatar_frame.y+3
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
@@ -1183,11 +1190,10 @@ sprite_profile_frame.y=app.screen.height/2-sprite_profile_frame.height/4
 let key_profile=false
 function profile(){
     if (key_profile==false){
-        
         sprite_avatar_frame.x=app.screen.width/2-sprite_avatar_frame.width/2
         sprite_avatar_frame.y=sprite_profile_frame.y-sprite_avatar_frame.height/2
-        //sprite_avatar.x=sprite_avatar_frame.x+3
-        //sprite_avatar.y=sprite_avatar_frame.y+3
+        sprite_avatar.x=sprite_avatar_frame.x+3
+        sprite_avatar.y=sprite_avatar_frame.y+3
         if (basicText5.width<=sprite_avatar_frame.width){
             basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
         }
@@ -1204,10 +1210,10 @@ function profile0(){
         sprite_avatar_frame.x=10
         sprite_avatar_frame.y=10
 
-        //sprite_avatar.width=sprite_avatar_frame.width-6
-        //sprite_avatar.height=sprite_avatar_frame.height-6
-        //sprite_avatar.x=sprite_avatar_frame.x+3
-        //sprite_avatar.y=sprite_avatar_frame.y+3
+        sprite_avatar.width=sprite_avatar_frame.width-6
+        sprite_avatar.height=sprite_avatar_frame.height-6
+        sprite_avatar.x=sprite_avatar_frame.x+3
+        sprite_avatar.y=sprite_avatar_frame.y+3
         if (basicText5.width<=sprite_avatar_frame.width){
             basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
         }
@@ -1895,8 +1901,8 @@ sprite_button_endless.eventMode = 'static';
 sprite_button_endless.on('pointerdown', new_game_endless)
 sprite_button_duels.eventMode = 'static';
 sprite_button_duels.on('pointerdown', duels)
-//sprite_avatar.eventMode = 'static';
-//sprite_avatar.on('pointerdown',profile)
+sprite_avatar.eventMode = 'static';
+sprite_avatar.on('pointerdown',profile)
 
 let stats={}
 let my_collect_stars=0
@@ -1905,7 +1911,7 @@ let my_highscore=0
 let my_date=''
 
 function update_statistics(){
-/*
+
     fetch(domen+'/stats?id='+tgid).then((res)=>{return res}).then((res)=>{return res.json()}).then((res)=>{
         stats=res;
         my_collect_stars=parseInt(stats['stars'])
@@ -1914,7 +1920,7 @@ function update_statistics(){
         my_date=stats['date']
         console.log(my_date)
     })
-*/
+
 
     basicText8.text='Collected stars: '+my_collect_stars
     basicText9.text='total notes played: '+my_taps
@@ -1923,10 +1929,8 @@ function update_statistics(){
     
 }
 function save_statistics(){
-   /*
     let a=(domen+'/player?id='+tgid+'&taps='+my_taps+'&stars='+my_collect_stars+'&highscore='+my_highscore+'&date='+my_date)
     fetch(a)
-    */
 }
 //update_statistics()
 
@@ -2035,8 +2039,8 @@ app.ticker.add(() => {
                 }
                 app.stage.removeChild(sprite_profile_frame)
                 app.stage.addChild(sprite_profile_frame)
-                //app.stage.removeChild(sprite_avatar_frame)
-               // app.stage.removeChild(sprite_avatar)
+                app.stage.removeChild(sprite_avatar_frame)
+                app.stage.removeChild(sprite_avatar)
                 basicText6.y=basicText5.y+basicText5.height*1
                 basicText6.x=app.screen.width/2-basicText6.width/2
                 basicText7.y=basicText5.y+basicText5.height*3
@@ -2063,7 +2067,7 @@ app.ticker.add(() => {
             }
             
             app.stage.addChild(sprite_avatar_frame)
-           // app.stage.addChild(sprite_avatar)
+            app.stage.addChild(sprite_avatar)
 
             
 
