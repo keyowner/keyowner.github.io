@@ -75,10 +75,10 @@ Sprite_Auto(sprite_avatar_frame)
 sprite_avatar_frame.x=10
 sprite_avatar_frame.y=10
 
-sprite_avatar.width=sprite_avatar_frame.width-6
-sprite_avatar.height=sprite_avatar_frame.height-6
-sprite_avatar.x=sprite_avatar_frame.x+3
-sprite_avatar.y=sprite_avatar_frame.y+3
+//sprite_avatar.width=sprite_avatar_frame.width-6
+//sprite_avatar.height=sprite_avatar_frame.height-6
+//sprite_avatar.x=sprite_avatar_frame.x+3
+//sprite_avatar.y=sprite_avatar_frame.y+3
 
 let sprite_game_win=PIXI.Sprite.from('./img/game_win.png')
 Sprite_Auto(sprite_game_win)
@@ -1183,10 +1183,11 @@ sprite_profile_frame.y=app.screen.height/2-sprite_profile_frame.height/4
 let key_profile=false
 function profile(){
     if (key_profile==false){
+        
         sprite_avatar_frame.x=app.screen.width/2-sprite_avatar_frame.width/2
         sprite_avatar_frame.y=sprite_profile_frame.y-sprite_avatar_frame.height/2
-        sprite_avatar.x=sprite_avatar_frame.x+3
-        sprite_avatar.y=sprite_avatar_frame.y+3
+        //sprite_avatar.x=sprite_avatar_frame.x+3
+        //sprite_avatar.y=sprite_avatar_frame.y+3
         if (basicText5.width<=sprite_avatar_frame.width){
             basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
         }
@@ -1203,10 +1204,10 @@ function profile0(){
         sprite_avatar_frame.x=10
         sprite_avatar_frame.y=10
 
-        sprite_avatar.width=sprite_avatar_frame.width-6
-        sprite_avatar.height=sprite_avatar_frame.height-6
-        sprite_avatar.x=sprite_avatar_frame.x+3
-        sprite_avatar.y=sprite_avatar_frame.y+3
+        //sprite_avatar.width=sprite_avatar_frame.width-6
+        //sprite_avatar.height=sprite_avatar_frame.height-6
+        //sprite_avatar.x=sprite_avatar_frame.x+3
+        //sprite_avatar.y=sprite_avatar_frame.y+3
         if (basicText5.width<=sprite_avatar_frame.width){
             basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
         }
@@ -1894,8 +1895,8 @@ sprite_button_endless.eventMode = 'static';
 sprite_button_endless.on('pointerdown', new_game_endless)
 sprite_button_duels.eventMode = 'static';
 sprite_button_duels.on('pointerdown', duels)
-sprite_avatar.eventMode = 'static';
-sprite_avatar.on('pointerdown',profile)
+//sprite_avatar.eventMode = 'static';
+//sprite_avatar.on('pointerdown',profile)
 
 let stats={}
 let my_collect_stars=0
@@ -2034,8 +2035,8 @@ app.ticker.add(() => {
                 }
                 app.stage.removeChild(sprite_profile_frame)
                 app.stage.addChild(sprite_profile_frame)
-                app.stage.removeChild(sprite_avatar_frame)
-                app.stage.removeChild(sprite_avatar)
+                //app.stage.removeChild(sprite_avatar_frame)
+               // app.stage.removeChild(sprite_avatar)
                 basicText6.y=basicText5.y+basicText5.height*1
                 basicText6.x=app.screen.width/2-basicText6.width/2
                 basicText7.y=basicText5.y+basicText5.height*3
@@ -2062,7 +2063,7 @@ app.ticker.add(() => {
             }
             
             app.stage.addChild(sprite_avatar_frame)
-            app.stage.addChild(sprite_avatar)
+           // app.stage.addChild(sprite_avatar)
 
             
 
