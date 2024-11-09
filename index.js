@@ -1947,16 +1947,16 @@ else{
 basicText5.y=sprite_avatar_frame.y+sprite_avatar_frame.height+10
 
 
-const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily: 'PIXY', fontSize: 25, fill: '#ffffff'} });
+const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily: 'PIXY', fontSize: 30, fill: '#ffffff'} });
 const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
-const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
-const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
-const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
-const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 17, fill: '#ffffff'} });
+const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText12 = new PIXI.Text({ text: 'PVP', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
-const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
-const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
-const basicText15 = new PIXI.Text({ text: 'Registration date: '+my_date, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText15 = new PIXI.Text({ text: 'Registration date: '+my_date, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 
 update_statistics()
 let menu_added=false
@@ -2061,7 +2061,7 @@ app.ticker.add(() => {
                 basicText13.x=app.screen.width/2-basicText13.width/2
                 basicText14.y=basicText5.y+basicText5.height*12.5
                 basicText14.x=app.screen.width/2-basicText14.width/2
-                basicText15.y=basicText5.y+basicText5.height*14.5
+                basicText15.y=sprite_profile_frame.y+sprite_profile_frame.height-basicText15.height*3
                 basicText15.x=app.screen.width/2-basicText15.width/2
                 basicText15.text='Registration Date: '+my_date
                 app.stage.addChild(statistic_container)
