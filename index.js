@@ -4,7 +4,7 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
+let tgid=pngwindow.Telegram.WebApp.initDataUnsafe.user.id
 let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
 
 const app = new PIXI.Application();
@@ -12,13 +12,15 @@ await app.init({ resizeTo: window, autoDensity: true});
 let ava=''
 
 
-
-
-
+/*
+await PIXI.Assets.load('./img/loading.png')
+let sprite_loading=PIXI.Sprite.from('./img/loading.png')
+Sprite_Auto(sprite_loading)
+app.stage.addChild(sprite_loading)
+*/
 let domen='https://server-production-51c2.up.railway.app'
 await PIXI.Assets.load(domen+'/'+(tgid)+'.png')
 let sprite_avatar=PIXI.Sprite.from(domen+'/'+(tgid)+'.png')
-Sprite_Auto(sprite_avatar)
 
 
 //await PIXI.Assets.load(domen+'/'+tgid+'.png').then(()=>{next_l+=1})
@@ -30,10 +32,6 @@ PIXI.sound.add('1', './1.mp3');
 PIXI.sound.add('2', './2.mp3');
 PIXI.sound.add('3', './3.mp3');
 PIXI.sound.add('4', './4.mp3');
-await PIXI.Assets.load('./img/loading.png')
-
-let sprite_loading=PIXI.Sprite.from('./img/loading.png')
-Sprite_Auto(sprite_loading)
 
 
 document.body.appendChild(app.canvas);
@@ -110,7 +108,7 @@ let key_music_one_start=false
 //back
 let sprite_back = PIXI.Sprite.from('./img/background.png');
 Sprite_Auto(sprite_back)
-app.stage.addChild(sprite_back);
+//app.stage.addChild(sprite_back);
 
 //blood_effect
 
@@ -129,13 +127,13 @@ Sprite_Auto(sprite_snow_effect)
 
 let sprite_shiny_key = PIXI.Sprite.from('./img/shiny_key.png');
 Sprite_Auto(sprite_shiny_key)
-app.stage.addChild(sprite_shiny_key);
+//app.stage.addChild(sprite_shiny_key);
 
 //borders
 
 let sprite_borders = PIXI.Sprite.from('./img/borders.png');
 Sprite_Auto(sprite_borders)
-app.stage.addChild(sprite_borders);
+//app.stage.addChild(sprite_borders);
 
 //keys
 
@@ -147,7 +145,7 @@ sprite_key_red0.x = 40 * (app.screen.width / 720) + sprite_key_red0.width * 3
 sprite_key_red0.y = app.screen.height - sprite_key_red0.height
 sprite_key_red1.x = 40 * (app.screen.width / 720) + sprite_key_red1.width * 3
 sprite_key_red1.y = app.screen.height - sprite_key_red1.height
-app.stage.addChild(sprite_key_red0);
+//app.stage.addChild(sprite_key_red0);
 
 let sprite_key_green0 = PIXI.Sprite.from('./img/key_green0.png');
 let sprite_key_green1 = PIXI.Sprite.from('./img/key_green1.png');
@@ -157,7 +155,7 @@ sprite_key_green0.x = 40 * (app.screen.width / 720) + sprite_key_green0.width * 
 sprite_key_green0.y = app.screen.height - sprite_key_green0.height
 sprite_key_green1.x = 40 * (app.screen.width / 720) + sprite_key_green1.width * 2
 sprite_key_green1.y = app.screen.height - sprite_key_green1.height
-app.stage.addChild(sprite_key_green0);
+//app.stage.addChild(sprite_key_green0);
 
 let sprite_key_blue0 = PIXI.Sprite.from('./img/key_blue0.png');
 let sprite_key_blue1 = PIXI.Sprite.from('./img/key_blue1.png');
@@ -167,7 +165,7 @@ sprite_key_blue0.x = 40 * (app.screen.width / 720) + sprite_key_blue0.width * 1
 sprite_key_blue0.y = app.screen.height - sprite_key_blue0.height
 sprite_key_blue1.x = 40 * (app.screen.width / 720) + sprite_key_blue1.width * 1
 sprite_key_blue1.y = app.screen.height - sprite_key_blue1.height
-app.stage.addChild(sprite_key_blue0);
+//app.stage.addChild(sprite_key_blue0);
 
 let sprite_key_yellow0 = PIXI.Sprite.from('./img/key_yellow0.png');
 let sprite_key_yellow1 = PIXI.Sprite.from('./img/key_yellow1.png');
@@ -177,7 +175,7 @@ sprite_key_yellow0.x = 40 * (app.screen.width / 720) + sprite_key_yellow0.width 
 sprite_key_yellow0.y = app.screen.height - sprite_key_yellow0.height
 sprite_key_yellow1.x = 40 * (app.screen.width / 720) + sprite_key_yellow1.width * 0
 sprite_key_yellow1.y = app.screen.height - sprite_key_yellow1.height
-app.stage.addChild(sprite_key_yellow0);
+//app.stage.addChild(sprite_key_yellow0);
 
 //tap
 
@@ -1262,8 +1260,7 @@ function new_game_endless(){
         current_survive_multi=1
         current_survive_taps_need=25*100
         current_survive_qu=1
-        current_queue_timer=100
-        current_queue_qu=100
+        current_queue_timer=0
         red_keys=[]
         green_keys=[]
         blue_keys=[]
@@ -1926,7 +1923,7 @@ function update_statistics(){
 
     basicText8.text='Collected stars: '+my_collect_stars
     basicText9.text='total notes played: '+my_taps
-    basicText10.text='Highscore in endless mode: '+my_highscore
+    basicText10.text='Hightscore in endless mode: '+my_highscore
     basicText15.text='Registration date: '+my_date
     
 }
@@ -1952,8 +1949,8 @@ const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily:
 const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 17, fill: '#ffffff'} });
 const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText10 = new PIXI.Text({ text: 'Highscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText11 = new PIXI.Text({ text: 'Highscore in endless hard mode: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText12 = new PIXI.Text({ text: 'PVP', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
