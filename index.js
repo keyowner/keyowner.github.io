@@ -4,8 +4,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
-let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
+let tgid=6761355325//window.Telegram.WebApp.initDataUnsafe.user.id
+let f_name='gfjg'//window.Telegram.WebApp.initDataUnsafe.user.first_name
 
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
@@ -1262,6 +1262,7 @@ function new_game_endless(){
         current_survive_multi=1
         current_survive_taps_need=25*100
         current_survive_qu=1
+        current_queue_timer=0
         red_keys=[]
         green_keys=[]
         blue_keys=[]
@@ -1924,7 +1925,7 @@ function update_statistics(){
 
     basicText8.text='Collected stars: '+my_collect_stars
     basicText9.text='total notes played: '+my_taps
-    basicText10.text='Highscore in endless mode: '+my_highscore
+    basicText10.text='Hightscore in endless mode: '+my_highscore
     basicText15.text='Registration date: '+my_date
     
 }
@@ -1950,8 +1951,8 @@ const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily:
 const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
 const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
-const basicText10 = new PIXI.Text({ text: 'Highscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
-const basicText11 = new PIXI.Text({ text: 'Highscore in endless hard mode: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
 const basicText12 = new PIXI.Text({ text: 'PVP', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
 const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
