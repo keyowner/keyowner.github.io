@@ -2318,7 +2318,7 @@ else{
 basicText5.y=sprite_avatar_frame.y+sprite_avatar_frame.height+10
 
 
-const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily: 'PIXY', fontSize: 30, fill: '#ffffff'} });
+const basicText6 = new PIXI.Text({ text: 'Your statistics:', style: { fontFamily: 'PIXY', fontSize: 30, fill: '#ffffff'} });
 const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 17, fill: '#ffffff'} });
 const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
