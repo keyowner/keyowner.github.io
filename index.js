@@ -2492,7 +2492,7 @@ app.ticker.add(() => {
                     }
                     else {
                         if (my_score>my_hard_highscore){
-                            my_hard_highscore=score
+                            my_hard_highscore=my_score
                         }  
                     }
                    
