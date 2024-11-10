@@ -798,51 +798,54 @@ const loc_end=1580
 
 
 function moving() {
-    key_loc+=1
-
-    if (key_loc<loc_min){
-        app.stage.removeChild(sprite_borders)
-        app.stage.addChild(sprite_borders)
-
-        speed_heart=5
-    }
-    else if((key_loc>=loc_min) & (key_loc<=loc_min+1)){
-        console.log('pole')
-        sprite_loc_back.y=-app.screen.height
-        sprite_loc_borders.y=-app.screen.height
-        app.stage.addChild(sprite_loc_back)
-        app.stage.addChild(sprite_loc_borders)
-        
-    }
-    else if ((key_loc>loc_min) & (key_loc<loc_end)){
-        if (sprite_loc_back.y<0){
-            sprite_loc_back.y+=speed_bomb
-            sprite_loc_borders.y+=speed_bomb
+   
+    if (key_hardmode==true){
+        key_loc+=1
+        if (key_loc<loc_min){
+            app.stage.removeChild(sprite_borders)
+            app.stage.addChild(sprite_borders)
+    
+            speed_heart=5
         }
-        
-        
-        if (key_loc==loc_mid+(loc_max-loc_min)/loc_min) { 
-            app.stage.removeChild(sprite_black_top)
-            app.stage.addChild(sprite_black_top);
-
-        }
-
-        else if ((key_loc>=loc_max) & (key_loc<loc_end)){
+        else if((key_loc>=loc_min) & (key_loc<=loc_min+1)){
+            console.log('pole')
+            sprite_loc_back.y=-app.screen.height
+            sprite_loc_borders.y=-app.screen.height
             app.stage.addChild(sprite_loc_back)
             app.stage.addChild(sprite_loc_borders)
+            
+        }
+        else if ((key_loc>loc_min) & (key_loc<loc_end)){
+            if (sprite_loc_back.y<0){
+                sprite_loc_back.y+=speed_bomb
+                sprite_loc_borders.y+=speed_bomb
+            }
+            
+            
+            if (key_loc==loc_mid+(loc_max-loc_min)/loc_min) { 
+                app.stage.removeChild(sprite_black_top)
+                app.stage.addChild(sprite_black_top);
+    
+            }
+    
+            else if ((key_loc>=loc_max) & (key_loc<loc_end)){
+                app.stage.addChild(sprite_loc_back)
+                app.stage.addChild(sprite_loc_borders)
+                app.stage.removeChild(sprite_black_top)
+                app.stage.addChild(sprite_black_top);
+                sprite_loc_back.y+=speed_bomb
+                sprite_loc_borders.y+=speed_bomb
+            }
+        }
+        else if (key_loc>=loc_end){
             app.stage.removeChild(sprite_black_top)
             app.stage.addChild(sprite_black_top);
-            sprite_loc_back.y+=speed_bomb
-            sprite_loc_borders.y+=speed_bomb
+            app.stage.removeChild(sprite_loc_back)
+            app.stage.removeChild(sprite_loc_borders)
+            key_loc=0
         }
     }
-    else if (key_loc>=loc_end){
-        app.stage.removeChild(sprite_black_top)
-        app.stage.addChild(sprite_black_top);
-        app.stage.removeChild(sprite_loc_back)
-        app.stage.removeChild(sprite_loc_borders)
-        key_loc=0
-    }
+    
 
     
 
@@ -2288,8 +2291,8 @@ function update_statistics(){
 
     basicText8.text='Collected stars: '+my_collect_stars
     basicText9.text='total notes played: '+my_taps
-    basicText10.text='Highscore in endless mode: '+my_highscore
-    basicText11.text='Highscore in endless hard mode: '+my_hard_highscore
+    basicText10.text='Hightscore in endless mode: '+my_highscore
+    basicText11.text='Hightscore in endless hard mode: '+my_hard_highscore
     basicText15.text='Registration date: '+my_date
     
 }
@@ -2315,8 +2318,8 @@ const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily:
 const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 17, fill: '#ffffff'} });
 const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText10 = new PIXI.Text({ text: 'Highscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText11 = new PIXI.Text({ text: 'Highscore in endless hard mode: '+my_hard_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: '+my_hard_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText12 = new PIXI.Text({ text: 'PVP', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
