@@ -4,8 +4,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=6761355325//window.Telegram.WebApp.initDataUnsafe.user.id
-let f_name='kowww'//window.Telegram.WebApp.initDataUnsafe.user.first_name
+let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
+let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
 
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
@@ -80,18 +80,48 @@ await PIXI.Assets.load('./img/background_loc.png').then(()=>{next_l+=1});
 await PIXI.Assets.load('./img/borders_loc.png').then(()=>{next_l+=1});
 await PIXI.Assets.load('./img/flying_heart.png').then(()=>{next_l+=1});
 await PIXI.Assets.load('./img/cup.png')
-await PIXI.Assets.load('./img/leaderboard1.png')
-await PIXI.Assets.load('./img/leaderboard2.png')
-await PIXI.Assets.load('./img/leaderboard3.png')
+await PIXI.Assets.load('./img/leaderboard.png')
+await PIXI.Assets.load('./img/lead10.png')
+await PIXI.Assets.load('./img/lead11.png')
+await PIXI.Assets.load('./img/lead20.png')
+await PIXI.Assets.load('./img/lead21.png')
+await PIXI.Assets.load('./img/lead30.png')
+await PIXI.Assets.load('./img/lead31.png')
 
 let sprite_cup=PIXI.Sprite.from('./img/cup.png')
 Sprite_Auto(sprite_cup)
-let sprite_lead1=PIXI.Sprite.from('./img/leaderboard1.png')
-Sprite_Auto(sprite_lead1)
-let sprite_lead2=PIXI.Sprite.from('./img/leaderboard2.png')
-Sprite_Auto(sprite_lead2)
-let sprite_lead3=PIXI.Sprite.from('./img/leaderboard3.png')
-Sprite_Auto(sprite_lead3)
+let sprite_lead=PIXI.Sprite.from('./img/leaderboard.png')
+Sprite_Auto(sprite_lead)
+let sprite_lead10=PIXI.Sprite.from('./img/lead10.png')
+Sprite_Auto(sprite_lead10)
+let sprite_lead11=PIXI.Sprite.from('./img/lead11.png')
+Sprite_Auto(sprite_lead11)
+let sprite_lead20=PIXI.Sprite.from('./img/lead20.png')
+Sprite_Auto(sprite_lead20)
+let sprite_lead21=PIXI.Sprite.from('./img/lead21.png')
+Sprite_Auto(sprite_lead21)
+let sprite_lead30=PIXI.Sprite.from('./img/lead30.png')
+Sprite_Auto(sprite_lead30)
+let sprite_lead31=PIXI.Sprite.from('./img/lead31.png')
+Sprite_Auto(sprite_lead31)
+
+sprite_lead.x=0
+sprite_lead.y=app.screen.height*1/6
+
+sprite_lead10.x=0
+sprite_lead10.y=sprite_lead.y+sprite_lead.height/10
+sprite_lead11.x=0
+sprite_lead11.y=sprite_lead.y+sprite_lead.height/10
+
+sprite_lead20.x=sprite_lead10.x+sprite_lead10.width
+sprite_lead20.y=sprite_lead.y+sprite_lead.height/10
+sprite_lead21.x=sprite_lead10.x+sprite_lead10.width
+sprite_lead21.y=sprite_lead.y+sprite_lead.height/10
+
+sprite_lead30.x=sprite_lead20.x+sprite_lead20.width
+sprite_lead30.y=sprite_lead.y+sprite_lead.height/10
+sprite_lead31.x=sprite_lead20.x+sprite_lead20.width
+sprite_lead31.y=sprite_lead.y+sprite_lead.height/10
 let key_leaderboard=false
 
 
@@ -1502,6 +1532,21 @@ function profile0(){
         app.stage.removeChild(statistic_container)
         app.stage.removeChild(sprite_profile_frame)
     }
+    if (key_leaderboard==true){
+        key_leaderboard=false
+        app.stage.removeChild(sprite_lead)
+        app.stage.removeChild(sprite_lead10)
+        app.stage.removeChild(sprite_lead11)
+        app.stage.removeChild(sprite_lead20)
+        app.stage.removeChild(sprite_lead21)
+        app.stage.removeChild(sprite_lead30)
+        app.stage.removeChild(sprite_lead31)
+        for (var i=0;i<lt1.length;i++){
+            app.stage.removeChild(lt1[i])
+            app.stage.removeChild(lt2[i])
+        }
+        
+    }
     
 }
 
@@ -2417,29 +2462,55 @@ sprite_cup.eventMode='static'
 sprite_cup.on('pointerdown',cup)
 let lt1=[]
 for (var i=0;i<9;i++){
-    lt1.push(new PIXI.Text({ text: '', style: { fontFamily: 'PIXY', fontSize: 20 , fill: '#ffffff'} }))
+    lt1.push(new PIXI.Text({ text: '', style: { fontFamily: 'PIXY', fontSize: 15 , fill: '#ffffff'} }))
 }
 let lt2=[]
 for (var i=0;i<9;i++){
-    lt2.push(new PIXI.Text({ text: '', style: { fontFamily: 'PIXY', fontSize: 20 , fill: '#ffffff'} }))
+    lt2.push(new PIXI.Text({ text: '', style: { fontFamily: 'PIXY', fontSize: 15 , fill: '#ffffff'} }))
 }
 let key_upd_st=false
 let lead=1
-function lead1(){
-    lead=1
+function clead1(){
+    if (lead1==false){
+        console.log(1)
+        lead1=true
+        lead2=false
+        lead3=false
+        lead1req=false
+    }
+
 }
-function lead2(){
-    lead=2
+function clead2(){
+    if (lead2==false){
+        console.log(2)
+        lead2=true
+        lead1=false
+        lead3=false
+        lead2req=false
+    }
 }
-function lead3(){
-    lead=3
+function clead3(){
+    if (lead3==false){
+        console.log(3)
+        lead3=true
+        lead1=false
+        lead2=false
+        lead3req=false
+    }
 }
-sprite_lead1.eventMode='static'
-sprite_lead1.on('pointerdown',lead1)
-sprite_lead2.eventMode='static'
-sprite_lead2.on('pointerdown',lead2)
-sprite_lead3.eventMode='static'
-sprite_lead3.on('pointerdown',lead3)
+sprite_lead10.eventMode='static'
+sprite_lead10.on('pointerdown',clead1)
+sprite_lead20.eventMode='static'
+sprite_lead20.on('pointerdown',clead2)
+sprite_lead30.eventMode='static'
+sprite_lead30.on('pointerdown',clead3)
+let lead1=false
+let lead2=true
+let lead3=false
+let lead1req=false
+let lead2req=false
+let lead3req=false
+let jm=0
 app.ticker.add(() => {
 
         if (key_main_menu == true) {
@@ -2548,79 +2619,120 @@ app.ticker.add(() => {
                 app.stage.addChild(statistic_container)
             }
             if (key_leaderboard==true){
-                if (lead==1){
-                    
-                    sprite_lead1.y=app.screen.height*1/6
-                    app.stage.addChild(sprite_lead1)
-                    let jm=0
-                    fetch(domen+'/lead_stars').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
-                        app.stage.alpha=1
-                        sprite_lead1.y=app.screen.height*1/6
-                        app.stage.addChild(sprite_lead1)
-                        for (var j=0;j<resp.length;j++){
-
-                            lt1[j].x=10
-                            lt1[j].y=100+j*40
-                            lt1[j].text=(j+1)+'.'+resp[j][1]
-                            lt2[j].x=app.screen.width-10-lt2[j].width
-                            lt2[j].y=100+j*40
-                            lt2[j].text=resp[j][0]
-                            jm=resp.length
-                        }
-                    })
+                
+                if (lead1==true){
+                    console.log(11)
+                    sprite_lead.y=app.screen.height*1/6
+                    app.stage.addChild(sprite_lead)
+                    if (lead1req==false){
+                        lead1req=true
+                        fetch(domen+'/lead_stars').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
+                            app.stage.alpha=1
+                            sprite_lead.y=app.screen.height*1/6
+                            app.stage.addChild(sprite_lead)
+                            for (var j=0;j<resp.length;j++){
+                                lt1[j].x=20
+                                lt1[j].y=sprite_lead.y+sprite_lead.height/5+j*(sprite_lead.height/20)
+                                lt1[j].text=(j+1)+'. '+resp[j][1]
+                                
+                                lt2[j].y=sprite_lead.y+sprite_lead.height/5+j*(sprite_lead.height/20)
+                                lt2[j].text=resp[j][0]
+                                lt2[j].x=app.screen.width-lt2[j].width-20
+                                jm=resp.length
+                            }
+                        })
+                    }
+                    app.stage.removeChild(sprite_lead21)
+                    app.stage.removeChild(sprite_lead31)
+                    app.stage.addChild(sprite_lead11)
+                    app.stage.addChild(sprite_lead20)
+                    app.stage.addChild(sprite_lead30)
                     for (var j=0;j<jm;j++){
-                        lt1[j].x=10
-                        lt1[j].y=100+j*40
-                        lt1[j].text=(j+1)+'.'+resp[j][1]
-                        lt2[j].x=app.screen.width-10-lt2[j].width
-                        lt2[j].y=100+j*40
-                        lt2[j].text=resp[j][0]
+                        app.stage.removeChild(lt1[j])
+                        app.stage.removeChild(lt2[j])
                         app.stage.addChild(lt1[j])
                         app.stage.addChild(lt2[j])
                     }
                 }
-                else if (lead==2){
-                    app.stage.alpha=1
-                    sprite_lead1.y=app.screen.height*1/6
-                    //app.stage.addChild(sprite_lead1)
-
+                else if (lead2==true){
+                    console.log(21)
+                    sprite_lead.y=app.screen.height*1/6
+                    app.stage.addChild(sprite_lead)
                     
-                    fetch(domen+'/lead_endless').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
-                        for (var j=0;j<resp.length;j++){
-                            lt1[j].x=10
-                            lt1[j].y=100+j*40
-                            lt1[j].text=(j+1)+'.'+resp[j][1]
-                            lt2[j].x=app.screen.width-10-lt2[j].width
-                            lt2[j].y=100+j*40
-                            lt2[j].text=resp[j][0]
-                            app.stage.addChild(lt1[j])
-                            app.stage.addChild(lt2[j])
-                        }
-                    })
+                    if (lead2req==false){
+                        lead2req=true
+                        fetch(domen+'/lead_endless').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
+                            
+                            app.stage.alpha=1
+                            sprite_lead.y=app.screen.height*1/6
+                            app.stage.addChild(sprite_lead)
+                            for (var j=0;j<resp.length;j++){
+                                lt1[j].x=20
+                                lt1[j].y=sprite_lead.y+sprite_lead.height/5+j*(sprite_lead.height/20)
+                                lt1[j].text=(j+1)+'. '+resp[j][1]
+                                
+                                lt2[j].y=sprite_lead.y+sprite_lead.height/5+j*(sprite_lead.height/20)
+                                lt2[j].text=resp[j][0]
+                                lt2[j].x=app.screen.width-lt2[j].width-20
+                                jm=resp.length
+                            }
+                        })
+                    }
+                    app.stage.removeChild(sprite_lead11)
+                    app.stage.removeChild(sprite_lead21)
+                    app.stage.addChild(sprite_lead21)
+                    app.stage.addChild(sprite_lead10)
+                    app.stage.addChild(sprite_lead30)
+                    for (var j=0;j<jm;j++){
+                        app.stage.removeChild(lt1[j])
+                        app.stage.removeChild(lt2[j])
+                        app.stage.addChild(lt1[j])
+                        app.stage.addChild(lt2[j])
+                    }
                 }
-                else if (lead==3){
-                    app.stage.alpha=1
-                    sprite_lead1.y=app.screen.height*1/6
-                    app.stage.addChild(sprite_lead1)
-
+                else if (lead3==true){
+                    console.log(31)
+                    sprite_lead.y=app.screen.height*1/6
+                    app.stage.addChild(sprite_lead)
                     
-                    fetch(domen+'/lead_hardmode').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
-                        for (var j=0;j<resp.length;j++){
-                            lt1[j].x=10
-                            lt1[j].y=100+j*40
-                            lt1[j].text=(j+1)+'.'+resp[j][1]
-                            lt2[j].x=app.screen.width-10-lt2[j].width
-                            lt2[j].y=100+j*40
-                            lt2[j].text=resp[j][0]
-                            app.stage.addChild(lt1[j])
-                            app.stage.addChild(lt2[j])
-                        }
-                    })
+                    if (lead3req==false){
+                        lead3req=true
+                        fetch(domen+'/lead_hardmode').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
+                            
+                            app.stage.alpha=1
+                            sprite_lead.y=app.screen.height*1/6
+                            app.stage.addChild(sprite_lead)
+                            for (var j=0;j<resp.length;j++){
+                                lt1[j].x=20
+                                lt1[j].y=sprite_lead.y+sprite_lead.height/5+j*(sprite_lead.height/20)
+                                lt1[j].text=(j+1)+'. '+resp[j][1]
+                                
+                                lt2[j].y=sprite_lead.y+sprite_lead.height/5+j*(sprite_lead.height/20)
+                                lt2[j].text=resp[j][0]
+                                lt2[j].x=app.screen.width-lt2[j].width-20
+                                jm=resp.length
+                            }
+                        })
+                    }
+                    app.stage.removeChild(sprite_lead11)
+                    app.stage.removeChild(sprite_lead21)
+                    app.stage.addChild(sprite_lead31)
+                    app.stage.addChild(sprite_lead20)
+                    app.stage.addChild(sprite_lead10)
+                    for (var j=0;j<jm;j++){
+                        app.stage.removeChild(lt1[j])
+                        app.stage.removeChild(lt2[j])
+                        app.stage.addChild(lt1[j])
+                        app.stage.addChild(lt2[j])
+                    }
                 }
             }
             else{
                 app.stage.aplha=1
             }
+
+
+            
             app.stage.addChild(sprite_avatar_frame)
             app.stage.addChild(sprite_avatar)
             if (key_leaderboard==false){
