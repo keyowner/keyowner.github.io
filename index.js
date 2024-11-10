@@ -1629,7 +1629,7 @@ function new_game_hardmode(){
 function new_game_melodies(){
         
         if ((key_load_music==true) & (key_profile==false)){
-  
+            key_hardmode=false
             menu_sprite=[]
             menu_sprite_id=0
             key_music_one_start==false
