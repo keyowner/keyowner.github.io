@@ -845,6 +845,10 @@ function moving() {
             key_loc=0
         }
     }
+    else{
+        app.stage.removeChild(sprite_borders)
+        app.stage.addChild(sprite_borders)
+    }
     
 
     
