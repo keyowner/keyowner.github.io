@@ -4,8 +4,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
-let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
+let tgid=8150156619//window.Telegram.WebApp.initDataUnsafe.user.id
+let f_name='[key_owner]'//window.Telegram.WebApp.initDataUnsafe.user.first_name
 
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
@@ -1512,7 +1512,7 @@ function profile(){
     }
 }
 function profile0(){
-    if (key_profile==true){
+    if ((key_profile==true) ){
         sprite_avatar_frame.x=10
         sprite_avatar_frame.y=10
 
@@ -1532,7 +1532,7 @@ function profile0(){
         app.stage.removeChild(statistic_container)
         app.stage.removeChild(sprite_profile_frame)
     }
-    if (key_leaderboard==true){
+    if ((key_leaderboard==true) & (key_profile==false)){
         key_leaderboard=false
         app.stage.removeChild(sprite_lead)
         app.stage.removeChild(sprite_lead10)
@@ -1552,7 +1552,7 @@ function profile0(){
 
 let queue_timer_m=2
 function new_game_endless(){
-    if ((key_load_music==true) & (key_profile==false)){
+    if ((key_load_music==true) & (key_profile==false)& (key_leaderboard==false)){
         basicText3.alpha=1
         basicText.alpha=1
         basicText4.alpha=1
@@ -1625,7 +1625,7 @@ function new_game_endless(){
     
     }
 function new_game_hardmode(){
-    if ((key_load_music==true) & (key_profile==false)){
+    if ((key_load_music==true) & (key_profile==false)& (key_leaderboard==false)){
         basicText3.alpha=1
         basicText.alpha=1
         basicText4.alpha=1
@@ -1701,7 +1701,7 @@ function new_game_hardmode(){
     }
 function new_game_melodies(){
         
-        if ((key_load_music==true) & (key_profile==false)){
+        if ((key_load_music==true) & (key_profile==false) & (key_leaderboard==false)){
             key_hardmode=false
             basicText3.alpha=1
             basicText.alpha=1
@@ -2368,8 +2368,8 @@ function update_statistics(){
 
     basicText8.text='Collected stars: '+my_collect_stars
     basicText9.text='total notes played: '+my_taps
-    basicText10.text='Highscore in endless mode: '+my_highscore
-    basicText11.text='Highscore in endless hard mode: '+my_hard_highscore
+    basicText10.text='Hightscore in endless mode: '+my_highscore
+    basicText11.text='Hightscore in endless hard mode: '+my_hard_highscore
     basicText15.text='Registration date: '+my_date
     
 }
@@ -2405,8 +2405,8 @@ const basicText6 = new PIXI.Text({ text: 'Your statistics:', style: { fontFamily
 const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 17, fill: '#ffffff'} });
 const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText10 = new PIXI.Text({ text: 'Highscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText11 = new PIXI.Text({ text: 'Highscore in endless hard mode: '+my_hard_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: '+my_hard_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText12 = new PIXI.Text({ text: 'PVP', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
@@ -2729,17 +2729,26 @@ app.ticker.add(() => {
             }
             else{
                 app.stage.aplha=1
+
             }
+            
 
 
             
             app.stage.addChild(sprite_avatar_frame)
             app.stage.addChild(sprite_avatar)
             if (key_leaderboard==false){
+                //console.log(2)
                 app.stage.removeChild(sprite_cup)
                 app.stage.addChild(sprite_cup)
             }
-            
+            else{
+                app.stage.removeChild(sprite_cup)
+            }
+            if (key_profile==true){
+                app.stage.removeChild(sprite_cup)
+                
+            }
             basicText16.x=app.screen.width-sprite_star.width-basicText16.width*1.2
             basicText16.y=sprite_star.height/2-basicText16.height/4
             basicText16.text=(my_collect_stars)
