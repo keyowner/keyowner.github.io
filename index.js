@@ -2288,8 +2288,8 @@ function update_statistics(){
 
     basicText8.text='Collected stars: '+my_collect_stars
     basicText9.text='total notes played: '+my_taps
-    basicText10.text='Hightscore in endless mode: '+my_highscore
-    basicText11.text='Hightscore in endless hard mode: '+my_hard_highscore
+    basicText10.text='Highscore in endless mode: '+my_highscore
+    basicText11.text='Highscore in endless hard mode: '+my_hard_highscore
     basicText15.text='Registration date: '+my_date
     
 }
@@ -2315,8 +2315,8 @@ const basicText6 = new PIXI.Text({ text: 'Your statistic:', style: { fontFamily:
 const basicText7 = new PIXI.Text({ text: 'PVE', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText8 = new PIXI.Text({ text: 'Collected stars: '+my_collect_stars, style: { fontFamily: 'PIXY', fontSize: 17, fill: '#ffffff'} });
 const basicText9 = new PIXI.Text({ text: 'total notes played: '+my_taps, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText10 = new PIXI.Text({ text: 'Hightscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
-const basicText11 = new PIXI.Text({ text: 'Hightscore in endless hard mode: '+my_hard_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText10 = new PIXI.Text({ text: 'Highscore in endless mode: '+my_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
+const basicText11 = new PIXI.Text({ text: 'Highscore in endless hard mode: '+my_hard_highscore, style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText12 = new PIXI.Text({ text: 'PVP', style: { fontFamily: 'PIXY', fontSize: 20, fill: '#ffffff'} });
 const basicText13 = new PIXI.Text({ text: 'Wins on duels: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
 const basicText14 = new PIXI.Text({ text: 'Total duels played: -', style: { fontFamily: 'PIXY', fontSize:  17, fill: '#ffffff'} });
