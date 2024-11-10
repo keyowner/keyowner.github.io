@@ -4,8 +4,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 tg.disableVerticalSwipes()
 //tg.viewportHeight
-let tgid=window.Telegram.WebApp.initDataUnsafe.user.id
-let f_name=window.Telegram.WebApp.initDataUnsafe.user.first_name
+let tgid=6761355325//window.Telegram.WebApp.initDataUnsafe.user.id
+let f_name='kowww'//window.Telegram.WebApp.initDataUnsafe.user.first_name
 
 const app = new PIXI.Application();
 await app.init({ resizeTo: window, autoDensity: true});
@@ -18,7 +18,7 @@ let sprite_loading=PIXI.Sprite.from('./img/loading.png')
 Sprite_Auto(sprite_loading)
 app.stage.addChild(sprite_loading)
 */
-let domen='https://server-production-51c2.up.railway.app'
+let domen='https://yamsgame.up.railway.app/'
 await PIXI.Assets.load(domen+'/'+(tgid)+'.png')
 let sprite_avatar=PIXI.Sprite.from(domen+'/'+(tgid)+'.png')
 
@@ -79,6 +79,20 @@ await PIXI.Assets.load('./img/but1.png').then(()=>{next_l+=1});
 await PIXI.Assets.load('./img/background_loc.png').then(()=>{next_l+=1});
 await PIXI.Assets.load('./img/borders_loc.png').then(()=>{next_l+=1});
 await PIXI.Assets.load('./img/flying_heart.png').then(()=>{next_l+=1});
+await PIXI.Assets.load('./img/cup.png')
+await PIXI.Assets.load('./img/leaderboard1.png')
+await PIXI.Assets.load('./img/leaderboard2.png')
+await PIXI.Assets.load('./img/leaderboard3.png')
+
+let sprite_cup=PIXI.Sprite.from('./img/cup.png')
+Sprite_Auto(sprite_cup)
+let sprite_lead1=PIXI.Sprite.from('./img/leaderboard1.png')
+Sprite_Auto(sprite_lead1)
+let sprite_lead2=PIXI.Sprite.from('./img/leaderboard2.png')
+Sprite_Auto(sprite_lead2)
+let sprite_lead3=PIXI.Sprite.from('./img/leaderboard3.png')
+Sprite_Auto(sprite_lead3)
+let key_leaderboard=false
 
 
 let sprite_avatar_frame=PIXI.Sprite.from('./img/frame_avatar.png')
@@ -756,7 +770,10 @@ const basicText = new PIXI.Text({ text: 'Score: ' + String(my_score), style });
 const basicText2 = new PIXI.Text({ text: String(my_stars), style });
 const basicText3 = new PIXI.Text({ text: 'Score: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
 const basicText4 = new PIXI.Text({ text: 'Stars: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
-
+basicText3.alpha=0
+basicText.alpha=0
+basicText4.alpha=0
+basicText2.alpha=0
 basicText.x = 15 * window.devicePixelRatio / 2
 basicText.y = sprite_black_top.height / 2 - font_s / 2;
 basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 5;
@@ -1491,7 +1508,10 @@ function profile0(){
 let queue_timer_m=2
 function new_game_endless(){
     if ((key_load_music==true) & (key_profile==false)){
-
+        basicText3.alpha=1
+        basicText.alpha=1
+        basicText4.alpha=1
+        basicText2.alpha=1
         menu_sprite=[]
         menu_sprite_id=0
         key_music_one_start==false
@@ -1561,6 +1581,10 @@ function new_game_endless(){
     }
 function new_game_hardmode(){
     if ((key_load_music==true) & (key_profile==false)){
+        basicText3.alpha=1
+        basicText.alpha=1
+        basicText4.alpha=1
+        basicText2.alpha=1
         menu_sprite=[]
         menu_sprite_id=0
         key_hard=true
@@ -1634,6 +1658,10 @@ function new_game_melodies(){
         
         if ((key_load_music==true) & (key_profile==false)){
             key_hardmode=false
+            basicText3.alpha=1
+            basicText.alpha=1
+            basicText4.alpha=1
+            basicText2.alpha=1
             menu_sprite=[]
             menu_sprite_id=0
             key_music_one_start==false
@@ -2304,6 +2332,16 @@ function save_statistics(){
     let a=(domen+'/player?id='+tgid+'&taps='+my_taps+'&stars='+my_collect_stars+'&highscore='+my_highscore+'&date='+my_date+'&hardscore='+my_hard_highscore)
     fetch(a)
 }
+
+function cup(){
+    if (key_leaderboard==false){
+        key_leaderboard=true
+    }
+    else{
+        key_leaderboard=false
+    }
+   
+}
 //update_statistics()
 
 
@@ -2362,9 +2400,46 @@ sprite_but0.x=sprite_button_endless.x-app.screen.width/9
 sprite_but0.y=sprite_button_endless.y+sprite_button_endless.height*2/3-sprite_but0.height/2
 sprite_but1.x=sprite_button_endless.x+sprite_button_endless.width+app.screen.width/30
 sprite_but1.y=sprite_button_endless.y+sprite_button_endless.height*2/3-sprite_but1.height/2
+let sprite_star=PIXI.Sprite.from('./img/star.png')
+Sprite_Auto(sprite_star)
+sprite_star.width/=2
+sprite_star.height/=2
+console.log(my_stars)
+const basicText16 = new PIXI.Text({ text: my_collect_stars, style: { fontFamily: 'PIXY', fontSize:  30, fill: '#ffffff'} });
+basicText16.text=(my_collect_stars)
+sprite_star.x=app.screen.width-10-sprite_star.width
+sprite_star.y=10
 
+sprite_cup.y=sprite_avatar_frame.y+sprite_avatar_frame.height+50
+sprite_cup.x=10
 
+sprite_cup.eventMode='static'
+sprite_cup.on('pointerdown',cup)
+let lt1=[]
+for (var i=0;i<9;i++){
+    lt1.push(new PIXI.Text({ text: '', style: { fontFamily: 'PIXY', fontSize: 20 , fill: '#ffffff'} }))
+}
+let lt2=[]
+for (var i=0;i<9;i++){
+    lt2.push(new PIXI.Text({ text: '', style: { fontFamily: 'PIXY', fontSize: 20 , fill: '#ffffff'} }))
+}
 let key_upd_st=false
+let lead=1
+function lead1(){
+    lead=1
+}
+function lead2(){
+    lead=2
+}
+function lead3(){
+    lead=3
+}
+sprite_lead1.eventMode='static'
+sprite_lead1.on('pointerdown',lead1)
+sprite_lead2.eventMode='static'
+sprite_lead2.on('pointerdown',lead2)
+sprite_lead3.eventMode='static'
+sprite_lead3.on('pointerdown',lead3)
 app.ticker.add(() => {
 
         if (key_main_menu == true) {
@@ -2401,9 +2476,12 @@ app.ticker.add(() => {
                     
                 }
             }
+
+
+
             app.stage.removeChild(sprite_button_melodies)
             app.stage.addChild(sprite_button_melodies)
-    
+            
             if (key_hardmode_button==1){
                 app.stage.removeChild(sprite_button_hardmode)
                 app.stage.removeChild(sprite_button_endless)
@@ -2429,6 +2507,9 @@ app.ticker.add(() => {
                 sprite_button_duels.y=app.screen.height/2+sprite_button_duels.height*2.2
                 app.stage.addChild(sprite_button_duels)
             }
+            app.stage.removeChild(sprite_star)
+            app.stage.addChild(sprite_star)
+            
             if (key_profile==true){
 
                 if (key_upd_st==false){
@@ -2439,6 +2520,9 @@ app.ticker.add(() => {
                 app.stage.addChild(sprite_profile_frame)
                 app.stage.removeChild(sprite_avatar_frame)
                 app.stage.removeChild(sprite_avatar)
+                
+                basicText16.x=sprite_star.x-basicText16.width
+                basicText16.y=sprite_star.y+sprite_star.height/2-basicText16.height/2       
                 basicText6.y=basicText5.y+basicText5.height*1
                 basicText6.x=app.screen.width/2-basicText6.width/2
                 basicText7.y=basicText5.y+basicText5.height*3
@@ -2463,12 +2547,91 @@ app.ticker.add(() => {
                 basicText15.text='Registration Date: '+my_date
                 app.stage.addChild(statistic_container)
             }
-            
+            if (key_leaderboard==true){
+                if (lead==1){
+                    
+                    sprite_lead1.y=app.screen.height*1/6
+                    app.stage.addChild(sprite_lead1)
+                    let jm=0
+                    fetch(domen+'/lead_stars').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
+                        app.stage.alpha=1
+                        sprite_lead1.y=app.screen.height*1/6
+                        app.stage.addChild(sprite_lead1)
+                        for (var j=0;j<resp.length;j++){
+
+                            lt1[j].x=10
+                            lt1[j].y=100+j*40
+                            lt1[j].text=(j+1)+'.'+resp[j][1]
+                            lt2[j].x=app.screen.width-10-lt2[j].width
+                            lt2[j].y=100+j*40
+                            lt2[j].text=resp[j][0]
+                            jm=resp.length
+                        }
+                    })
+                    for (var j=0;j<jm;j++){
+                        lt1[j].x=10
+                        lt1[j].y=100+j*40
+                        lt1[j].text=(j+1)+'.'+resp[j][1]
+                        lt2[j].x=app.screen.width-10-lt2[j].width
+                        lt2[j].y=100+j*40
+                        lt2[j].text=resp[j][0]
+                        app.stage.addChild(lt1[j])
+                        app.stage.addChild(lt2[j])
+                    }
+                }
+                else if (lead==2){
+                    app.stage.alpha=1
+                    sprite_lead1.y=app.screen.height*1/6
+                    //app.stage.addChild(sprite_lead1)
+
+                    
+                    fetch(domen+'/lead_endless').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
+                        for (var j=0;j<resp.length;j++){
+                            lt1[j].x=10
+                            lt1[j].y=100+j*40
+                            lt1[j].text=(j+1)+'.'+resp[j][1]
+                            lt2[j].x=app.screen.width-10-lt2[j].width
+                            lt2[j].y=100+j*40
+                            lt2[j].text=resp[j][0]
+                            app.stage.addChild(lt1[j])
+                            app.stage.addChild(lt2[j])
+                        }
+                    })
+                }
+                else if (lead==3){
+                    app.stage.alpha=1
+                    sprite_lead1.y=app.screen.height*1/6
+                    app.stage.addChild(sprite_lead1)
+
+                    
+                    fetch(domen+'/lead_hardmode').then((res)=>{return (res)}).then((resu)=>{return resu.json()}).then((resp)=>{
+                        for (var j=0;j<resp.length;j++){
+                            lt1[j].x=10
+                            lt1[j].y=100+j*40
+                            lt1[j].text=(j+1)+'.'+resp[j][1]
+                            lt2[j].x=app.screen.width-10-lt2[j].width
+                            lt2[j].y=100+j*40
+                            lt2[j].text=resp[j][0]
+                            app.stage.addChild(lt1[j])
+                            app.stage.addChild(lt2[j])
+                        }
+                    })
+                }
+            }
+            else{
+                app.stage.aplha=1
+            }
             app.stage.addChild(sprite_avatar_frame)
             app.stage.addChild(sprite_avatar)
-
+            if (key_leaderboard==false){
+                app.stage.removeChild(sprite_cup)
+                app.stage.addChild(sprite_cup)
+            }
             
-
+            basicText16.x=app.screen.width-sprite_star.width-basicText16.width*1.2
+            basicText16.y=sprite_star.height/2-basicText16.height/4
+            basicText16.text=(my_collect_stars)
+            app.stage.addChild(basicText16)
             app.stage.addChild(basicText5)
         }
         else if (key_main_menu == false) {
