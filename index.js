@@ -803,9 +803,6 @@ function moving() {
     if (key_loc<loc_min){
         app.stage.removeChild(sprite_borders)
         app.stage.addChild(sprite_borders)
-        
-        app.stage.removeChild(sprite_black_top)
-        app.stage.addChild(sprite_black_top);
 
         speed_heart=5
     }
@@ -815,8 +812,6 @@ function moving() {
         sprite_loc_borders.y=-app.screen.height
         app.stage.addChild(sprite_loc_back)
         app.stage.addChild(sprite_loc_borders)
-        app.stage.removeChild(sprite_black_top)
-        app.stage.addChild(sprite_black_top);
         
     }
     else if ((key_loc>loc_min) & (key_loc<loc_end)){
@@ -849,16 +844,7 @@ function moving() {
         key_loc=0
     }
 
-    app.stage.removeChild(basicText);
-    basicText.text = 'Score: ' + String(my_score)
-    app.stage.addChild(basicText);
-    app.stage.removeChild(basicText2);
-    basicText2.text = String(my_stars)
-    basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 3;
-    app.stage.addChild(basicText2);
-
-    app.stage.removeChild(sprite_star_score);
-    app.stage.addChild(sprite_star_score);
+    
 
     for (let i = 0; i < 6; i++) {
         if (i == my_hp) {
@@ -1166,6 +1152,19 @@ function moving() {
                 snow_timer += 1
             }
         }
+
+        app.stage.removeChild(sprite_black_top)
+        app.stage.addChild(sprite_black_top);
+        app.stage.removeChild(basicText);
+        basicText.text = 'Score: ' + String(my_score)
+        app.stage.addChild(basicText);
+        app.stage.removeChild(basicText2);
+        basicText2.text = String(my_stars)
+        basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 3;
+        app.stage.addChild(basicText2);
+
+        app.stage.removeChild(sprite_star_score);
+        app.stage.addChild(sprite_star_score);
         if (key_blood == 0) {
             blood_timer = 0
         }
