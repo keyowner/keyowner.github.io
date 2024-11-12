@@ -804,10 +804,10 @@ basicText3.alpha=0
 basicText.alpha=0
 basicText4.alpha=0
 basicText2.alpha=0
-basicText.x = 15 * window.devicePixelRatio / 2
-basicText.y = sprite_black_top.height / 2 - basicText.height/2;
+basicText.x = 15
+basicText.y = sprite_black_top.height / 2 - basicText.height/1.5
 basicText2.x = app.screen.width - sprite_star_score.width - basicText2.width - 12 * app.screen.width / 720 * 5;
-basicText2.y = sprite_black_top.height / 2 - basicText.height/2;
+basicText2.y = sprite_black_top.height / 2 - basicText.height/1.5
 
 app.stage.addChild(basicText);
 app.stage.addChild(basicText2);
