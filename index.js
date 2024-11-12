@@ -796,10 +796,10 @@ const style = new PIXI.TextStyle({
 let my_score = 0;
 let my_stars = 0
 
-const basicText = new PIXI.Text({ text: 'Score: ' + String(my_score), style });
-const basicText2 = new PIXI.Text({ text: String(my_stars), style });
-const basicText3 = new PIXI.Text({ text: 'Score: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
-const basicText4 = new PIXI.Text({ text: 'Stars: ', style: { fontFamily: 'PIXY', fontSize: font_w , fill: '#ffffff'} });
+const basicText = new PIXI.Text({ text: 'Score: ' + String(my_score), style: { fontFamily: 'PIXY', fontSize: 30 , fill: '#ffffff'} });
+const basicText2 = new PIXI.Text({ text: String(my_stars), style: { fontFamily: 'PIXY', fontSize: 30 , fill: '#ffffff'} });
+const basicText3 = new PIXI.Text({ text: 'Score: ', style: { fontFamily: 'PIXY', fontSize: 30 , fill: '#ffffff'} });
+const basicText4 = new PIXI.Text({ text: 'Stars: ', style: { fontFamily: 'PIXY', fontSize: 30 , fill: '#ffffff'} });
 basicText3.alpha=0
 basicText.alpha=0
 basicText4.alpha=0
@@ -2391,7 +2391,7 @@ function cup(){
 
 
 
-const basicText5 = new PIXI.Text({ text: f_name+'', style: { fontFamily: 'PIXY', fontSize: 15, fill: '#ffffff'} });
+const basicText5 = new PIXI.Text({ text: f_name+'', style: { fontFamily: 'PIXY', fontSize: 17, fill: '#ffffff'} });
 if (basicText5.width<=sprite_avatar_frame.width){
     basicText5.x=sprite_avatar_frame.x+sprite_avatar_frame.width/2-basicText5.width/2
 }
