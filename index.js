@@ -2329,7 +2329,7 @@ let queue_menu_timer=0
 let current_queue_menu_timer=100
 PIXI.sound.play('geo8')
 PIXI.sound.stop('geo8')
-PIXI.Assets.load('./geo_8.mp3').then(() =>{key_load_music=true})
+key_load_music=true
 sprite_button_melodies.eventMode = 'static';
 sprite_button_melodies.on('pointerdown', new_game_melodies)
 sprite_button_endless.eventMode = 'static';
