@@ -784,9 +784,9 @@ sprite_back.eventMode = 'static';
 sprite_back.on('pointerdown', check_tap_to_continue);
 
 
-let font_s = Math.round(10 * window.devicePixelRatio)
-let font_w = Math.round(15 * window.devicePixelRatio)
-let font_m = Math.round(20 * window.devicePixelRatio)
+let font_s = Math.round(10)
+let font_w = Math.round(15)
+let font_m = Math.round(20)
 const style = new PIXI.TextStyle({
     fontFamily: 'PIXY',
     fontSize: font_s,
